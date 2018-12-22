@@ -17,13 +17,19 @@ public class PlayerController : MonoBehaviour {
 	*/
 	#endregion Button Mapping
 
+	private Rigidbody rb;
+	private float jumpHeight = 8f;
+
 	// Use this for initialization
 	void Start () {
-		
+		rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+			print ("space");
+		}
 	}
 }
