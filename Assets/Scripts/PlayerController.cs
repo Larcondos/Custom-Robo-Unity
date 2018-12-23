@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody rb;
 	private float jumpHeight = 8f;
+	private float runSpeed = 8f;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +30,16 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
-			print ("space");
+			print ("jumpy");
+		}
+		if (Input.GetKey (KeyCode.A)) {
+			rb.AddForce (Vector3.left* runSpeed, ForceMode.Force);
+			print ("run");
+		}
+		if (Input.GetKey (KeyCode.D)) {
+			rb.AddForce (Vector3.right* runSpeed, ForceMode.Force);
+			print ("run");
 		}
 	}
+
 }
