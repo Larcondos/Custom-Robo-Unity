@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody rb;
 	private float jumpHeight = 8f;
-	private float runSpeed = 8f;
+	private float runSpeed = 3f;
 
 	// Use this for initialization
 	void Start () {
@@ -28,18 +28,52 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetAxis ("Horizontal") != 0)
+			rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
+
+		if (Input.GetAxis ("Vertical") != 0)
+			rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
+
+		if (Input.GetButtonDown ("Jump")) {
 			rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
-			print ("jumpy");
+			Debug.Log ("Jumpin'");
 		}
-		if (Input.GetKey (KeyCode.A)) {
-			rb.AddForce (Vector3.left* runSpeed, ForceMode.Force);
-			print ("run");
+
+		if (Input.GetButtonDown ("GunFire")) {
+			Debug.Log ("Main Gun Fired");
 		}
-		if (Input.GetKey (KeyCode.D)) {
-			rb.AddForce (Vector3.right* runSpeed, ForceMode.Force);
-			print ("run");
+
+		if (Input.GetButtonDown ("PodFire")) {
+			Debug.Log ("Pod Launched");
 		}
+
+		if (Input.GetButton ("BombFire")) {
+			Debug.Log ("Aiming Bomb");
+		}
+
+		if (Input.GetButtonUp ("BombFire")) {
+			Debug.Log ("Bomb Launch");
+		}
+
+		if (Input.GetButtonDown ("ChargeAttack")) {
+			Debug.Log ("Charge Attack Activated");
+		}
+
+		if (Input.GetButtonDown ("Pause")) {
+			Debug.Log ("Game Paused");
+		}
+
+		Debug.Log (Input.GetAxis ("Vertical"));
+
+
+
+		/* Debug Block for inital mappings
+		for (int i = 0;i < 20; i++) {
+			if(Input.GetKeyDown("joystick 1 button "+i)){
+				print("joystick 1 button "+i);
+			}
+		}
+		*/
 	}
 
 }
