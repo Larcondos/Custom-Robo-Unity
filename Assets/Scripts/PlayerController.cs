@@ -17,9 +17,16 @@ public class PlayerController : MonoBehaviour {
 	*/
 	#endregion Button Mapping
 
+	public GameObject enemy;
+	public GameObject bombMarker;
+	private GameObject bombMarkerInstance;
+	public GameObject bomb;
+
 	private Rigidbody rb;
 	private float jumpHeight = 8f;
 	private float runSpeed = 3f;
+
+	private bool aimingBomb = false;
 
 	// Use this for initialization
 	void Start () {
@@ -28,42 +35,8 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxis ("Horizontal") != 0)
-			rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
-
-		if (Input.GetAxis ("Vertical") != 0)
-			rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
-
-		if (Input.GetButtonDown ("Jump")) {
-			rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
-			Debug.Log ("Jumpin'");
-		}
-
-		if (Input.GetButtonDown ("GunFire")) {
-			Debug.Log ("Main Gun Fired");
-		}
-
-		if (Input.GetButtonDown ("PodFire")) {
-			Debug.Log ("Pod Launched");
-		}
-
-		if (Input.GetButton ("BombFire")) {
-			Debug.Log ("Aiming Bomb");
-		}
-
-		if (Input.GetButtonUp ("BombFire")) {
-			Debug.Log ("Bomb Launch");
-		}
-
-		if (Input.GetButtonDown ("ChargeAttack")) {
-			Debug.Log ("Charge Attack Activated");
-		}
-
-		if (Input.GetButtonDown ("Pause")) {
-			Debug.Log ("Game Paused");
-		}
-
-		Debug.Log (Input.GetAxis ("Vertical"));
+		
+		getInput ();
 
 
 
@@ -76,4 +49,60 @@ public class PlayerController : MonoBehaviour {
 		*/
 	}
 
+
+	void getInput() {
+
+		if (!aimingBomb) {
+			if (Input.GetAxis ("Horizontal") != 0)
+				rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
+
+			if (Input.GetAxis ("Vertical") != 0)
+				rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
+
+			if (Input.GetButtonDown ("Jump")) {
+				rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+				Debug.Log ("Jumpin'");
+			}
+
+			if (Input.GetButtonDown ("GunFire")) {
+				Debug.Log ("Main Gun Fired");
+			}
+
+			if (Input.GetButtonDown ("PodFire")) {
+				Debug.Log ("Pod Launched");
+			}
+			
+
+			if (Input.GetButtonDown ("ChargeAttack")) {
+				Debug.Log ("Charge Attack Activated");
+			}
+		}
+
+		if (Input.GetButton ("BombFire")) {
+			Debug.Log ("Aiming Bomb");
+			if (aimingBomb != true)
+				bombMarkerInstance = Instantiate (bombMarker, enemy.transform.position + (Vector3.down * .5f), Quaternion.identity);
+			
+			aimingBomb = true;
+
+			if (Input.GetAxis ("Horizontal") != 0)
+				bombMarkerInstance.transform.Translate (Input.GetAxis ("Horizontal") * Vector3.right * .1f);
+			if (Input.GetAxis ("Vertical") != 0)
+				bombMarkerInstance.transform.Translate (Input.GetAxis ("Vertical") * Vector3.forward * .1f);
+
+		}
+
+		if (Input.GetButtonUp ("BombFire")) {
+			Debug.Log ("Bomb Launch");
+			aimingBomb = false;
+
+			var bomba = Instantiate (bomb, transform.position, Quaternion.identity);
+			bomba.GetComponent<BombArc> ().setTarget (bombMarkerInstance.transform.position);
+			Destroy (bombMarkerInstance);
+		}
+
+		if (Input.GetButtonDown ("Pause")) {
+			Debug.Log ("Game Paused");
+		}
+	}
 }
