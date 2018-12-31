@@ -16,16 +16,28 @@ public class PlayerController : MonoBehaviour {
 
 	*/
 	#endregion Button Mapping
-
+	// The enemy game object.
 	public GameObject enemy;
+
+	// A marker for the bomb's intended location.
 	public GameObject bombMarker;
+
+	// The current instanciation of the bomb marker.
 	private GameObject bombMarkerInstance;
+
+	// The game object for the bomb weapon.
 	public GameObject bomb;
 
+	// An access variable for the player's rigidbody.
 	private Rigidbody rb;
+
+	// How high this mech can jump.
 	private float jumpHeight = 8f;
+
+	// How quickly this mech can run.
 	private float runSpeed = 3f;
 
+	// Is a bomb being aimed right now? (Is R button down?)
 	private bool aimingBomb = false;
 
 	// Use this for initialization

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DestructibleCube : MonoBehaviour {
 
+	// The box's HP. Change to private after testing.
+	public int HP;
+
 	// Use this for initialization
 	void Start () {
 		
