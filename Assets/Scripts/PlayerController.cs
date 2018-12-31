@@ -91,30 +91,42 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (Input.GetButton ("BombFire")) {
-			Debug.Log ("Aiming Bomb");
-			if (aimingBomb != true)
-				bombMarkerInstance = Instantiate (bombMarker, enemy.transform.position + (Vector3.down * .5f), Quaternion.identity);
-			
-			aimingBomb = true;
-
-			if (Input.GetAxis ("Horizontal") != 0)
-				bombMarkerInstance.transform.Translate (Input.GetAxis ("Horizontal") * Vector3.right * .1f);
-			if (Input.GetAxis ("Vertical") != 0)
-				bombMarkerInstance.transform.Translate (Input.GetAxis ("Vertical") * Vector3.forward * .1f);
-
+			aimBomb ();
 		}
 
 		if (Input.GetButtonUp ("BombFire")) {
-			Debug.Log ("Bomb Launch");
-			aimingBomb = false;
-
-			var bomba = Instantiate (bomb, transform.position, Quaternion.identity);
-			bomba.GetComponent<BombArc> ().setTarget (bombMarkerInstance.transform.position);
-			Destroy (bombMarkerInstance);
+			fireBomb ();
 		}
 
 		if (Input.GetButtonDown ("Pause")) {
 			Debug.Log ("Game Paused");
 		}
+	}
+
+	// This script is used to place the location you wish your 'bomb' weapon to drop.
+	// It also creates and manages the parabola for the bomb to follow.
+	void aimBomb() {
+		Debug.Log ("Aiming Bomb");
+		if (aimingBomb != true)
+			bombMarkerInstance = Instantiate (bombMarker, enemy.transform.position + (Vector3.down * .5f), Quaternion.identity);
+
+		aimingBomb = true;
+
+		if (Input.GetAxis ("Horizontal") != 0)
+			bombMarkerInstance.transform.Translate (Input.GetAxis ("Horizontal") * Vector3.right * .1f);
+		if (Input.GetAxis ("Vertical") != 0)
+			bombMarkerInstance.transform.Translate (Input.GetAxis ("Vertical") * Vector3.forward * .1f);
+
+		//TODO - Manage the parabola with a start, end, and mid point.
+		//TODO - Bomb only needs a trigger collide box.
+	}
+
+	void fireBomb() {
+		Debug.Log ("Bomb Launch");
+		aimingBomb = false;
+
+		var bomba = Instantiate (bomb, transform.position, Quaternion.identity);
+		bomba.GetComponent<BombArc> ().setTarget (bombMarkerInstance.transform.position);
+		Destroy (bombMarkerInstance);
 	}
 }

@@ -465,4 +465,6 @@ public class ParabolaController : MonoBehaviour
 
 	}
 
+	public void ResetParabolaFly() { parabolaFly = new ParabolaFly(ParabolaRoot.transform); }﻿
+
 }

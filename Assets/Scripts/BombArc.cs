@@ -5,15 +5,11 @@ using UnityEngine;
 public class BombArc : MonoBehaviour {
 
 	protected float Animation;
-	private Vector3 targetPos;
+	private Vector3 targetPos = Vector3.zero;
 
 	void Update() {
-		if (targetPos != null) {
-			Animation += Time.deltaTime;
-
-			Animation = Animation % 5f;
-
-			transform.position = MathParabola.Parabola (transform.position, targetPos, 1, Animation / 5f);
+		if (targetPos != Vector3.zero) {
+			GetComponent<ParabolaController> ().FollowParabola ();
 		}
 	}
 
