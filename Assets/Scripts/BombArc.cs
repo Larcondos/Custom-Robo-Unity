@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BombArc : MonoBehaviour {
+	// I need to detect when I'm done moving and explode!
 
-	protected float Animation;
-	private Vector3 targetPos = Vector3.zero;
 
-	void Update() {
-		if (targetPos != Vector3.zero) {
-			GetComponent<ParabolaController> ().FollowParabola ();
-		}
+	private ParabolaController paraC;
+
+	void Start () {
+		paraC = GetComponent<ParabolaController> ();
 	}
-
-	public void setTarget(Vector3 pos) {
-		targetPos = pos;
-	}
+		
 }

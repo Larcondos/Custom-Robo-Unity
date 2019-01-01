@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour {
 	// The game object for the bomb weapon.
 	public GameObject bomb;
 
+	// The path for the bomb to take.
+	public GameObject parabola;
+
 	// An access variable for the player's rigidbody.
 	private Rigidbody rb;
 
@@ -106,27 +109,42 @@ public class PlayerController : MonoBehaviour {
 	// This script is used to place the location you wish your 'bomb' weapon to drop.
 	// It also creates and manages the parabola for the bomb to follow.
 	void aimBomb() {
-		Debug.Log ("Aiming Bomb");
+		// On the first frame where this is called, it will instantiate a marker for the bomb's target area.
 		if (aimingBomb != true)
 			bombMarkerInstance = Instantiate (bombMarker, enemy.transform.position + (Vector3.down * .5f), Quaternion.identity);
 
+		// The bomb is now being aimed, so no more instances will spawn.
 		aimingBomb = true;
 
+		// Detects control stick movement to place the bomb marker.
 		if (Input.GetAxis ("Horizontal") != 0)
 			bombMarkerInstance.transform.Translate (Input.GetAxis ("Horizontal") * Vector3.right * .1f);
 		if (Input.GetAxis ("Vertical") != 0)
 			bombMarkerInstance.transform.Translate (Input.GetAxis ("Vertical") * Vector3.forward * .1f);
-
-		//TODO - Manage the parabola with a start, end, and mid point.
-		//TODO - Bomb only needs a trigger collide box.
 	}
 
 	void fireBomb() {
-		Debug.Log ("Bomb Launch");
+		// You are no longer aiming the bomb, so reset this variable.
 		aimingBomb = false;
 
+		// Create a new parabola to make an arc.
+		var para = Instantiate (parabola, Vector3.zero, Quaternion.identity);
+
+		// Grab the children transforms to make your main points.
+		Transform[] paraRoots = para.GetComponentsInChildren<Transform> ();
+
+		// Sets the start location.
+		paraRoots [3].position = transform.position;
+
+		// Sets the target location.
+		paraRoots [1].position = bombMarkerInstance.transform.position;
+
+		// A middle point, with a height factor added in at the end.
+		paraRoots [2].position = ((transform.position + bombMarkerInstance.transform.position) * 0.5f) + (2 * Vector3.up);
+
+		// Spawn the bomb, and assign it the path of the parabola we made.
 		var bomba = Instantiate (bomb, transform.position, Quaternion.identity);
-		bomba.GetComponent<BombArc> ().setTarget (bombMarkerInstance.transform.position);
+		bomba.GetComponent<ParabolaController> ().ParabolaRoot = para;
 		Destroy (bombMarkerInstance);
 	}
 }
