@@ -11,5 +11,24 @@ public class BombArc : MonoBehaviour {
 	void Start () {
 		paraC = GetComponent<ParabolaController> ();
 	}
+
+	void Update() {
+
+		// When the bomb has reached it's destination, explode.
+		if (!paraC.Animation) {
+			Explode ();
+		}
+	}
 		
+	void OnTriggerEnter(Collider col) {
+		// On Contact with an enemy or wall, explode.
+		if (col.tag == "Enemy" || col.tag == "Wall") {
+			Explode ();
+		}
+	}
+
+	void Explode() {
+
+	}
+
 }
