@@ -28,7 +28,9 @@ public class BombArc : MonoBehaviour {
 	}
 
 	void Explode() {
-
+		print ("BOOM!");
+		// create particle effects
+		//time variable for bomb explosion will affect how many seconds the 2nd aprticel system works
 	}
 
 }
