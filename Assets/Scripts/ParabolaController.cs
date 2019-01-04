@@ -35,7 +35,7 @@ public class ParabolaController : MonoBehaviour
 	//draw
 	protected ParabolaFly parabolaFly;
 
-	void OnDrawGizmos()
+	/*void OnDrawGizmos()
 	{
 		if (gizmo == null)
 		{
@@ -58,7 +58,7 @@ public class ParabolaController : MonoBehaviour
 			Gizmos.DrawSphere(currPos, 0.01f);
 			prevPos = currPos;
 		}
-	}
+	}*/
 
 
 	// Use this for initialization
