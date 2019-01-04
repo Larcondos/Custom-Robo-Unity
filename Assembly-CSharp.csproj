@@ -53,16 +53,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BombArc.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Level-Based\DestructibleCube.cs" />
      <Compile Include="Assets\Scripts\Level-Based\Lava.cs" />
      <Compile Include="Assets\Scripts\Level-Based\MovingWalls.cs" />
      <Compile Include="Assets\Scripts\MathParabola.cs" />
+     <Compile Include="Assets\Scripts\Mech-Based\Weapons\BombArc.cs" />
+     <Compile Include="Assets\Scripts\Mech-Based\Weapons\partCollide.cs" />
      <Compile Include="Assets\Scripts\OtherPlayerController.cs" />
      <Compile Include="Assets\Scripts\ParabolaController.cs" />
-     <Compile Include="Assets\Scripts\partCollide.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <None Include="Assets\Materials\Noise.shader" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Jake/Documents/Unity Projects/Custom-Robo-Unity/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
