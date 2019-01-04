@@ -3,7 +3,11 @@ guid: 492c4951607717c48b5618e26f0351bf
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ringParticle: {fileID: 1879460460384520, guid: a745ac5b116feb049ab7ba3ceaba68d7,
+      type: 2}
+  - towerParticle: {fileID: 1687374259465922, guid: fa3bb33f54246d541a7ca06f69ddde9b,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
