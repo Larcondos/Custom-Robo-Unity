@@ -7,12 +7,24 @@ public class BombArc : MonoBehaviour {
 
 
 	private ParabolaController paraC;
-	public GameObject ringParticle;
-	public GameObject towerParticle;
+	public GameObject ringParticle, towerParticle;
+	private ParticleSystem ringParts, towerParts;
 	private bool exploded;
+
+	public float ATK; // Damage amount
+	public float SPD; // Speed the bombs move at
+	public float TIM; // Time the explosion will last for
+	public float DWN; // How much knockback the bombs apply
+	public float SIZ; // Size of explosion
+
+	//TODO: Should Instanciate these particles rather than children.
 
 	void Start () {
 		paraC = GetComponent<ParabolaController> ();
+		ringParts = ringParticle.GetComponent<ParticleSystem> ();
+		towerParts = towerParticle.GetComponent<ParticleSystem> ();
+
+		adjustStats ();
 	}
 
 	void Update() {
@@ -22,29 +34,49 @@ public class BombArc : MonoBehaviour {
 			Explode ();
 		}
 	}
+
+	void adjustStats() {
+
+		var rMain = ringParts.main;
+		var tMain = towerParts.main;
+
+		paraC.Speed = SPD;
+
+		rMain.startSpeed = SIZ;
+		tMain.startSpeed = SIZ * 10;
+
+
+		rMain.startLifetime = 1;
+		tMain.startLifetime = TIM;
+
+		rMain.duration = 1;
+		tMain.duration = TIM;
+
+	}
 		
 	void OnTriggerEnter(Collider col) {
 		// On Contact with an enemy or wall, explode.
-		if (col.tag == "Enemy" || col.tag == "Wall") {
+		if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Wall" || col.gameObject.tag == "Destructible") {
 			Explode ();
 		}
 	}
-
+		
 	void Explode() {
 		if (!exploded) {
 			exploded = true;
-			print ("BOOM!");
-			// create particle effects
-			//time variable for bomb explosion will affect how many seconds the 2nd aprticel system works
+			paraC.Animation = false;
+
 			ringParticle.SetActive (true);
 			towerParticle.SetActive (true);
 			GetComponent<Renderer> ().enabled = false;
 			StartCoroutine (disableParticles ());
 		}
 	}
+		
 
 	IEnumerator disableParticles() {
-		yield return new WaitForSeconds (1);
+		yield return new WaitForSeconds (TIM);
+
 		Destroy (this.gameObject);
 	}
 

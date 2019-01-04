@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour {
 		// Spawn the bomb, and assign it the path of the parabola we made.
 		var bomba = Instantiate (bomb, transform.position, Quaternion.identity);
 		bomba.GetComponent<ParabolaController> ().ParabolaRoot = para;
+		Destroy (para);
 		Destroy (bombMarkerInstance);
 	}
 }
