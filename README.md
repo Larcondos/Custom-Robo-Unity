@@ -3,9 +3,6 @@ An attempt at remaking as much of Custom Robo as possible, with some custom flai
 
 In active development as of January 2019.
 
-# Known Bugs:
-  1. The Particle Systems on explosions should not be colliding with objects nad bouncing back off. I'm trying to find a way to have them act like triggers, however particle system triggers don't give you information like normal triggers do.
-    
 # Usage
   While I permit for my code to be used under GNU license, Custom Robo and all respective trademarks belong to Nintendo.
 
