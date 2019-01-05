@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class partCollide : MonoBehaviour {
 
-	void OnParticleCollision (GameObject other) {
-		//print ("hit!");
+	private SphereCollider blastRadius;
 
+	void Start() {
+		blastRadius = GetComponent<SphereCollider> ();
+	}
+
+	void OnTriggerEnter(Collider col) {
+		if (col.gameObject.tag == "Player") {
+			// Do Damage and stuff!
+			print ("Player hit by bomb!");
+		}
 	}
 }
