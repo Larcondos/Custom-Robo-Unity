@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 199000969087584026}
   - component: {fileID: 54965654144024278}
   - component: {fileID: 114666425826063564}
+  - component: {fileID: 135839453597726978}
   m_Layer: 0
   m_Name: Ring Particle
   m_TagString: Untagged
@@ -76,7 +77,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1291802845187110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.44, y: 2.6, z: 0}
+  m_LocalPosition: {x: -1.44, y: 0.93, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4460726777886378}
@@ -237,6 +238,18 @@ MonoBehaviour:
   ParabolaRoot: {fileID: 0}
   Autostart: 1
   Animation: 1
+--- !u!135 &135839453597726978
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114755661805564}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136494478599186730
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -3707,7 +3720,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 3
     type: 1
     collisionMode: 0
@@ -8297,7 +8310,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 3
     type: 1
     collisionMode: 0

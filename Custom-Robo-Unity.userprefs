@@ -1,14 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BombArc.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CubeLaunch.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="148" Column="18" />
-      <File FileName="Assets\Scripts\BombArc.cs" Line="42" Column="3" />
-      <File FileName="Assets\Scripts\ParabolaController.cs" Line="61" Column="5" />
-      <File FileName="Assets\Scripts\MathParabola.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Level-Based\DestructibleCube.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\partCollide.cs" Line="8" Column="5" />
-      <File FileName="Assets\Scripts\Level-Based\Lava.cs" Line="10" Column="58" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CubeLaunch.cs" Line="51" Column="33" />
+      <File FileName="Assets\Scripts\Level-Based\Lava.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

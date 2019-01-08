@@ -10,6 +10,7 @@ public class BombArc : MonoBehaviour {
 	public GameObject ringParticle, towerParticle;
 	private ParticleSystem ringParts, towerParts;
 	private bool exploded;
+	private SphereCollider blastRadius;
 
 	public float ATK; // Damage amount
 	public float SPD; // Speed the bombs move at
@@ -23,7 +24,7 @@ public class BombArc : MonoBehaviour {
 		paraC = GetComponent<ParabolaController> ();
 		ringParts = ringParticle.GetComponent<ParticleSystem> ();
 		towerParts = towerParticle.GetComponent<ParticleSystem> ();
-
+		blastRadius = ringParticle.GetComponent<SphereCollider> ();
 		adjustStats ();
 	}
 
@@ -32,6 +33,9 @@ public class BombArc : MonoBehaviour {
 		// When the bomb has reached it's destination, explode.
 		if (!paraC.Animation) {
 			Explode ();
+		}
+		if (exploded) {
+			blastRadius.radius += SIZ/4;
 		}
 	}
 
@@ -79,5 +83,6 @@ public class BombArc : MonoBehaviour {
 
 		Destroy (this.gameObject);
 	}
-
+		
+	
 }
