@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
+     <Compile Include="Assets\Scripts\CubeLaunch.cs" />
      <Compile Include="Assets\Scripts\Level-Based\DestructibleCube.cs" />
      <Compile Include="Assets\Scripts\Level-Based\Lava.cs" />
      <Compile Include="Assets\Scripts\Level-Based\MovingWalls.cs" />
