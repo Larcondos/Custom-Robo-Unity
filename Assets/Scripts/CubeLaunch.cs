@@ -15,32 +15,37 @@ public class CubeLaunch : MonoBehaviour {
 	// The cube the launcher will shoot.
 	public GameObject cube;
 
+	// Has the cube been launched yet?
+	private bool launched = false;
+
 	// A specific number used to determine how long until the official "Start" of the match.
-	private int countdown  = 1000;
+	private int countdown  = 200;
 
 	// Use this for initialization
 	void Start () {
 		//cube = GameObject.FindWithTag("Cube");
-		center = pivotBall.transform;
-		transform.position = (transform.position - center.position).normalized * radius + center.position;
-		radius = 2.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//while (countdown > 0) {
-		countdown--;
+		if (countdown > 0) {
+			countdown--;
 
-		transform.RotateAround (center.position, Input.GetAxis ("Horizontal"), rotationSpeed * Time.deltaTime);
+			axis.z += Input.GetAxis ("Horizontal");
+			axis.z = Mathf.Clamp (axis.z, -45, 45);
+			axis.x += Input.GetAxis ("Vertical");
+			axis.x = Mathf.Clamp (axis.x, -45, 45);
 
-		desiredPosition = (transform.position - center.position).normalized * radius + center.position;
-			
-		transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
-			//if (Input.GetAxis ("Horizontal") != 0)
-				//rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
 
-			//if (Input.GetAxis ("Vertical") != 0)
-				//rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
-		//}
+
+
+			transform.localEulerAngles = new Vector3 (axis.x, transform.localEulerAngles.y, -axis.z);
+		}
+		if (countdown == 0 && !launched) {
+			launched = true;
+
+			Instantiate (cube, transform.position, Quaternion.identity);
+			cube.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 100);
+		}
 	}
 }
