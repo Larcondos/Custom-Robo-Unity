@@ -48,10 +48,25 @@ public class CubeLaunch : MonoBehaviour {
 			cube.GetComponent<Rigidbody> ().AddRelativeForce(Vector3.up * 5000);
 			cube.GetComponent<Rigidbody> ().useGravity = true;
 			cube.GetComponent<MeshRenderer> ().enabled = true;
+			cube.transform.parent = null;
 
-			// TODO: After a few seconds fix the timescale.
+			StartCoroutine (fixTimescale());
+
+
+
 			// TODO: Cube destroys after a little bit.
 			// TODO: Launcher needs to go away after the cube is launched.
 		}
+
+
+	
+	}
+
+	IEnumerator fixTimescale() {
+		yield return new WaitForSeconds (2);
+		Time.timeScale = 1;
+		Destroy (this.gameObject);
+
+
 	}
 }
