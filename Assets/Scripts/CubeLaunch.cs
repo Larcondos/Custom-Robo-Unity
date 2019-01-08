@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CubeLaunch : MonoBehaviour {
 
-	public GameObject pivotBall;
+	public GameObject cube;
 	private Transform center;
 	private Vector3 axis;
 	private Vector3 desiredPosition;
@@ -13,7 +13,7 @@ public class CubeLaunch : MonoBehaviour {
 	public float rotationSpeed = 200.0f;
 
 	// The cube the launcher will shoot.
-	public GameObject cube;
+	//public GameObject cube;
 
 	// Has the cube been launched yet?
 	private bool launched = false;
@@ -43,9 +43,15 @@ public class CubeLaunch : MonoBehaviour {
 		}
 		if (countdown == 0 && !launched) {
 			launched = true;
+			Time.timeScale = 2;
+			//Instantiate (cube, transform.position, Quaternion.identity);
+			cube.GetComponent<Rigidbody> ().AddRelativeForce(Vector3.up * 5000);
+			cube.GetComponent<Rigidbody> ().useGravity = true;
+			cube.GetComponent<MeshRenderer> ().enabled = true;
 
-			Instantiate (cube, transform.position, Quaternion.identity);
-			cube.GetComponent<Rigidbody> ().AddForce (Vector3.forward * 100);
+			// TODO: After a few seconds fix the timescale.
+			// TODO: Cube destroys after a little bit.
+			// TODO: Launcher needs to go away after the cube is launched.
 		}
 	}
 }
