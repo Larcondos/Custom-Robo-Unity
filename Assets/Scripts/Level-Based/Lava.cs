@@ -5,7 +5,7 @@ using UnityEngine;
 public class Lava : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col) {
-		if (col.collider.gameObject.tag == "Player") {
+		if (col.collider.gameObject.tag == "Player" || col.collider.gameObject.tag == "Spawn Cube") {
 			// Hurt player for 125
 			col.collider.attachedRigidbody.AddForce(Vector3.up * 1000);
 		}

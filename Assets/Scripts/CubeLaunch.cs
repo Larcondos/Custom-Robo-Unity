@@ -38,7 +38,6 @@ public class CubeLaunch : MonoBehaviour {
 
 
 
-
 			transform.localEulerAngles = new Vector3 (axis.x, transform.localEulerAngles.y, -axis.z);
 		}
 		if (countdown == 0 && !launched) {
@@ -49,13 +48,13 @@ public class CubeLaunch : MonoBehaviour {
 			cube.GetComponent<Rigidbody> ().useGravity = true;
 			cube.GetComponent<MeshRenderer> ().enabled = true;
 			cube.transform.parent = null;
+			cube.GetComponent<SpawnCube> ().enabled = true;
 
 			StartCoroutine (fixTimescale());
 
 
 
 			// TODO: Cube destroys after a little bit.
-			// TODO: Launcher needs to go away after the cube is launched.
 		}
 
 

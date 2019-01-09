@@ -68,11 +68,13 @@ public class PlayerController : MonoBehaviour {
 	void getInput() {
 
 		if (!aimingBomb) {
-			if (Input.GetAxis ("Horizontal") != 0)
+			if (Input.GetAxis ("Horizontal") != 0) {
 				rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
+			}
 
-			if (Input.GetAxis ("Vertical") != 0)
+			if (Input.GetAxis ("Vertical") != 0) {
 				rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
+			}
 
 			if (Input.GetButtonDown ("Jump")) {
 				rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
