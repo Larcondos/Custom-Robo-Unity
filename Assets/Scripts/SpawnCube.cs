@@ -13,6 +13,8 @@ public class SpawnCube : MonoBehaviour {
 	// How fast is the cube moving? Used to determine when to begin the countdown for real.
 	private float speed;
 
+	private bool sleeping;
+
 
 	// Use this for initialization
 	void Start () {
@@ -22,10 +24,28 @@ public class SpawnCube : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		speed = rb.velocity.magnitude;
-		if(speed < 0.01) {
-			rb.velocity = new Vector3(0, 0, 0);
-			print ("Sleep!");
+		if (!sleeping) {
+			speed = rb.velocity.magnitude;
+			if (speed < 0.01 && speed != 0) {
+				rb.velocity = new Vector3 (0, 0, 0);
+				StartCoroutine (tickDown ());
+				sleeping = true;
+
+				print ("Sleep!");
+
+			} 
+		}
+		print (randNum);
+	}
+	IEnumerator tickDown() {
+		yield return new WaitForSeconds (1);
+
+		randNum--;
+
+		if (randNum > 0) {
+			StartCoroutine (tickDown ());
+		} else {
+			Destroy (this.gameObject);
 		}
 	}
 }
