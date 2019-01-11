@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23691705154851414}
   - component: {fileID: 65748984759212374}
   - component: {fileID: 54500424893379508}
+  - component: {fileID: 114380463452824482}
   m_Layer: 0
   m_Name: Spawn Cube
   m_TagString: Untagged
@@ -112,3 +113,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114380463452824482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1999077579780896}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81aca7b95467e474089c575ec0da7712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 2100000, guid: b4db6880d9d93bc4893e8c7163bd0d4e, type: 2}
+  - {fileID: 2100000, guid: ecb5e1893378ed944ba0c750092b39cd, type: 2}
+  - {fileID: 2100000, guid: 303215f90058ad64e9427b7780461072, type: 2}
+  - {fileID: 2100000, guid: efaa50b07f0c49045916c221e698983d, type: 2}
+  - {fileID: 2100000, guid: 5e0c9c3d871b7cf4da45dab34927f6a4, type: 2}
+  - {fileID: 2100000, guid: 7848702ef12537e4cbcddfb35c34eb79, type: 2}

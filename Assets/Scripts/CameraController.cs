@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour {
 
 	void Start() {
 		cam = GetComponent<Camera> ();
+
+		Application.targetFrameRate = 60;
 	}
 
 	// Late Update for camera movement to calcualte this post other objects movement.
@@ -70,5 +72,6 @@ public class CameraController : MonoBehaviour {
 		return getEncapsulatingBounds ().center;
 
 	}
+
 
 }
