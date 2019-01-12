@@ -22,9 +22,8 @@ GameObject:
   - component: {fileID: 33737294704173976}
   - component: {fileID: 23494511884999068}
   - component: {fileID: 136907776362261908}
-  - component: {fileID: 114176928012780176}
-  - component: {fileID: 114741222747990914}
   - component: {fileID: 54673117316118882}
+  - component: {fileID: 114927164779980810}
   m_Layer: 0
   m_Name: Standard Bullet
   m_TagString: Untagged
@@ -38,13 +37,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1019038880388508}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.54, y: 0.93, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.2, y: 0.1, z: 0.6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23494511884999068
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -102,7 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114176928012780176
+--- !u!114 &114927164779980810
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,31 +109,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1019038880388508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 470957001b1876a47adfdccd9486d146, type: 3}
+  m_Script: {fileID: 11500000, guid: 745014a7e542c9d4b9d4a82684c3f978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  ParabolaRoot: {fileID: 0}
-  Autostart: 1
-  Animation: 1
---- !u!114 &114741222747990914
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1019038880388508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 492c4951607717c48b5618e26f0351bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ringParticle: {fileID: 0}
-  towerParticle: {fileID: 0}
-  ATK: 50
-  SPD: 3
-  TIM: 1
-  DWN: 5
-  SIZ: 0.5
+  target: {fileID: 0}
+  ATK: 30
+  SPD: 1
+  HMG: 20
+  DWN: 10
+  RLD: 10
 --- !u!136 &136907776362261908
 CapsuleCollider:
   m_ObjectHideFlags: 1

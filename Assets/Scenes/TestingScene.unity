@@ -2267,7 +2267,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.54
+      value: 30.67
       objectReference: {fileID: 0}
     - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2287,29 +2287,32 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114741222747990914, guid: bd46fed2a6613214f964873a0bd0236b,
+    - target: {fileID: 114927164779980810, guid: bd46fed2a6613214f964873a0bd0236b,
         type: 2}
-      propertyPath: ringParticle
+      propertyPath: target
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114741222747990914, guid: bd46fed2a6613214f964873a0bd0236b,
+      objectReference: {fileID: 263044965}
+    - target: {fileID: 114927164779980810, guid: bd46fed2a6613214f964873a0bd0236b,
         type: 2}
-      propertyPath: towerParticle
-      value: 
+      propertyPath: HMG
+      value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114176928012780176, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-    - {fileID: 114741222747990914, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+    - target: {fileID: 114927164779980810, guid: bd46fed2a6613214f964873a0bd0236b,
+        type: 2}
+      propertyPath: SPD
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &2046009226
