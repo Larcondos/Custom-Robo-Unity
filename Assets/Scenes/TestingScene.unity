@@ -2258,6 +2258,60 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1860694731}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1864170778
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741222747990914, guid: bd46fed2a6613214f964873a0bd0236b,
+        type: 2}
+      propertyPath: ringParticle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741222747990914, guid: bd46fed2a6613214f964873a0bd0236b,
+        type: 2}
+      propertyPath: towerParticle
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114176928012780176, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+    - {fileID: 114741222747990914, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &2046009226
 GameObject:
   m_ObjectHideFlags: 0
