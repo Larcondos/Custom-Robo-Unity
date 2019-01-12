@@ -36,8 +36,6 @@ public class CubeLaunch : MonoBehaviour {
 			axis.x += Input.GetAxis ("Vertical");
 			axis.x = Mathf.Clamp (axis.x, -45, 45);
 
-
-
 			transform.localEulerAngles = new Vector3 (axis.x, transform.localEulerAngles.y, -axis.z);
 		}
 		if (countdown == 0 && !launched) {
@@ -51,10 +49,6 @@ public class CubeLaunch : MonoBehaviour {
 			cube.GetComponent<SpawnCube> ().enabled = true;
 
 			StartCoroutine (fixTimescale());
-
-
-
-			// TODO: Cube destroys after a little bit.
 		}
 
 
@@ -65,7 +59,5 @@ public class CubeLaunch : MonoBehaviour {
 		yield return new WaitForSeconds (2);
 		Time.timeScale = 1;
 		Destroy (this.gameObject);
-
-
 	}
 }

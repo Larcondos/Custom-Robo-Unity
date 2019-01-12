@@ -53,8 +53,6 @@ public class PlayerController : MonoBehaviour {
 		
 		getInput ();
 
-
-
 		/* Debug Block for inital mappings
 		for (int i = 0;i < 20; i++) {
 			if(Input.GetKeyDown("joystick 1 button "+i)){
