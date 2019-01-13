@@ -19,6 +19,9 @@ public class SpawnCube : MonoBehaviour {
 	// Is the cube sleeping?
 	private bool sleeping;
 
+	// Has this cube touched the floor?
+	private bool touchedFloor;
+
 	// All of the materials for the cube to take based on number while alseep.
 	public Material[] sprites;
 
@@ -38,7 +41,7 @@ public class SpawnCube : MonoBehaviour {
 		if (!sleeping) {
 			mesh.material = sprites [randNum - 1];
 			speed = rb.velocity.magnitude;
-			if (speed < 0.01 && speed != 0) {
+			if (speed < 0.01 && speed != 0 && touchedFloor) {
 				rb.velocity = new Vector3 (0, 0, 0);
 				StartCoroutine (tickDown ());
 				sleeping = true;
@@ -102,5 +105,10 @@ public class SpawnCube : MonoBehaviour {
 		} else {
 			Destroy (this.gameObject);
 		}
+	}
+
+	// This way if the cube launches straight up it doesn't register the one frame at peak as "sleeping".
+	void OnCollisionEnter(Collision col) {
+		touchedFloor = true;
 	}
 }

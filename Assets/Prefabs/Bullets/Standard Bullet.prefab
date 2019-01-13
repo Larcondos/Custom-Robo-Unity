@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1019038880388508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.54, y: 0.93, z: 0}
+  m_LocalPosition: {x: 30.67, y: 0.93, z: 0}
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -114,10 +114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   ATK: 30
-  SPD: 1
-  HMG: 20
+  SPD: 10
+  HMG: 2
   DWN: 10
   RLD: 10
+  RNG: 2
 --- !u!136 &136907776362261908
 CapsuleCollider:
   m_ObjectHideFlags: 1

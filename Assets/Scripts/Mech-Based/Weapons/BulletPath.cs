@@ -13,10 +13,13 @@ public class BulletPath : MonoBehaviour {
 	public float HMG; // How homing the bullets are
 	public float DWN; // How much knockback the bullets apply
 	public float RLD; // Reload Time before next shot.
+	public float RNG; // The range of the bullets before disappearing.
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
+
+		StartCoroutine (delayedDestroy ());
 	}
 
 	// Update is called once per frame
@@ -26,5 +29,11 @@ public class BulletPath : MonoBehaviour {
 		var targetRotation = Quaternion.LookRotation(target.position - transform.position);
 
 		rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, HMG));
+	}
+
+	IEnumerator delayedDestroy() {
+		yield return new WaitForSeconds (RNG);
+
+		Destroy (this.gameObject);
 	}
 }

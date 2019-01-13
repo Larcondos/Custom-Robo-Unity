@@ -2304,13 +2304,8 @@ Prefab:
       objectReference: {fileID: 263044965}
     - target: {fileID: 114927164779980810, guid: bd46fed2a6613214f964873a0bd0236b,
         type: 2}
-      propertyPath: HMG
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114927164779980810, guid: bd46fed2a6613214f964873a0bd0236b,
-        type: 2}
-      propertyPath: SPD
-      value: 10
+      propertyPath: RNG
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
