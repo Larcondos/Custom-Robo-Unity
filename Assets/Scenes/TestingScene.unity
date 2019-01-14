@@ -2307,6 +2307,16 @@ Prefab:
       propertyPath: RNG
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114927164779980810, guid: bd46fed2a6613214f964873a0bd0236b,
+        type: 2}
+      propertyPath: HMG
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 136907776362261908, guid: bd46fed2a6613214f964873a0bd0236b,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
   m_IsPrefabAsset: 0

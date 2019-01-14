@@ -36,4 +36,12 @@ public class BulletPath : MonoBehaviour {
 
 		Destroy (this.gameObject);
 	}
+
+	void OnCollisionEnter() {
+		// If it hits things, do things.
+
+		Destroy (this.gameObject);
+
+
+	}
 }
