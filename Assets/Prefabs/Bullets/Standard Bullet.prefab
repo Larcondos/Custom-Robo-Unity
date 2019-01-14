@@ -115,10 +115,10 @@ MonoBehaviour:
   target: {fileID: 0}
   ATK: 30
   SPD: 10
-  HMG: 2
+  HMG: 1
   DWN: 10
   RLD: 10
-  RNG: 2
+  RNG: 5
 --- !u!136 &136907776362261908
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -126,7 +126,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1019038880388508}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2

@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour {
 
 		if (targets.Count == 0)
 			return;
-
+		
 		Move ();
 		Zoom ();
 		}
@@ -50,8 +50,6 @@ public class CameraController : MonoBehaviour {
 	}
 
 	float getGreatestDistance() {
-		
-
 		return getEncapsulatingBounds ().size.x;
 	}
 
@@ -60,7 +58,6 @@ public class CameraController : MonoBehaviour {
 		for (int i = 0; i < targets.Count; i++) {
 			bounds.Encapsulate (targets [i].position);
 		}
-
 		return bounds;
 	}
 

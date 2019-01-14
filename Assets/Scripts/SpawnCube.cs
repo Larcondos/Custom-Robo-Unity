@@ -28,6 +28,9 @@ public class SpawnCube : MonoBehaviour {
 	// How many buttons did the player mash while in cube form?
 	private float buttonsMashed;
 
+	// The player object to spawn.
+	public GameObject player;
+
 	// Use this for initialization
 	void Start () {
 		randNum = Random.Range (1, 6);
@@ -103,6 +106,7 @@ public class SpawnCube : MonoBehaviour {
 			buttonsMashed = 0;
 			StartCoroutine (tickDown ());
 		} else {
+			Instantiate (player, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
 		}
 	}

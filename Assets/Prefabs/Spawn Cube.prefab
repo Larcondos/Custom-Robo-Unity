@@ -131,3 +131,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: efaa50b07f0c49045916c221e698983d, type: 2}
   - {fileID: 2100000, guid: 5e0c9c3d871b7cf4da45dab34927f6a4, type: 2}
   - {fileID: 2100000, guid: 7848702ef12537e4cbcddfb35c34eb79, type: 2}
+  player: {fileID: 1834651003105046, guid: 16bf5f7e1c342154eb61ce94bbd320b7, type: 2}
