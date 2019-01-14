@@ -106,7 +106,13 @@ public class SpawnCube : MonoBehaviour {
 			buttonsMashed = 0;
 			StartCoroutine (tickDown ());
 		} else {
-			Instantiate (player, transform.position, Quaternion.identity);
+			player.transform.SetParent (null);
+			player.GetComponent<Rigidbody> ().useGravity = true;
+			player.GetComponent<MeshRenderer> ().enabled = true;
+			player.GetComponent<SphereCollider> ().enabled = true;
+			player.GetComponent<PlayerController> ().enabled = true;
+
+
 			Destroy (this.gameObject);
 		}
 	}

@@ -40,7 +40,7 @@ public class CubeLaunch : MonoBehaviour {
 		}
 		if (countdown == 0 && !launched) {
 			launched = true;
-			Time.timeScale = 2;
+			Time.timeScale = 1;
 			//Instantiate (cube, transform.position, Quaternion.identity);
 			cube.GetComponent<Rigidbody> ().AddRelativeForce(Vector3.up * 5000);
 			cube.GetComponent<Rigidbody> ().useGravity = true;
