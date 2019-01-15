@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour {
 	// The path for the bomb to take.
 	public GameObject parabola;
 
+	// Bullets for the main gun to shoot.
+	public GameObject bullet;
+
 	// An access variable for the player's rigidbody.
 	private Rigidbody rb;
 
@@ -80,7 +83,7 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			if (Input.GetButtonDown ("GunFire")) {
-				Debug.Log ("Main Gun Fired");
+				Instantiate (bullet, transform.position, Quaternion.identity);
 			}
 
 			if (Input.GetButtonDown ("PodFire")) {

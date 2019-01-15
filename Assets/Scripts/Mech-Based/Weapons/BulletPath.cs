@@ -20,6 +20,8 @@ public class BulletPath : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 
 		StartCoroutine (delayedDestroy ());
+
+		target = GameObject.FindGameObjectWithTag ("Enemy").transform;
 	}
 
 	// Update is called once per frame
@@ -37,10 +39,9 @@ public class BulletPath : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 
-	void OnCollisionEnter() {
-		// If it hits things, do things.
-
-		Destroy (this.gameObject);
+	void OnTriggerEnter(Collider col) {
+		if (col.gameObject.tag == "Enemy")
+			Destroy (this.gameObject);
 
 
 	}

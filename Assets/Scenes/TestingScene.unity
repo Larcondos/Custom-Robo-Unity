@@ -1912,7 +1912,7 @@ GameObject:
   - component: {fileID: 1624915428}
   m_Layer: 0
   m_Name: OtherTestPlayer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2055,11 +2055,6 @@ Prefab:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 1624915427}
-    - target: {fileID: 114239851280615926, guid: 16bf5f7e1c342154eb61ce94bbd320b7,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16bf5f7e1c342154eb61ce94bbd320b7, type: 2}
   m_IsPrefabAsset: 0
