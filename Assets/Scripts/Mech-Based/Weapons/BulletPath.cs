@@ -22,6 +22,7 @@ public class BulletPath : MonoBehaviour {
 		StartCoroutine (delayedDestroy ());
 
 		target = GameObject.FindGameObjectWithTag ("Enemy").transform;
+		transform.LookAt (target);
 	}
 
 	// Update is called once per frame
