@@ -77,33 +77,41 @@ public class PlayerController : MonoBehaviour {
 				rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
 			}
 
+			// Jumps the player.
+			// TODO: Needs to have limits on jumps.
+			// TODO: Air Dashing.
 			if (Input.GetButtonDown ("Jump")) {
 				rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
 				Debug.Log ("Jumpin'");
 			}
 
+			// Fires the gun.
 			if (Input.GetButtonDown ("GunFire")) {
 				Instantiate (bullet, transform.position, Quaternion.identity);
 			}
 
+			// TODO: Will fire the pod weapon.
 			if (Input.GetButtonDown ("PodFire")) {
 				Debug.Log ("Pod Launched");
 			}
 			
-
+			// TODO: Will launch a charge attack.
 			if (Input.GetButtonDown ("ChargeAttack")) {
 				Debug.Log ("Charge Attack Activated");
 			}
 		}
 
+		// Begins aiming of the bomb whilst held down.
 		if (Input.GetButton ("BombFire")) {
 			aimBomb ();
 		}
 
+		// Launches the bomb when the trigger is lifted.
 		if (Input.GetButtonUp ("BombFire")) {
 			fireBomb ();
 		}
 
+		// TODO: Will pause the game.
 		if (Input.GetButtonDown ("Pause")) {
 			Debug.Log ("Game Paused");
 		}
@@ -152,3 +160,5 @@ public class PlayerController : MonoBehaviour {
 		Destroy (bombMarkerInstance);
 	}
 }
+
+
