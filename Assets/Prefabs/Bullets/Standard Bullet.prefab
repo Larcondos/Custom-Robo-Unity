@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114927164779980810}
   m_Layer: 0
   m_Name: Standard Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745014a7e542c9d4b9d4a82684c3f978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   ATK: 30
   SPD: 10
   HMG: 1
