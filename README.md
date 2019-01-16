@@ -30,4 +30,5 @@ In active development as of January 2019.
 ## Version 2.0b
 - VR will be possible.
   - As part of the school project this is based around, I intend on adding VR for the player controls. 
-    - Very tentative.
+  - Additionally, this will put the full game into a first person POV, so that you can play the game in 1st person with or without VR.
+    - VR 3rd Person would be unnecessary for a game of this type.
