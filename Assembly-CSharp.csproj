@@ -67,6 +67,8 @@
      <Compile Include="Assets\Scripts\ParabolaController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\SpawnCube.cs" />
+     <Compile Include="Assets\Scripts\TEMP Reference\NoticeBar.cs" />
+     <None Include="Assets\Materials\Cube Materials\SeeThruShader.shader" />
      <None Include="Assets\Materials\Noise.shader" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/larco/Documents/Unity Projects/Custom Robo/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
