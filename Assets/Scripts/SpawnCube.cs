@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnCube : MonoBehaviour {
 
@@ -10,8 +11,11 @@ public class SpawnCube : MonoBehaviour {
 	// Rigidbody component attached to this object.
 	private Rigidbody rb;
 
-	// Mesh Renderer Component.
-	private MeshRenderer mesh;
+	// The sprites for the number to display upon.
+	public Sprite[] sprites;
+
+	// The Image for the sprites to update to.
+	public Image img;
 
 	// How fast is the cube moving? Used to determine when to begin the countdown for real.
 	private float speed;
@@ -21,9 +25,6 @@ public class SpawnCube : MonoBehaviour {
 
 	// Has this cube touched the floor?
 	private bool touchedFloor;
-
-	// All of the materials for the cube to take based on number while alseep.
-	public Material[] sprites;
 
 	// How many buttons did the player mash while in cube form?
 	private float buttonsMashed;
@@ -35,14 +36,15 @@ public class SpawnCube : MonoBehaviour {
 	void Start () {
 		randNum = Random.Range (1, 6);
 		rb = GetComponent<Rigidbody> ();
-		mesh = GetComponent<MeshRenderer> ();
+		//mesh = GetComponent<MeshRenderer> ();
 
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (!sleeping) {
-			mesh.material = sprites [randNum - 1];
+			//mesh.material = sprites [randNum - 1];
+			img.sprite = sprites[randNum - 1];
 			speed = rb.velocity.magnitude;
 			if (speed < 0.01 && speed != 0 && touchedFloor) {
 				rb.velocity = new Vector3 (0, 0, 0);
@@ -102,7 +104,7 @@ public class SpawnCube : MonoBehaviour {
 
 		// Only call if it's not time to destroy.
 		if (randNum > 0) {
-			mesh.material = sprites [randNum - 1];
+			img.sprite = sprites [randNum - 1];
 			buttonsMashed = 0;
 			StartCoroutine (tickDown ());
 		} else {

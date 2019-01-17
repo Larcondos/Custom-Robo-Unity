@@ -7,7 +7,7 @@ public class partCollide : MonoBehaviour {
 	private SphereCollider blastRadius;
 
 	void Start() {
-		blastRadius = GetComponent<SphereCollider> ();
+//		blastRadius = GetComponent<SphereCollider> ();
 	}
 
 	void OnTriggerEnter(Collider col) {
