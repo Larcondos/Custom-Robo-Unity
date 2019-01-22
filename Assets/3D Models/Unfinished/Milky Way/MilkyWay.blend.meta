@@ -21,6 +21,8 @@ ModelImporter:
     100030: Bone_014_L
     100032: Milky_Way
     100034: //RootNode
+    100036: Milky_Way_Lower
+    100038: Milky_Way_Upper
     400000: Armature
     400002: Bone
     400004: Bone_001_L
@@ -39,11 +41,17 @@ ModelImporter:
     400030: Bone_014_L
     400032: Milky_Way
     400034: //RootNode
+    400036: Milky_Way_Lower
+    400038: Milky_Way_Upper
     2100000: Tex_0002_0_dds_000__66973099_png
     4300000: Milky_Way
+    4300002: Milky_Way_Upper
+    4300004: Milky_Way_Lower
     7400000: Default Take
     9500000: //RootNode
     13700000: Milky_Way
+    13700002: Milky_Way_Lower
+    13700004: Milky_Way_Upper
   externalObjects: {}
   materials:
     importMaterials: 1
