@@ -1993,6 +1993,11 @@ Prefab:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114631600893939918, guid: 5d06ff3abccc7bc47854d3e641642cba,
+        type: 2}
+      propertyPath: seeThru
+      value: 
+      objectReference: {fileID: 2100000, guid: 31e9721d3656554418333ee96f848539, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d06ff3abccc7bc47854d3e641642cba, type: 2}
   m_IsPrefabAsset: 0

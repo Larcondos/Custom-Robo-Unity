@@ -29,6 +29,9 @@ public class SpawnCube : MonoBehaviour {
 	// How many buttons did the player mash while in cube form?
 	private float buttonsMashed;
 
+	// A "see thru" material for the numbers to appear through in the cube.
+	public Material seeThru;
+
 	// The player object to spawn.
 	public GameObject player;
 
@@ -37,7 +40,7 @@ public class SpawnCube : MonoBehaviour {
 		randNum = Random.Range (1, 6);
 		rb = GetComponent<Rigidbody> ();
 		//mesh = GetComponent<MeshRenderer> ();
-
+		img.material = seeThru;
 	}
 
 	// Update is called once per frame
