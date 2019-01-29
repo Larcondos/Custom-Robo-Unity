@@ -129,7 +129,15 @@ public class PlayerController : MonoBehaviour {
 				}
 
 */
-			}
+			
+
+				if (Input.GetAxis ("Horizontal") != 0) {
+					rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
+				}
+
+				if (Input.GetAxis ("Vertical") != 0) {
+					rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
+				}
 				if (Input.GetButtonDown ("Jump")) {
 					rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
 					Debug.Log ("Jumpin'");
