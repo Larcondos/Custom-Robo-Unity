@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+	public bool ControllerSupport;
+
 	#region Button Mapping
 	/*
 
@@ -56,56 +58,107 @@ public class PlayerController : MonoBehaviour {
 		
 		getInput ();
 
-		/* Debug Block for inital mappings
+		 //Debug Block for inital mappings
 		for (int i = 0;i < 20; i++) {
 			if(Input.GetKeyDown("joystick 1 button "+i)){
 				print("joystick 1 button "+i);
 			}
 		}
-		*/
+		
 	}
 
 
 	void getInput() {
+		if (ControllerSupport) {
+			if (!aimingBomb) {
+				if (Input.GetAxis ("Horizontal") != 0) {
+					rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
+				}
 
-		if (!aimingBomb) {
-			if (Input.GetAxis ("Horizontal") != 0) {
-				rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
-			}
+				if (Input.GetAxis ("Vertical") != 0) {
+					rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
+				}
 
-			if (Input.GetAxis ("Vertical") != 0) {
-				rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
-			}
+				if (Input.GetButtonDown ("Jump")) {
+					rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+					Debug.Log ("Jumpin'");
+				}
 
-			if (Input.GetButtonDown ("Jump")) {
-				rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
-				Debug.Log ("Jumpin'");
-			}
+				if (Input.GetButtonDown ("GunFire")) {
+					Instantiate (bullet, transform.position, Quaternion.identity);
+				}
 
-			if (Input.GetButtonDown ("GunFire")) {
-				Instantiate (bullet, transform.position, Quaternion.identity);
-			}
-
-			if (Input.GetButtonDown ("PodFire")) {
-				Debug.Log ("Pod Launched");
-			}
+				if (Input.GetButtonDown ("PodFire")) {
+					Debug.Log ("Pod Launched");
+				}
 			
 
-			if (Input.GetButtonDown ("ChargeAttack")) {
-				Debug.Log ("Charge Attack Activated");
+				if (Input.GetButtonDown ("ChargeAttack")) {
+					Debug.Log ("Charge Attack Activated");
+				}
 			}
-		}
+		
+			if (Input.GetButton ("BombFire")) {
+				aimBomb ();
+			}
 
-		if (Input.GetButton ("BombFire")) {
-			aimBomb ();
-		}
+			if (Input.GetButtonUp ("BombFire")) {
+				fireBomb ();
+			}
 
-		if (Input.GetButtonUp ("BombFire")) {
-			fireBomb ();
-		}
+			if (Input.GetButtonDown ("Pause")) {
+				Debug.Log ("Game Paused");
+			}
+		} else {
+			if (!aimingBomb) {
+				/*
+				if (Input.GetKey (KeyCode.W)) {
+					rb.AddForce (Vector3.forward * runSpeed, ForceMode.Force);
+				}
 
-		if (Input.GetButtonDown ("Pause")) {
-			Debug.Log ("Game Paused");
+				if (Input.GetKey (KeyCode.S)) {
+					rb.AddForce (-Vector3.forward * runSpeed, ForceMode.Force);
+				}
+
+				if (Input.GetKey (KeyCode.A)) {
+					rb.AddForce (-Vector3.right * runSpeed, ForceMode.Force);
+				}
+
+				if (Input.GetKey (KeyCode.D)) {
+					rb.AddForce (Vector3.right * runSpeed, ForceMode.Force);
+				}
+
+*/
+			}
+				if (Input.GetButtonDown ("Jump")) {
+					rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+					Debug.Log ("Jumpin'");
+				}
+
+				if (Input.GetButtonDown ("GunFire")) {
+					Instantiate (bullet, transform.position, Quaternion.identity);
+				}
+
+				if (Input.GetButtonDown ("PodFire")) {
+					Debug.Log ("Pod Launched");
+				}
+
+
+				if (Input.GetButtonDown ("ChargeAttack")) {
+					Debug.Log ("Charge Attack Activated");
+				}
+			}
+
+			if (Input.GetButton ("BombFire")) {
+				aimBomb ();
+			}
+
+			if (Input.GetButtonUp ("BombFire")) {
+				fireBomb ();
+			}
+
+			if (Input.GetButtonDown ("Pause")) {
+				Debug.Log ("Game Paused");
 		}
 	}
 

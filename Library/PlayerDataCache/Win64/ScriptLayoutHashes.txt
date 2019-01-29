@@ -1,10 +1,11 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/Jake/Documents/Unity Projects/Custom-Robo-Unity/Builds/Custom Robo.exe
+C:/Users/larco/Documents/Unity Projects/Custom Robo/Builds/Custom Robo.exe
 SceneListBegin?
 Assets/Scenes/TestingScene.unity
 SceneListEnd?
 06927c4825e423e94a9c69ec2d73152e Assembly-CSharp.dll:.ParabolaController
+08f71b36f190780d900673f9dca3c4d4 Assembly-CSharp.dll:.NoticeBar
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 7b803eb2910e9b4cd5e521ae07b9f7d6 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 486cd95c82d8305219c352c06b776e1f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -55,6 +56,8 @@ e90403eeda069970e0b9de1533de13a6 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 2d58ca16854b99daea8c45e9c0f367b7 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 16da51d1b62ef6d4ee1849350434023b UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 50b0b141074b216c8b53b1bd467f73c9 Unity.TextMeshPro.dll:TMPro.TMP_InputField
+486cd95c82d8305219c352c06b776e1f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
+486cd95c82d8305219c352c06b776e1f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 53cefe5d98cadefbab750835e70b89c0 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 486cd95c82d8305219c352c06b776e1f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 da2091a04d360891450faf16cdf621f1 UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -128,6 +131,7 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.Lava
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 486cd95c82d8305219c352c06b776e1f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
+4e8f38e2f09056de21a926fe0e7b458b Assembly-CSharp.dll:.BulletPath
 eaf0bcdb10d442a4029d615f41d09957 Unity.TextMeshPro.dll:TMPro.TextContainer
 c70846201b7ccd840157f44b9b17e79e Assembly-CSharp.dll:.CubeLaunch
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.OtherPlayerController
@@ -145,10 +149,11 @@ da21fc3f8056b1f91c3dd09c7bf4f90a UnityEngine.Networking.dll:UnityEngine.Networki
 529a95e9e8e7686c4816e08fbb37183f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 fc061f3ae8a876c0687e86378d4a447c UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 7ca56e063bd071986fff4f513cc4f477 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
+151f3deb8dd6f19927bcfaa564d8afd3 Assembly-CSharp.dll:.SpawnCube
 72a8523b432c0a5317826b7a9e0a0e79 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
 e53cc67d84060d628c7f03fc725766d8 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 392c5b921098bd4c139d9146d0efa6d7 Unity.TextMeshPro.dll:TMPro.TMP_Settings
-609c8aa4b37eb836547f0146bcc52e7a Assembly-CSharp.dll:.PlayerController
+9e91b3fbe1ae11e79cad77fd13302af2 Assembly-CSharp.dll:.PlayerController
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.partCollide
 ddcae71b3f91386237efd012a9eef2be UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
 486cd95c82d8305219c352c06b776e1f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
