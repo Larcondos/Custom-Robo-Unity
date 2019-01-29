@@ -37,7 +37,7 @@ public class SpawnCube : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		randNum = Random.Range (1, 6);
+		randNum = Random.Range (1, 7);
 		rb = GetComponent<Rigidbody> ();
 		//mesh = GetComponent<MeshRenderer> ();
 		img.material = seeThru;
@@ -97,7 +97,7 @@ public class SpawnCube : MonoBehaviour {
 
 
 	IEnumerator tickDown() {
-		yield return new WaitForSeconds (1 - (buttonsMashed * 0.01f));
+		yield return new WaitForSeconds (1 - (buttonsMashed * 0.03f));
 
 		randNum--;
 

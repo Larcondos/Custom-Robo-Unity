@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public bool ControllerSupport;
-
 	#region Button Mapping
 	/*
 
@@ -69,107 +67,51 @@ public class PlayerController : MonoBehaviour {
 
 
 	void getInput() {
-		if (ControllerSupport) {
-			if (!aimingBomb) {
-				if (Input.GetAxis ("Horizontal") != 0) {
-					rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
-				}
-
-				if (Input.GetAxis ("Vertical") != 0) {
-					rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
-				}
-
-				if (Input.GetButtonDown ("Jump")) {
-					rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
-					Debug.Log ("Jumpin'");
-				}
-
-				if (Input.GetButtonDown ("GunFire")) {
-					Instantiate (bullet, transform.position, Quaternion.identity);
-				}
-
-				if (Input.GetButtonDown ("PodFire")) {
-					Debug.Log ("Pod Launched");
-				}
-			
-
-				if (Input.GetButtonDown ("ChargeAttack")) {
-					Debug.Log ("Charge Attack Activated");
-				}
+		if (!aimingBomb) {
+			if (Input.GetAxis ("Horizontal") != 0) {
+				rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
 			}
 		
-			if (Input.GetButton ("BombFire")) {
-				aimBomb ();
+			if (Input.GetAxis ("Vertical") != 0) {
+				rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
+			}
+		
+			if (Input.GetButtonDown ("Jump")) {
+				jump ();
 			}
 
-			if (Input.GetButtonUp ("BombFire")) {
-				fireBomb ();
+			if (Input.GetButtonDown ("GunFire")) {
+				fireGun ();
 			}
 
-			if (Input.GetButtonDown ("Pause")) {
-				Debug.Log ("Game Paused");
+			if (Input.GetButtonDown ("PodFire")) {
+				firePod ();
 			}
-		} else {
-			if (!aimingBomb) {
-				/*
-				if (Input.GetKey (KeyCode.W)) {
-					rb.AddForce (Vector3.forward * runSpeed, ForceMode.Force);
-				}
-
-				if (Input.GetKey (KeyCode.S)) {
-					rb.AddForce (-Vector3.forward * runSpeed, ForceMode.Force);
-				}
-
-				if (Input.GetKey (KeyCode.A)) {
-					rb.AddForce (-Vector3.right * runSpeed, ForceMode.Force);
-				}
-
-				if (Input.GetKey (KeyCode.D)) {
-					rb.AddForce (Vector3.right * runSpeed, ForceMode.Force);
-				}
-
-*/
 			
 
-				if (Input.GetAxis ("Horizontal") != 0) {
-					rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
-				}
-
-				if (Input.GetAxis ("Vertical") != 0) {
-					rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
-				}
-				if (Input.GetButtonDown ("Jump")) {
-					rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
-					Debug.Log ("Jumpin'");
-				}
-
-				if (Input.GetButtonDown ("GunFire")) {
-					Instantiate (bullet, transform.position, Quaternion.identity);
-				}
-
-				if (Input.GetButtonDown ("PodFire")) {
-					Debug.Log ("Pod Launched");
-				}
-
-
-				if (Input.GetButtonDown ("ChargeAttack")) {
-					Debug.Log ("Charge Attack Activated");
-				}
-			}
-
-			if (Input.GetButton ("BombFire")) {
-				aimBomb ();
-			}
-
-			if (Input.GetButtonUp ("BombFire")) {
-				fireBomb ();
-			}
-
-			if (Input.GetButtonDown ("Pause")) {
-				Debug.Log ("Game Paused");
+			if (Input.GetButtonDown ("ChargeAttack")) {
+				chargeAttack ();
 			}
 		}
+		
+		if (Input.GetButton ("BombFire")) {
+			aimBomb ();
+		}
+
+		if (Input.GetButtonUp ("BombFire")) {
+			fireBomb ();
+		}
+
+		if (Input.GetButtonDown ("Pause")) {
+			pauseGame ();
+		}
+	} 
+
+	void fireGun() {
+		Instantiate (bullet, transform.position, Quaternion.identity);
 	}
+
+	#region Bombs
 
 	// This script is used to place the location you wish your 'bomb' weapon to drop.
 	// It also creates and manages the parabola for the bomb to follow.
@@ -213,4 +155,29 @@ public class PlayerController : MonoBehaviour {
 		Destroy (para);
 		Destroy (bombMarkerInstance);
 	}
+
+	void firePod() {
+		Debug.Log ("Pod Launched");
+	}
+
+	void chargeAttack() {
+		Debug.Log ("Charge Attack Activated");
+	}
+
+	void jump() {
+		rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+	}
+
+	void pauseGame() {
+		if (Time.timeScale == 0) {
+			Time.timeScale = 1;
+		}
+		else {
+			Time.timeScale = 0;
+		}
+	}
+
+	#endregion Bombs
+
+
 }
