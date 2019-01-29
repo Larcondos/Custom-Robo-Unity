@@ -85,12 +85,8 @@ public class SpawnCube : MonoBehaviour {
 		}
 		
 
-		if (Input.GetButton ("BombFire")) {
+		if (Input.GetButtonDown ("BombFire")) {
 			buttonsMashed++;
-		}
-
-		if (Input.GetButtonUp ("BombFire")) {
-			buttonsMashed++;		
 		}
 
 		if (Input.GetButtonDown ("Pause")) {
@@ -108,6 +104,7 @@ public class SpawnCube : MonoBehaviour {
 		// Only call if it's not time to destroy.
 		if (randNum > 0) {
 			img.sprite = sprites [randNum - 1];
+			print ("Buttons Mashed: " + buttonsMashed);
 			buttonsMashed = 0;
 			StartCoroutine (tickDown ());
 		} else {

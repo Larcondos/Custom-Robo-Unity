@@ -167,6 +167,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (Input.GetButtonDown ("Pause")) {
 				Debug.Log ("Game Paused");
+			}
 		}
 	}
 
