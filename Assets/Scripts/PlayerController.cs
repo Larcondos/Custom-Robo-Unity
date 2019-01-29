@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour {
 		paraRoots [1].position = bombMarkerInstance.transform.position;
 
 		// A middle point, with a height factor added in at the end.
-		paraRoots [2].position = ((transform.position + bombMarkerInstance.transform.position) * 0.5f) + (2 * Vector3.up);
+		paraRoots [2].position = ((transform.position + bombMarkerInstance.transform.position) * 0.5f) + (.25f * Vector3.up * Vector3.Distance(transform.position, bombMarkerInstance.transform.position));
 
 		// Spawn the bomb, and assign it the path of the parabola we made.
 		var bomba = Instantiate (bomb, transform.position, Quaternion.identity);
