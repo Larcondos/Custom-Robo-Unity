@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 23901555920042340}
   - component: {fileID: 65758876536666310}
   - component: {fileID: 54957738484260526}
-  - component: {fileID: 114965964930985650}
+  - component: {fileID: 114301511160814468}
+  
   m_Layer: 0
   m_Name: DestructibleCube
   m_TagString: Destructible
@@ -113,7 +114,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114965964930985650
+--- !u!114 &114301511160814468
+
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,4 +126,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409d2babc1eddae4587a03060d3b7c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
+  HP: 200

@@ -56,48 +56,46 @@ public class PlayerController : MonoBehaviour {
 		
 		getInput ();
 
-		/* Debug Block for inital mappings
+		 //Debug Block for inital mappings
 		for (int i = 0;i < 20; i++) {
 			if(Input.GetKeyDown("joystick 1 button "+i)){
 				print("joystick 1 button "+i);
 			}
 		}
-		*/
+		
 	}
 
 
 	void getInput() {
-
 		if (!aimingBomb) {
 			if (Input.GetAxis ("Horizontal") != 0) {
 				rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
 			}
-
+		
 			if (Input.GetAxis ("Vertical") != 0) {
 				rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
 			}
 
-			// Jumps the player.
+		// Jumps the player.
 			// TODO: Needs to have limits on jumps.
 			// TODO: Air Dashing.
 			if (Input.GetButtonDown ("Jump")) {
-				rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
-				Debug.Log ("Jumpin'");
+				jump ();
 			}
 
 			// Fires the gun.
 			if (Input.GetButtonDown ("GunFire")) {
-				Instantiate (bullet, transform.position, Quaternion.identity);
+				fireGun ();
 			}
 
 			// TODO: Will fire the pod weapon.
 			if (Input.GetButtonDown ("PodFire")) {
-				Debug.Log ("Pod Launched");
+				firePod ();
 			}
 			
 			// TODO: Will launch a charge attack.
 			if (Input.GetButtonDown ("ChargeAttack")) {
-				Debug.Log ("Charge Attack Activated");
+				chargeAttack ();
 			}
 		}
 
@@ -113,9 +111,15 @@ public class PlayerController : MonoBehaviour {
 
 		// TODO: Will pause the game.
 		if (Input.GetButtonDown ("Pause")) {
-			Debug.Log ("Game Paused");
+			pauseGame ();
 		}
+	} 
+
+	void fireGun() {
+		Instantiate (bullet, transform.position, Quaternion.identity);
 	}
+
+	#region Bombs
 
 	// This script is used to place the location you wish your 'bomb' weapon to drop.
 	// It also creates and manages the parabola for the bomb to follow.
@@ -151,7 +155,7 @@ public class PlayerController : MonoBehaviour {
 		paraRoots [1].position = bombMarkerInstance.transform.position;
 
 		// A middle point, with a height factor added in at the end.
-		paraRoots [2].position = ((transform.position + bombMarkerInstance.transform.position) * 0.5f) + (2 * Vector3.up);
+		paraRoots [2].position = ((transform.position + bombMarkerInstance.transform.position) * 0.5f) + (.25f * Vector3.up * Vector3.Distance(transform.position, bombMarkerInstance.transform.position));
 
 		// Spawn the bomb, and assign it the path of the parabola we made.
 		var bomba = Instantiate (bomb, transform.position, Quaternion.identity);
@@ -159,6 +163,31 @@ public class PlayerController : MonoBehaviour {
 		Destroy (para);
 		Destroy (bombMarkerInstance);
 	}
+
+	void firePod() {
+		Debug.Log ("Pod Launched");
+	}
+
+	void chargeAttack() {
+		Debug.Log ("Charge Attack Activated");
+	}
+
+	void jump() {
+		rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+	}
+
+	void pauseGame() {
+		if (Time.timeScale == 0) {
+			Time.timeScale = 1;
+		}
+		else {
+			Time.timeScale = 0;
+		}
+	}
+
+	#endregion Bombs
+
+
 }
 
 

@@ -29,15 +29,18 @@ public class SpawnCube : MonoBehaviour {
 	// How many buttons did the player mash while in cube form?
 	private float buttonsMashed;
 
+	// A "see thru" material for the numbers to appear through in the cube.
+	public Material seeThru;
+
 	// The player object to spawn.
 	public GameObject player;
 
 	// Use this for initialization
 	void Start () {
-		randNum = Random.Range (1, 6);
+		randNum = Random.Range (1, 7);
 		rb = GetComponent<Rigidbody> ();
 		//mesh = GetComponent<MeshRenderer> ();
-
+		img.material = seeThru;
 	}
 
 	// Update is called once per frame
@@ -82,12 +85,8 @@ public class SpawnCube : MonoBehaviour {
 		}
 		
 
-		if (Input.GetButton ("BombFire")) {
+		if (Input.GetButtonDown ("BombFire")) {
 			buttonsMashed++;
-		}
-
-		if (Input.GetButtonUp ("BombFire")) {
-			buttonsMashed++;		
 		}
 
 		if (Input.GetButtonDown ("Pause")) {
@@ -98,13 +97,14 @@ public class SpawnCube : MonoBehaviour {
 
 
 	IEnumerator tickDown() {
-		yield return new WaitForSeconds (1 - (buttonsMashed * 0.01f));
+		yield return new WaitForSeconds (1 - (buttonsMashed * 0.03f));
 
 		randNum--;
 
 		// Only call if it's not time to destroy.
 		if (randNum > 0) {
 			img.sprite = sprites [randNum - 1];
+			print ("Buttons Mashed: " + buttonsMashed);
 			buttonsMashed = 0;
 			StartCoroutine (tickDown ());
 		} else {

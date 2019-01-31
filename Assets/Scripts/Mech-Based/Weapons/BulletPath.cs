@@ -48,9 +48,14 @@ public class BulletPath : MonoBehaviour {
 
 	// The collision code, called when the bullet collides with stuff.
 	void OnTriggerEnter(Collider col) {
-		if (col.gameObject.tag == "Enemy")
+		if (col.CompareTag("Enemy")) {
 			Destroy (this.gameObject);
-
+			//DoDamage();
+		}
+		if (col.CompareTag ("Destructible")) {
+			col.gameObject.GetComponent<DestructibleCube> ().takeDamage (ATK);
+			Destroy (this.gameObject);
+		}
 
 	}
 
