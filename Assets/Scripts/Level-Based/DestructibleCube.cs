@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class DestructibleCube : MonoBehaviour {
 
-	// The box's HP. Change to private after testing.
-	public float HP;
+	// The box's HP.
+	private float HP = 200;
+
+	// Material for the box.
 	private Material mat;
 
-	public float cubeSize = 0.2f;
-	public int cubesInRow = 5;
+	// Cubes related to destruction of object.
+	private float cubeSize = 0.2f;
+	private int cubesInRow = 5;
 
 	float cubesPivotDistance;
 	Vector3 cubesPivot;
 
-	public float explosionForce = 50f;
-	public float explosionRadius = 4f;
-	public float explosionUpward = 0.4f;
+	// Forces for the destruction of object.
+	private float explosionForce = 50f;
+	private float explosionRadius = 4f;
+	private float explosionUpward = 0.4f;
 
 	// Use this for initialization
 	void Start() {
@@ -44,7 +48,7 @@ public class DestructibleCube : MonoBehaviour {
 
 	public void explode() {
 		//make object disappear
-		gameObject.SetActive(false);
+		Destroy(this.gameObject);
 
 		//loop 3 times to create 5x5x5 pieces in x,y,z coordinates
 		for (int x = 0; x < cubesInRow; x++) {
@@ -73,15 +77,15 @@ public class DestructibleCube : MonoBehaviour {
 
 	void createPiece(int x, int y, int z) {
 
-		//create piece
+		// create piece, and name it.
 		GameObject piece;
 		piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		piece.name = "cubeShard";
-		//set piece position and scale
+		// set piece position and scale, and assign material.
 		piece.transform.position = transform.position + new Vector3(cubeSize * x, cubeSize * y, cubeSize * z) - cubesPivot;
 		piece.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
 		piece.GetComponent<MeshRenderer> ().material = mat;
-		//add rigidbody and set mass
+		// add rigidbody and set mass, add destruction.
 		piece.AddComponent<Rigidbody>();
 		piece.GetComponent<Rigidbody>().mass = cubeSize;
 		piece.AddComponent<DestroyOnTouch> ();
