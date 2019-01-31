@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 3048
+  controlID: 2763
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 3049
+  controlID: 2764
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 3071
+  controlID: 2827
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -228,8 +228,8 @@ MonoBehaviour:
     y: 0
     width: 381
     height: 486
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 192}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 3399
+  controlID: 2572
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -361,7 +361,7 @@ MonoBehaviour:
     width: 1080
     height: 427
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_MaximizeOnPlay: 1
+  m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 05000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -480,9 +480,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.036992896, y: 0.9571558, z: -0.1417398, w: 0.2497881}
   m_Size:
-    m_Target: 14.9074135
+    m_Target: 27.607714
     speed: 2
-    m_Value: 14.9074135
+    m_Value: 27.607714
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -546,9 +546,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fe090000
+    m_SelectedIDs: 342c0000
     m_LastClickedID: 0
-    m_ExpandedIDs: e4fbffff00000000
+    m_ExpandedIDs: 0cf4ffff00000000e03000005c310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -609,19 +609,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Bombs
+    - Assets/Prefabs/Bullets
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\larco\Documents\Unity Projects\Custom Robo
+  m_LastProjectPath: C:\Users\Jake\Documents\Unity Projects\Custom-Robo-Unity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: ee240000
     m_LastClickedID: 9454
-    m_ExpandedIDs: ffffffff0000000098090000fa090000b20a0000ec0a0000f00a0000520b0000940b00009a0b00002e0c00004a0c00004c0c00006a0c0000800c0000860c00008c0c0000ca0c0000260d0000420d0000920d0000a60d00005a3000005c300000
+    m_ExpandedIDs: ffffffff00000000042c0000582c0000bc2c0000c62d0000002e0000042e00006a2e0000a62e00003e2f00005a2f00005c2f0000922f0000982f0000d42f00002c3000004a30000092300000a83000006e32000070320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -646,10 +646,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 874}
+    scrollPos: {x: 0, y: 94}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff0000000098090000fa090000b20a0000ec0a0000f00a0000520b0000940b00009a0b00002e0c00004a0c00004c0c00006a0c0000800c0000860c00008c0c0000ca0c0000260d0000420d0000920d0000a60d00005a3000005c300000
+    m_ExpandedIDs: ffffffff00000000042c0000582c0000bc2c0000c62d0000002e0000042e00006a2e0000a62e00003e2f00005a2f00005c2f0000922f0000982f0000d42f00002c3000004a30000092300000a83000006e32000070320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

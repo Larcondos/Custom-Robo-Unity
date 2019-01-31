@@ -41,9 +41,14 @@ public class BulletPath : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if (col.gameObject.tag == "Enemy")
+		if (col.CompareTag("Enemy")) {
 			Destroy (this.gameObject);
-
+			//DoDamage();
+		}
+		if (col.CompareTag ("Destructible")) {
+			col.gameObject.GetComponent<DestructibleCube> ().takeDamage (ATK);
+			Destroy (this.gameObject);
+		}
 
 	}
 }

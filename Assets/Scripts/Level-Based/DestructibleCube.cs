@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestructibleCube : MonoBehaviour {
 
 	// The box's HP. Change to private after testing.
-	public int HP;
+	public float HP;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,15 @@ public class DestructibleCube : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{
+		if (HP <= 0) {
+
+			Destroy (this.gameObject);
+		}
+	}
+
+	public void takeDamage(float dmg) {
+		HP -= dmg;
 	}
 }
