@@ -97,7 +97,7 @@ public class SpawnCube : MonoBehaviour {
 
 
 	IEnumerator tickDown() {
-		yield return new WaitForSeconds (1 - (buttonsMashed * 0.03f));
+		yield return new WaitForSeconds (1 - (buttonsMashed * 0.05f));
 
 		randNum--;
 
