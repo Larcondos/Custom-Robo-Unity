@@ -41,7 +41,10 @@ public class PlayerController : MonoBehaviour {
 	private float jumpHeight = 8f;
 
 	// Number of jumps this mech took.
-	private int 
+	private int jumpCount = 0;
+
+	// Max number of jumps on this mech.
+	public int maxJumps;
 
 	// How quickly this mech can run.
 	private float runSpeed = 3f;
@@ -83,7 +86,10 @@ public class PlayerController : MonoBehaviour {
 			// TODO: Needs to have limits on jumps.
 			// TODO: Air Dashing.
 			if (Input.GetButtonDown ("Jump")) {
-				jump ();
+				if (jumpCount < maxJumps) {
+					jump ();
+					jumpCount++;
+				}
 			}
 
 			// Fires the gun.
