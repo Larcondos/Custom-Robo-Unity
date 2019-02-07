@@ -18,8 +18,8 @@ public class BombArc : MonoBehaviour {
 	public float DWN; // How much knockback the bombs apply
 	public float SIZ; // Size of explosion
 
-	private float now;
-	private float startLife;
+	private float now; // Used in calculations for aiming the bomb in mid air (for particles)
+	private float startLife; // Used in calculations for aiming the bomb in mid air (for particles)
 
 	//TODO: Should Instanciate these particles rather than children.
 
