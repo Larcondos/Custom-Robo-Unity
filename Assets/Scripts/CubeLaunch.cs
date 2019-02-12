@@ -28,35 +28,31 @@ public class CubeLaunch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// Calls a countdown to occur.
 		if (countdown > 0) {
 			countdown--;
 
+			// Input from player to move the launcher direction, clamped at certain angles.
 			axis.z += Input.GetAxis ("Horizontal");
 			axis.z = Mathf.Clamp (axis.z, -45, 45);
 			axis.x += Input.GetAxis ("Vertical");
 			axis.x = Mathf.Clamp (axis.x, -45, 45);
 
+			// Rotate said angles.
 			transform.localEulerAngles = new Vector3 (axis.x, transform.localEulerAngles.y, -axis.z);
 		}
+
+		// Launch the cube.
 		if (countdown == 0 && !launched) {
 			launched = true;
 
-			StartCoroutine (launchIt());
+			// Un-parent the cube, and launch it off on it's own. They grow up so fast.
+			cube.transform.parent = null;
+			cube.GetComponent<Rigidbody> ().AddRelativeForce(Vector3.up * 5000);
+			cube.GetComponent<Rigidbody> ().useGravity = true;
+			cube.GetComponent<SpawnCube> ().enabled = true;
+			StartCoroutine (destroyIt());
 		}
-
-
-	
-	}
-
-	IEnumerator launchIt() {
-		yield return new WaitForSeconds (0.1f);
-
-		cube.GetComponent<Rigidbody> ().AddRelativeForce(Vector3.up * 5000);
-		cube.GetComponent<Rigidbody> ().useGravity = true;
-		cube.GetComponent<MeshRenderer> ().enabled = true;
-		cube.transform.parent = null;
-		cube.GetComponent<SpawnCube> ().enabled = true;
-		StartCoroutine (destroyIt());
 	}
 
 	IEnumerator destroyIt() {
