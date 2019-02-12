@@ -55,7 +55,6 @@ public class SpawnCube : MonoBehaviour {
 				sleeping = true;
 
 				print ("Sleep!");
-
 			} 
 		}
 		//print (randNum);
@@ -97,6 +96,7 @@ public class SpawnCube : MonoBehaviour {
 
 
 	IEnumerator tickDown() {
+		
 		yield return new WaitForSeconds (1 - (buttonsMashed * 0.03f));
 
 		randNum--;
@@ -104,11 +104,12 @@ public class SpawnCube : MonoBehaviour {
 		// Only call if it's not time to destroy.
 		if (randNum > 0) {
 			img.sprite = sprites [randNum - 1];
-			print ("Buttons Mashed: " + buttonsMashed);
-			buttonsMashed = 0;
+			print ("Next Time Tick: " + (1 - (buttonsMashed * 0.03f)));
 			StartCoroutine (tickDown ());
+			buttonsMashed = 0;
 		} else {
 			player.transform.SetParent (null);
+			player.AddComponent<Rigidbody> ();
 			player.GetComponent<Rigidbody> ().useGravity = true;
 			player.GetComponent<MeshRenderer> ().enabled = true;
 			player.GetComponent<SphereCollider> ().enabled = true;

@@ -18,6 +18,9 @@ public class BombArc : MonoBehaviour {
 	public float DWN; // How much knockback the bombs apply
 	public float SIZ; // Size of explosion
 
+	private float now; // Used in calculations for aiming the bomb in mid air (for particles)
+	private float startLife; // Used in calculations for aiming the bomb in mid air (for particles)
+
 	//TODO: Should Instanciate these particles rather than children.
 
 	void Start () {
@@ -26,21 +29,27 @@ public class BombArc : MonoBehaviour {
 		towerParts = towerParticle.GetComponent<ParticleSystem> ();
 		blastRadius = ringParticle.GetComponent<SphereCollider> ();
 		adjustStats ();
+		startLife = Time.timeSinceLevelLoad;
 	}
 
 	void Update() {
+
+		now = Time.timeSinceLevelLoad - startLife;
 
 		// When the bomb has reached it's destination, explode.
 		if (!paraC.Animation) {
 			Explode ();
 		}
 		if (exploded) {
-			blastRadius.radius += SIZ/4;
+			blastRadius.radius += SIZ / 4;
+			transform.rotation = Quaternion.identity;
+		} else {
+			transform.LookAt (-paraC.GetPositionAtTime (now / 3));
 		}
+
 	}
 
 	void adjustStats() {
-
 		var rMain = ringParts.main;
 		var tMain = towerParts.main;
 
@@ -55,7 +64,6 @@ public class BombArc : MonoBehaviour {
 
 		rMain.duration = 1;
 		tMain.duration = TIM;
-
 	}
 		
 	void OnTriggerEnter(Collider col) {

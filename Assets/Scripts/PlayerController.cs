@@ -40,6 +40,12 @@ public class PlayerController : MonoBehaviour {
 	// How high this mech can jump.
 	private float jumpHeight = 8f;
 
+	// Number of jumps this mech took.
+	private int jumpCount = 0;
+
+	// Max number of jumps on this mech.
+	public int maxJumps;
+
 	// How quickly this mech can run.
 	private float runSpeed = 3f;
 
@@ -80,7 +86,10 @@ public class PlayerController : MonoBehaviour {
 			// TODO: Needs to have limits on jumps.
 			// TODO: Air Dashing.
 			if (Input.GetButtonDown ("Jump")) {
-				jump ();
+				if (jumpCount < maxJumps) {
+					jump ();
+					jumpCount++;
+				}
 			}
 
 			// Fires the gun.
@@ -164,6 +173,8 @@ public class PlayerController : MonoBehaviour {
 		Destroy (bombMarkerInstance);
 	}
 
+	#endregion Bombs
+
 	void firePod() {
 		Debug.Log ("Pod Launched");
 	}
@@ -185,7 +196,11 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	#endregion Bombs
+	void OnCollisionEnter(Collision col) {
+		if (col.gameObject.tag == "Floor") {
+			jumpCount = 0;
+		}
+	}
 
 
 }

@@ -40,24 +40,27 @@ public class CubeLaunch : MonoBehaviour {
 		}
 		if (countdown == 0 && !launched) {
 			launched = true;
-			Time.timeScale = 1;
-			//Instantiate (cube, transform.position, Quaternion.identity);
-			cube.GetComponent<Rigidbody> ().AddRelativeForce(Vector3.up * 5000);
-			cube.GetComponent<Rigidbody> ().useGravity = true;
-			cube.GetComponent<MeshRenderer> ().enabled = true;
-			cube.transform.parent = null;
-			cube.GetComponent<SpawnCube> ().enabled = true;
 
-			StartCoroutine (fixTimescale());
+			StartCoroutine (launchIt());
 		}
 
 
 	
 	}
 
-	IEnumerator fixTimescale() {
+	IEnumerator launchIt() {
+		yield return new WaitForSeconds (0.1f);
+
+		cube.GetComponent<Rigidbody> ().AddRelativeForce(Vector3.up * 5000);
+		cube.GetComponent<Rigidbody> ().useGravity = true;
+		cube.GetComponent<MeshRenderer> ().enabled = true;
+		cube.transform.parent = null;
+		cube.GetComponent<SpawnCube> ().enabled = true;
+		StartCoroutine (destroyIt());
+	}
+
+	IEnumerator destroyIt() {
 		yield return new WaitForSeconds (2);
-		Time.timeScale = 1;
 		Destroy (this.gameObject);
 	}
 }
