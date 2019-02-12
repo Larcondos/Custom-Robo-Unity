@@ -41,4 +41,8 @@ public class OtherPlayerController : MonoBehaviour {
 			print ("run");
 		}
 	}
+
+
+
+
 }

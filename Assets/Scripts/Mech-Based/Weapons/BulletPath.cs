@@ -11,10 +11,10 @@ public class BulletPath : MonoBehaviour {
 	private Rigidbody rb;
 
 	// Stats for the bullets. All public for easy play testing.
-	public float ATK; // Damage amount
+	public int ATK; // Damage amount
 	public float SPD; // Speed the bullets move at
 	public float HMG; // How homing the bullets are
-	public float DWN; // How much knockback the bullets apply
+	public int DWN; // How much knockback the bullets apply
 	public float RLD; // Reload Time before next shot.
 	public float RNG; // The range of the bullets before disappearing.
 
@@ -64,9 +64,12 @@ public class BulletPath : MonoBehaviour {
 		return RLD;
 	}
 
-	public float getAttack() {
+	public int getAttack() {
 		return ATK;
 	}
 
+	public int getDown() {
+		return DWN;
+	}
 
 }
