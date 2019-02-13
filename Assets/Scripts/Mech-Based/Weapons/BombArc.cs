@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BombArc : MonoBehaviour {
-	// I need to detect when I'm done moving and explode!
-
 
 	private ParabolaController paraC;
 	public GameObject ringParticle, towerParticle;
@@ -88,7 +86,7 @@ public class BombArc : MonoBehaviour {
 
 	IEnumerator disableParticles() {
 		yield return new WaitForSeconds (TIM);
-
+		// TODO: Fix the particle angle on destruction...
 		Destroy (this.gameObject);
 	}
 		

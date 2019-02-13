@@ -28,6 +28,10 @@ public class BulletPath : MonoBehaviour {
 		// The target should be the enemy (This will change later), and the bullet will spawn looking at the target so it is sent in the right direction.
 		target = GameObject.FindGameObjectWithTag ("Enemy").transform;
 		transform.LookAt (target);
+
+		// Prevents the bullet from spawning inside player. Will be changed later to come out of gun tip.
+		// TODO: Change to come out of gun tip.
+		transform.position = Vector3.MoveTowards (transform.position, target.transform.position, 0.8f);
 	}
 
 	// Fixed Update so that the physics cycles only occur as often as needed, and allow for post calculations of target movement.
@@ -48,15 +52,21 @@ public class BulletPath : MonoBehaviour {
 
 	// The collision code, called when the bullet collides with stuff.
 	void OnTriggerEnter(Collider col) {
-		if (col.CompareTag("Enemy")) {
+		if (col.CompareTag ("Enemy")) {
+			col.gameObject.GetComponent<PlayerStats> ().doDamage (ATK);
 			Destroy (this.gameObject);
-			//DoDamage();
-		}
-		if (col.CompareTag ("Destructible")) {
-			col.gameObject.GetComponent<DestructibleCube> ().takeDamage (ATK);
+		} else if (col.CompareTag ("Destructible")) {
+			col.gameObject.GetComponent<DestructibleCube> ().doDamage (ATK);
 			Destroy (this.gameObject);
-		}
+		} else
+			// If we didn't hit a specific target, this bullet will just be destroyed.
+			Destroy (this.gameObject);
 
+
+	}
+
+	private void doDamage(GameObject g) {
+		g.GetComponent<PlayerStats> ().doDamage (ATK);
 	}
 
 	// This function is called by anything that needs to know how long it takes to reload this bullet type.

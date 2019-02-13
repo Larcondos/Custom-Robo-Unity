@@ -39,4 +39,8 @@ public class PlayerStats : MonoBehaviour {
 		}
 	}
 
+	public void doDamage(int ATK) {
+
+	}
+
 }
