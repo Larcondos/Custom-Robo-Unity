@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 135839453597726978}
   m_Layer: 0
   m_Name: Ring Particle
-  m_TagString: Untagged
+  m_TagString: Bomb Particle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 54864609315156582}
   m_Layer: 0
   m_Name: Standard Bomb
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 114314316957029464}
   m_Layer: 0
   m_Name: Tower Particle
-  m_TagString: Untagged
+  m_TagString: Bomb Particle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 199100548095700878}
   m_Layer: 0
   m_Name: Exhaust Particle
-  m_TagString: Untagged
+  m_TagString: Bomb Particle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

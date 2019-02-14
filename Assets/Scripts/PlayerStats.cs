@@ -26,7 +26,9 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (HP);
+		HPText.text = HP.ToString();
+		if (HP == 0)
+			Die();
 	}
 
 	void OnCollisionEnter(Collision col) {
@@ -41,6 +43,10 @@ public class PlayerStats : MonoBehaviour {
 
 	public void doDamage(int ATK) {
 
+	}
+
+	private void Die() {
+		Destroy (this.gameObject);
 	}
 
 }

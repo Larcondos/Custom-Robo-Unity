@@ -80,6 +80,7 @@ public class BombArc : MonoBehaviour {
 			towerParticle.SetActive (true);
 			GetComponent<Renderer> ().enabled = false;
 			StartCoroutine (disableParticles ());
+			//GetComponent<Capsul> ().enabled = false;
 		}
 	}
 		

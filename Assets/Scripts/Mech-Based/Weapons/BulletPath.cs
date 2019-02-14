@@ -58,10 +58,13 @@ public class BulletPath : MonoBehaviour {
 		} else if (col.CompareTag ("Destructible")) {
 			col.gameObject.GetComponent<DestructibleCube> ().doDamage (ATK);
 			Destroy (this.gameObject);
-		} else
-			// If we didn't hit a specific target, this bullet will just be destroyed.
-			Destroy (this.gameObject);
+		} else if (!col.CompareTag("Bomb Particle") || !col.CompareTag("Bomb")) {
+			// Nothing happens on these tags, this is the ignore zone. Code is being weird.
 
+		} else {
+			// If we hit anything else, the bullet gets destroyed.
+			Destroy (this.gameObject);
+		}
 
 	}
 
@@ -80,6 +83,10 @@ public class BulletPath : MonoBehaviour {
 
 	public int getDown() {
 		return DWN;
+	}
+
+	void OnDestroy() {
+		
 	}
 
 }
