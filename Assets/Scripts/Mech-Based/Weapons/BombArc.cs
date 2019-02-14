@@ -5,15 +5,15 @@ using UnityEngine;
 public class BombArc : MonoBehaviour {
 
 	private ParabolaController paraC;
-	public GameObject ringParticle, towerParticle;
-	private ParticleSystem ringParts, towerParts;
+	public GameObject ringParticle, towerParticle, exhaustParticle;
+	private ParticleSystem ringParts, towerParts, exhaustParts;
 	private bool exploded;
 	private SphereCollider blastRadius;
 
-	public float ATK; // Damage amount
+	public int ATK; // Damage amount
 	public float SPD; // Speed the bombs move at
 	public float TIM; // Time the explosion will last for
-	public float DWN; // How much knockback the bombs apply
+	public int DWN; // How much knockback the bombs apply
 	public float SIZ; // Size of explosion
 
 	private float now; // Used in calculations for aiming the bomb in mid air (for particles)
@@ -25,7 +25,11 @@ public class BombArc : MonoBehaviour {
 		paraC = GetComponent<ParabolaController> ();
 		ringParts = ringParticle.GetComponent<ParticleSystem> ();
 		towerParts = towerParticle.GetComponent<ParticleSystem> ();
+		exhaustParts = exhaustParticle.GetComponent<ParticleSystem> ();
+
 		blastRadius = ringParticle.GetComponent<SphereCollider> ();
+
+
 		adjustStats ();
 		startLife = Time.timeSinceLevelLoad;
 	}
@@ -39,7 +43,7 @@ public class BombArc : MonoBehaviour {
 			Explode ();
 		}
 		if (exploded) {
-			blastRadius.radius += SIZ / 4;
+			//blastRadius.radius += SIZ / 4;
 			transform.rotation = Quaternion.identity;
 		} else {
 			transform.LookAt (-paraC.GetPositionAtTime (now / 3));
@@ -78,6 +82,7 @@ public class BombArc : MonoBehaviour {
 
 			ringParticle.SetActive (true);
 			towerParticle.SetActive (true);
+			exhaustParticle.SetActive (false);
 			GetComponent<Renderer> ().enabled = false;
 			StartCoroutine (disableParticles ());
 			//GetComponent<Capsul> ().enabled = false;

@@ -42,7 +42,7 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	public void doDamage(int ATK) {
-
+		HP -= ATK;
 	}
 
 	private void Die() {

@@ -9,9 +9,10 @@ public class partCollide : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if (col.gameObject.tag == "Player") {
-			// Do Damage and stuff!
-			print ("Player hit by bomb!");
+		if (col.CompareTag("Player") || col.CompareTag("Enemy")) {
+			print ("I did something!");
+			print (GetComponentInParent<BombArc> ().ATK);
+			col.gameObject.GetComponent<PlayerStats>().doDamage(GetComponentInParent<BombArc>().ATK);
 		}
 	}
 }
