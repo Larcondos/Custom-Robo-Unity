@@ -43,7 +43,7 @@ public class DestructibleCube : MonoBehaviour {
 		}
 	}
 
-	public void takeDamage(float dmg) {
+	public void doDamage(int dmg) {
 		HP -= dmg;
 	}
 

@@ -26,7 +26,9 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (HP);
+		HPText.text = HP.ToString();
+		if (HP == 0)
+			Die();
 	}
 
 	void OnCollisionEnter(Collision col) {
@@ -34,9 +36,15 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if (col.gameObject.CompareTag ("Bullet")) {
-			HP -= col.gameObject.GetComponent<BulletPath> ().getAttack ();
-		}
+		
+	}
+
+	public void doDamage(int ATK) {
+		HP -= ATK;
+	}
+
+	private void Die() {
+		Destroy (this.gameObject);
 	}
 
 }

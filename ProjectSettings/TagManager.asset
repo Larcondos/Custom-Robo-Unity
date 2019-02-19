@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Bullet
   - Floor
+  - Bomb
+  - Bomb Particle
   layers:
   - Default
   - TransparentFX

@@ -4,10 +4,9 @@ using System.Collections;
 public class CameraFacingBillboard : MonoBehaviour
 {
 	public Camera m_Camera;
-	int searching;
 
 	void Start() {
-		//m_Camera = GameObject.FindGameObjectWithTag ("Player").GetComponent<Camera> ();
+
 	}
 
 	void Update()
