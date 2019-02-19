@@ -36,9 +36,7 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if (col.gameObject.CompareTag ("Bullet")) {
-			HP -= col.gameObject.GetComponent<BulletPath> ().getAttack ();
-		}
+		
 	}
 
 	public void doDamage(int ATK) {
