@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Lava : MonoBehaviour {
 
+	private const int dmg = 125;
+
 	void OnCollisionEnter(Collision col) {
 		if (col.collider.gameObject.tag == "Player") {
-			// Hurt player for 125
+
+			// Hurt them, they shouldn't step on lava.
+			col.gameObject.GetComponent<PlayerStats> ().doDamage (dmg);
+
+			// Blast em up, teach them to come back here...
 			col.collider.attachedRigidbody.AddForce(Vector3.up * 1000);
 		}
 
 		if (col.collider.gameObject.tag == "Spawn Cube") {
-			// Destroy the cube
-			// Hurt player for 125
+			// TODO: Destroy cube, immediately do damage to player, put them in knockdown.
 		}
-		//print (col.collider.gameObject.tag);
+
 	}
 }
