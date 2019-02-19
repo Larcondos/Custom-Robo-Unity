@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
      <Compile Include="Assets\Scripts\CubeLaunch.cs" />
      <Compile Include="Assets\Scripts\DestroyOnTouch.cs" />
+     <Compile Include="Assets\Scripts\gameLoop.cs" />
      <Compile Include="Assets\Scripts\Level-Based\DestructibleCube.cs" />
      <Compile Include="Assets\Scripts\Level-Based\Lava.cs" />
      <Compile Include="Assets\Scripts\Level-Based\MovingWalls.cs" />
