@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\Mech-Based\Weapons\partCollide.cs" />
      <Compile Include="Assets\Scripts\OtherPlayerController.cs" />
      <Compile Include="Assets\Scripts\ParabolaController.cs" />
+     <Compile Include="Assets\Scripts\ParticleDestroy.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\SpawnCube.cs" />

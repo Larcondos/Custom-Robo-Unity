@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198158785326552106}
   - component: {fileID: 199000969087584026}
   - component: {fileID: 114666425826063564}
+  - component: {fileID: 114592886849543876}
   m_Layer: 0
   m_Name: Ring Particle
   m_TagString: Bomb Particle
@@ -61,6 +62,7 @@ GameObject:
   - component: {fileID: 198236595040483214}
   - component: {fileID: 199290725357948732}
   - component: {fileID: 114314316957029464}
+  - component: {fileID: 114951432837110928}
   m_Layer: 0
   m_Name: Tower Particle
   m_TagString: Bomb Particle
@@ -227,6 +229,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa5f2aa5b60c834cb373cd205b11d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114592886849543876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114755661805564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9addb1f8020804c40b8ddcc7c9b5d7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114666425826063564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,6 +266,17 @@ MonoBehaviour:
   ParabolaRoot: {fileID: 0}
   Autostart: 1
   Animation: 1
+--- !u!114 &114951432837110928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1776334150832874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9addb1f8020804c40b8ddcc7c9b5d7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136494478599186730
 CapsuleCollider:
   m_ObjectHideFlags: 1

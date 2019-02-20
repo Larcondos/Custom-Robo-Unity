@@ -1647,52 +1647,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 994674612}
   m_Mesh: {fileID: 4300012, guid: a93bf19151bad424e8c5758890f0b2a9, type: 3}
---- !u!1001 &1034166026
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 6.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4203212703221340, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1316020121577638, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1036994513
 GameObject:
   m_ObjectHideFlags: 0
@@ -3790,7 +3744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.59, y: -1.25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2082334249

@@ -1,19 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\TwinStick\Assets\Scripts\Board, Game, or UI\Timer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Mech-Based\Weapons\BulletPath.cs">
     <Files>
-      <File FileName="..\TwinStick\Assets\Scripts\Bullet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerStats.cs" Line="53" Column="34" />
       <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Mech-Based\Weapons\BombArc.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ParabolaController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CubeLaunch.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\OtherPlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Mech-Based\Weapons\BulletPath.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Mech-Based\Weapons\BulletPath.cs" Line="93" Column="38" />
       <File FileName="Assets\Scripts\SpawnCube.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CameraFacingBillboard.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Mech-Based\Weapons\partCollide.cs" Line="1" Column="1" />
-      <File FileName="..\TwinStick\Assets\Scripts\Board, Game, or UI\Timer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerStats.cs" Line="56" Column="33" />
+      <File FileName="..\TwinStick\Assets\Scripts\Board, Game, or UI\Timer.cs" Line="40" Column="41" />
+      <File FileName="Assets\Scripts\Mech-Based\Weapons\BombArc.cs" Line="9" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
