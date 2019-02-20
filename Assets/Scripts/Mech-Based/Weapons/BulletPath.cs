@@ -10,6 +10,9 @@ public class BulletPath : MonoBehaviour {
 	// Rigibody for the bullet, used in angling and collision detection.
 	private Rigidbody rb;
 
+	// Particles on Collision
+	public GameObject explodeParticle, impactParticle;
+
 	// Stats for the bullets. All public for easy play testing.
 	public int ATK; // Damage amount
 	public float SPD; // Speed the bullets move at
@@ -54,16 +57,16 @@ public class BulletPath : MonoBehaviour {
 	void OnTriggerEnter(Collider col) {
 		if (col.CompareTag ("Enemy")) {
 			col.gameObject.GetComponent<PlayerStats> ().doDamage (ATK);
-			Destroy (this.gameObject);
+			destroyMe ();
 		} else if (col.CompareTag ("Destructible")) {
 			col.gameObject.GetComponent<DestructibleCube> ().doDamage (ATK);
-			Destroy (this.gameObject);
+			destroyMe ();
 		} else if (!col.CompareTag("Bomb Particle") || !col.CompareTag("Bomb")) {
 			// Nothing happens on these tags, this is the ignore zone. Code is being weird.
 
 		} else {
 			// If we hit anything else, the bullet gets destroyed.
-			Destroy (this.gameObject);
+			destroyMe();
 		}
 
 	}
@@ -85,8 +88,14 @@ public class BulletPath : MonoBehaviour {
 		return DWN;
 	}
 
-	void OnDestroy() {
-		
+	void destroyMe() {
+		explodeParticle.transform.SetParent (null);
+		impactParticle.transform.SetParent (null);
+
+		explodeParticle.SetActive (true);
+		impactParticle.SetActive (true);
+
+		Destroy (this.gameObject);
 	}
 
 }

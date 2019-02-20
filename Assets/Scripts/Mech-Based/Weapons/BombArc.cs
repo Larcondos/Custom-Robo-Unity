@@ -8,7 +8,6 @@ public class BombArc : MonoBehaviour {
 	public GameObject ringParticle, towerParticle, exhaustParticle;
 	private ParticleSystem ringParts, towerParts, exhaustParts;
 	private bool exploded;
-	private SphereCollider blastRadius;
 
 	public int ATK; // Damage amount
 	public float SPD; // Speed the bombs move at
@@ -26,9 +25,6 @@ public class BombArc : MonoBehaviour {
 		ringParts = ringParticle.GetComponent<ParticleSystem> ();
 		towerParts = towerParticle.GetComponent<ParticleSystem> ();
 		exhaustParts = exhaustParticle.GetComponent<ParticleSystem> ();
-
-		blastRadius = ringParticle.GetComponent<SphereCollider> ();
-
 
 		adjustStats ();
 		startLife = Time.timeSinceLevelLoad;
