@@ -55,9 +55,12 @@ public class CameraController : MonoBehaviour {
 
 	Bounds getEncapsulatingBounds() {
 
+		// TODO: Set up kill screen.
+
 		if (targets [0] == null || targets [1] == null) {
 			print ("Game Over! You win!");
-			Time.timeScale = 0;
+			Time.timeScale = 0.2f;
+			return new Bounds (Vector3.zero, Vector3.zero);
 		} else {
 			var bounds = new Bounds (targets [0].position, Vector3.zero);
 			for (int i = 0; i < targets.Count; i++) {

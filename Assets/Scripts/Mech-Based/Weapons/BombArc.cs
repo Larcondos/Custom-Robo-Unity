@@ -6,7 +6,7 @@ public class BombArc : MonoBehaviour {
 
 	private ParabolaController paraC;
 	public GameObject ringParticle, towerParticle, exhaustParticle;
-	private ParticleSystem ringParts, towerParts, exhaustParts;
+	private ParticleSystem ringParts, towerParts;
 	private bool exploded;
 
 	public int ATK; // Damage amount
@@ -24,7 +24,6 @@ public class BombArc : MonoBehaviour {
 		paraC = GetComponent<ParabolaController> ();
 		ringParts = ringParticle.GetComponent<ParticleSystem> ();
 		towerParts = towerParticle.GetComponent<ParticleSystem> ();
-		exhaustParts = exhaustParticle.GetComponent<ParticleSystem> ();
 
 		adjustStats ();
 		startLife = Time.timeSinceLevelLoad;
