@@ -39,11 +39,15 @@ public class BulletPath : MonoBehaviour {
 
 	// Fixed Update so that the physics cycles only occur as often as needed, and allow for post calculations of target movement.
 	void FixedUpdate () {
+
 		rb.velocity = transform.forward * SPD;
 
-		var targetRotation = Quaternion.LookRotation(target.position - transform.position);
+		if (target != null) {
 
-		rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, HMG));
+			var targetRotation = Quaternion.LookRotation (target.position - transform.position);
+
+			rb.MoveRotation (Quaternion.RotateTowards (transform.rotation, targetRotation, HMG));
+		}
 	}
 
 	// Used to destroy the bullet after it's life cycle has completed, if it hasn't already died.
