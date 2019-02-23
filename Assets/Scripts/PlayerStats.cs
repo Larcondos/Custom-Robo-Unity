@@ -60,7 +60,10 @@ public class PlayerStats : MonoBehaviour {
 	private void UIUpdate() {
 		HPText.text = HP.ToString();
 		HPBar.fillAmount = (HP / maxHP);
-		print (HP);
+		if (HP <= 0) {
+			HPText.text = "";
+
+		}
 	}
 
 	private void Die() {
