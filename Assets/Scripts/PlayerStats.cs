@@ -11,6 +11,9 @@ public class PlayerStats : MonoBehaviour {
 	// Current HP.
 	private int HP;
 
+	// Keeps track if you are dead or not.
+	private bool dead = false;
+
 	// Represents the various states, 1 = ready, 2 = rebirth, 3 = downed.
 	private int state;
 
@@ -26,6 +29,9 @@ public class PlayerStats : MonoBehaviour {
 	// Text that represents what "state" the mech is in.
 	public Text stateText;
 
+	// The prefab for launching a kill screen animation.
+	public GameObject killScreenObj;
+
 	// Use this for initialization
 	void Start () {
 		HP = (int)maxHP;
@@ -34,7 +40,7 @@ public class PlayerStats : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (HP == 0)
+		if (HP <= 0 && !dead)
 			Die();
 	}
 
@@ -58,7 +64,10 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	private void Die() {
-		Destroy (this.gameObject);
+		dead = true;
+		Instantiate (killScreenObj);
+		Time.timeScale = 0.3f;
+		GetComponent<Rigidbody> ().AddForce (Vector3.up * 500);
 	}
 
 }
