@@ -20,6 +20,9 @@ public class PlayerStats : MonoBehaviour {
 	// How much damage this user must take to get knocked down
 	private int knockdownLimit;
 
+	// Timer for how long the stateText will be active.
+	private int stateTextTimer;
+
 	// The white bar that represents a visual healthbar.
 	public Image HPBar;
 
@@ -28,6 +31,15 @@ public class PlayerStats : MonoBehaviour {
 
 	// Text that represents what "state" the mech is in.
 	public Text stateText;
+
+	// The overall health bar and status section.
+	public Image StatusBar;
+
+	// A sprite for lose text.
+	public Sprite loseBar;
+
+	// The player identifier.
+	public Text Identifier;
 
 	// The prefab for launching a kill screen animation.
 	public GameObject killScreenObj;
@@ -39,7 +51,13 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+		if (stateTextTimer > 0) {
+			stateTextTimer--;
+		} else {
+			stateText.text = "";
+		}
+
 		if (HP <= 0 && !dead)
 			Die();
 	}
@@ -55,6 +73,9 @@ public class PlayerStats : MonoBehaviour {
 	public void doDamage(int ATK) {
 		HP -= ATK;
 		UIUpdate ();
+		stateText.text = "HIT";
+		stateText.color = new Color (1f, 0.5f, 0.0f);
+		stateTextTimer = 200;
 	}
 
 	private void UIUpdate() {
@@ -62,8 +83,11 @@ public class PlayerStats : MonoBehaviour {
 		HPBar.fillAmount = (HP / maxHP);
 		if (HP <= 0) {
 			HPText.text = "";
-
+			stateText.text = "";
+			StatusBar.sprite = loseBar;
+			Identifier.text = "";
 		}
+
 	}
 
 	private void Die() {
