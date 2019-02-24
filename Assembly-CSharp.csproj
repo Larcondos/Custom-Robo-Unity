@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Mech-Based\Weapons\BombArc.cs" />
      <Compile Include="Assets\Scripts\Mech-Based\Weapons\BulletPath.cs" />
      <Compile Include="Assets\Scripts\Mech-Based\Weapons\partCollide.cs" />
+     <Compile Include="Assets\Scripts\MinePod.cs" />
      <Compile Include="Assets\Scripts\OtherPlayerController.cs" />
      <Compile Include="Assets\Scripts\ParabolaController.cs" />
      <Compile Include="Assets\Scripts\ParticleDestroy.cs" />
