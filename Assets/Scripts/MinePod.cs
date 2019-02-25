@@ -28,7 +28,6 @@ public class MinePod : MonoBehaviour {
 	}
 
 	void explode() {
-		print ("boom");
 		Destroy (this.gameObject);
 	}
 
@@ -37,13 +36,11 @@ public class MinePod : MonoBehaviour {
 			// Turn off emission
 			mat.DisableKeyword("_EMISSION");
 			flashOn = !flashOn;
-			print ("yeet");
 		}
 		else {
 			// Turn on emission
 			mat.EnableKeyword("_EMISSION");
 			flashOn = !flashOn;
-			print ("yote");
 		}
 		yield return new WaitForSeconds (timer);
 
