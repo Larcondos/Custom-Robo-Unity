@@ -41,7 +41,7 @@ public class BombArc : MonoBehaviour {
 			//blastRadius.radius += SIZ / 4;
 			transform.rotation = Quaternion.identity;
 		} else {
-			transform.LookAt (-paraC.GetPositionAtTime (now / 3));
+			transform.LookAt (-paraC.GetPositionAtTime (now / 2));
 		}
 
 	}
