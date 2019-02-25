@@ -16,6 +16,14 @@ public class MinePod : MonoBehaviour {
 	// The Light object on this, to give a more "flashy" effect.
 	private Light redLight;
 
+	// Stats 
+	public int ATK; // Damage amount
+	public float SPD; // Speed the bombs move at
+	public float TIM; // Time the explosion will last for
+	public int RNG; // How far these pods will go
+	public float SIZ; // Size of explosion
+	public float DWN; // Knockback applied
+
 
 	// Use this for initialization
 	void Start () {

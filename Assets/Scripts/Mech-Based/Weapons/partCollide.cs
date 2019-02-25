@@ -11,7 +11,7 @@ public class partCollide : MonoBehaviour {
 	void OnParticleCollision(GameObject col) {
 		if ((col.CompareTag("Player") || col.CompareTag("Enemy")) && !didDamage) {
 			didDamage = true;
-			col.gameObject.GetComponent<PlayerStats>().doDamage(GetComponentInParent<BombArc>().ATK);
+			col.gameObject.GetComponent<PlayerStats>().doDamage(GetComponentInParent<BombArc>().ATK, GetComponentInParent<BombArc>().DWN);
 		}
 	}
 }

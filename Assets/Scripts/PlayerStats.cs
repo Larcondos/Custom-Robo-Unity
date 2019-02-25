@@ -17,8 +17,11 @@ public class PlayerStats : MonoBehaviour {
 	// Represents the various states, 1 = ready, 2 = rebirth, 3 = downed.
 	private int state;
 
-	// How much damage this user must take to get knocked down
-	private int knockdownLimit;
+	// How much Knockdown this user must take to get knocked down (public as varies by mech)
+	public int knockdownLimit = 100;
+
+	// How much Knockdown has this user recieved lately?
+	private int curKnockdown = 0;
 
 	// Timer for how long the stateText will be active.
 	private int stateTextTimer;
@@ -47,6 +50,7 @@ public class PlayerStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		HP = (int)maxHP;
+		StartCoroutine (deductKnockdown ());
 	}
 	
 	// Update is called once per frame
@@ -70,8 +74,9 @@ public class PlayerStats : MonoBehaviour {
 		
 	}
 
-	public void doDamage(int ATK) {
+	public void doDamage(int ATK, int DWN) {
 		HP -= ATK;
+		curKnockdown += DWN;
 		UIUpdate ();
 		stateText.text = "HIT";
 		stateText.color = new Color (1f, 0.5f, 0.0f);
@@ -84,10 +89,30 @@ public class PlayerStats : MonoBehaviour {
 		if (HP <= 0) {
 			HPText.text = "";
 			stateText.text = "";
-			StatusBar.sprite = loseBar;
 			Identifier.text = "";
+			StatusBar.sprite = loseBar;
 		}
 
+	}
+
+	private IEnumerator deductKnockdown() {
+
+		print (curKnockdown);
+
+		yield return new WaitForSeconds (1);
+
+		// Every second, deduct some of the knockdown, as the mech can recover over time.
+		if (curKnockdown > 0) {
+			curKnockdown -= 5;
+		}
+
+		// If you accidentally bring down the knockdown below 0, put it back.
+		if (curKnockdown < 0) {
+			curKnockdown = 0;
+		}
+
+		// Start the recall again.
+		StartCoroutine(deductKnockdown ());
 	}
 
 	private void Die() {

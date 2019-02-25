@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Lava : MonoBehaviour {
 
-	private const int dmg = 125;
+	// Lava will always do the same damage, and always knockdown a player.
+	private const int DMG = 125;
+	private const int DWN = 100;
 
 	void OnCollisionEnter(Collision col) {
 		if (col.collider.gameObject.tag == "Player") {
 
 			// Hurt them, they shouldn't step on lava.
-			col.gameObject.GetComponent<PlayerStats> ().doDamage (dmg);
+			col.gameObject.GetComponent<PlayerStats> ().doDamage (DMG, DWN);
 
 			// Blast em up, teach them to come back here...
 			col.collider.attachedRigidbody.AddForce(Vector3.up * 1000);

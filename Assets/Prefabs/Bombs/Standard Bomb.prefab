@@ -216,7 +216,7 @@ MonoBehaviour:
   ATK: 50
   SPD: 3
   TIM: 1
-  DWN: 5
+  DWN: 30
   SIZ: 0.5
 --- !u!114 &114314316957029464
 MonoBehaviour:

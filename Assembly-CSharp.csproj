@@ -53,21 +53,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BoxBreak.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
-     <Compile Include="Assets\Scripts\CubeLaunch.cs" />
      <Compile Include="Assets\Scripts\DestroyOnTouch.cs" />
      <Compile Include="Assets\Scripts\gameLoop.cs" />
      <Compile Include="Assets\Scripts\KillScreen.cs" />
+     <Compile Include="Assets\Scripts\Level-Based\BoxBreak.cs" />
+     <Compile Include="Assets\Scripts\Level-Based\CubeLaunch.cs" />
      <Compile Include="Assets\Scripts\Level-Based\DestructibleCube.cs" />
      <Compile Include="Assets\Scripts\Level-Based\Lava.cs" />
      <Compile Include="Assets\Scripts\Level-Based\MovingWalls.cs" />
      <Compile Include="Assets\Scripts\MathParabola.cs" />
      <Compile Include="Assets\Scripts\Mech-Based\Weapons\BombArc.cs" />
      <Compile Include="Assets\Scripts\Mech-Based\Weapons\BulletPath.cs" />
+     <Compile Include="Assets\Scripts\Mech-Based\Weapons\MinePod.cs" />
      <Compile Include="Assets\Scripts\Mech-Based\Weapons\partCollide.cs" />
-     <Compile Include="Assets\Scripts\MinePod.cs" />
      <Compile Include="Assets\Scripts\OtherPlayerController.cs" />
      <Compile Include="Assets\Scripts\ParabolaController.cs" />
      <Compile Include="Assets\Scripts\ParticleDestroy.cs" />

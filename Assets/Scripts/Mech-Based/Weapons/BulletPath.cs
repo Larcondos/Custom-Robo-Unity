@@ -60,7 +60,7 @@ public class BulletPath : MonoBehaviour {
 	// The collision code, called when the bullet collides with stuff.
 	void OnTriggerEnter(Collider col) {
 		if (col.CompareTag ("Enemy")) {
-			col.gameObject.GetComponent<PlayerStats> ().doDamage (ATK);
+			col.gameObject.GetComponent<PlayerStats> ().doDamage (ATK, DWN);
 			destroyMe ();
 		} else if (col.CompareTag ("Destructible")) {
 			col.gameObject.GetComponent<DestructibleCube> ().doDamage (ATK);
@@ -73,10 +73,6 @@ public class BulletPath : MonoBehaviour {
 			destroyMe();
 		}
 
-	}
-
-	private void doDamage(GameObject g) {
-		g.GetComponent<PlayerStats> ().doDamage (ATK);
 	}
 
 	// This function is called by anything that needs to know how long it takes to reload this bullet type.
