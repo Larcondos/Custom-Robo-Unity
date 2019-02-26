@@ -75,12 +75,19 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	public void doDamage(int ATK, int DWN) {
-		HP -= ATK;
+		// Just to spice things up, every time you take damage it can be multiplied by up to -20% or up to 20%.
+		HP -= (ATK * Random.Range(80, 120)) / 100;
+
+		// Add to your knockdown rate.
 		curKnockdown += DWN;
-		UIUpdate ();
+
+		// On a hit, update your state text to reflect that.
 		stateText.text = "HIT";
 		stateText.color = new Color (1f, 0.5f, 0.0f);
 		stateTextTimer = 200;
+
+		// Update UI in general afterwards, in case we need to overwrite it.
+		UIUpdate ();
 	}
 
 	private void UIUpdate() {
