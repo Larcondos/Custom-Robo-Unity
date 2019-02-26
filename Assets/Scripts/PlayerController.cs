@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour {
 	// Is a bomb being aimed right now? (Is R button down?)
 	private bool aimingBomb = false;
 
+	// GameObject for the Pod
+	public GameObject pod;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
@@ -176,7 +179,7 @@ public class PlayerController : MonoBehaviour {
 	#endregion Bombs
 
 	void firePod() {
-		Debug.Log ("Pod Launched");
+		//Instantiate(pod, transform.position
 	}
 
 	void chargeAttack() {
