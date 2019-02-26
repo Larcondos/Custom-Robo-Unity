@@ -8,10 +8,25 @@ public class partCollide : MonoBehaviour {
 	// TODO: Make it so it remembers WHO it hit, so it can hit again...
 	private bool didDamage = false;
 
+	// Inherited Dmg and knockback values.
+	private int ATK, DWN;
+
 	void OnParticleCollision(GameObject col) {
 		if ((col.CompareTag("Player") || col.CompareTag("Enemy")) && !didDamage) {
 			didDamage = true;
-			col.gameObject.GetComponent<PlayerStats>().doDamage(GetComponentInParent<BombArc>().ATK, GetComponentInParent<BombArc>().DWN);
+			col.gameObject.GetComponent<PlayerStats>().doDamage(ATK, DWN);
 		}
 	}
+
+	void OnParticleTrigger() {
+
+	}
+
+	public void applyStats(int a, int d) {
+		ATK = a;
+		DWN = d;
+	}
+
+
+
 }

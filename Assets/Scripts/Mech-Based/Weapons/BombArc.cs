@@ -72,11 +72,14 @@ public class BombArc : MonoBehaviour {
 		
 	void Explode() {
 		if (!exploded) {
+			
 			exploded = true;
 			paraC.Animation = false;
 
 			ringParticle.SetActive (true);
 			towerParticle.SetActive (true);
+			ringParticle.GetComponent<partCollide> ().applyStats (ATK, DWN);
+			towerParticle.GetComponent<partCollide> ().applyStats (ATK, DWN);
 			exhaustParticle.SetActive (false);
 			GetComponent<Renderer> ().enabled = false;
 			StartCoroutine (disableParticles ());

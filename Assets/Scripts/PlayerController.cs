@@ -78,11 +78,11 @@ public class PlayerController : MonoBehaviour {
 	void getInput() {
 		if (!aimingBomb) {
 			if (Input.GetAxis ("Horizontal") != 0) {
-				rb.AddForce (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed, ForceMode.Force);
+				transform.Translate (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed * Time.deltaTime, Space.World);
 			}
 		
 			if (Input.GetAxis ("Vertical") != 0) {
-				rb.AddForce (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed, ForceMode.Force);
+				transform.Translate (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
 			}
 
 		// Jumps the player.
@@ -145,9 +145,9 @@ public class PlayerController : MonoBehaviour {
 
 		// Detects control stick movement to place the bomb marker.
 		if (Input.GetAxis ("Horizontal") != 0)
-			bombMarkerInstance.transform.Translate (Input.GetAxis ("Horizontal") * Vector3.right * .1f);
+			bombMarkerInstance.transform.Translate (Input.GetAxis ("Horizontal") * Vector3.right * 3* Time.deltaTime);
 		if (Input.GetAxis ("Vertical") != 0)
-			bombMarkerInstance.transform.Translate (Input.GetAxis ("Vertical") * Vector3.forward * .1f);
+			bombMarkerInstance.transform.Translate (Input.GetAxis ("Vertical") * Vector3.forward * 3 * Time.deltaTime);
 	}
 
 	void fireBomb() {
