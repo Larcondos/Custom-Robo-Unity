@@ -7,6 +7,7 @@ In active development as of February 2019.
   While I permit for my code to be used under GNU license, Custom Robo and all respective trademarks belong to Nintendo.
 
 # Roadmap (Major Releases Listed Only)
+  - [See here for the full Planned Release Patchnotes ](https://trello.com/b/bJ2PUx2B/custom-robo)
 
 ## Version 0.5 - ETA: Late February / Early March
 - Local testing 'Battle' system entirely functional.
