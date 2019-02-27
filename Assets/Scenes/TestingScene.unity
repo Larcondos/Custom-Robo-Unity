@@ -118,11 +118,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1834651003105046, guid: 16bf5f7e1c342154eb61ce94bbd320b7,
     type: 2}
   m_PrefabInternal: {fileID: 1629327079}
---- !u!4 &11883726 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4268080070514946, guid: 16bf5f7e1c342154eb61ce94bbd320b7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1629327079}
 --- !u!1 &64586899 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1237678710809216, guid: 5d06ff3abccc7bc47854d3e641642cba,
@@ -1171,7 +1166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets:
   - {fileID: 1624915433}
-  - {fileID: 11883726}
+  - {fileID: 2121542968}
   offset: {x: 0, y: 30, z: -31.09}
   smoothTime: 0.5
   minZoom: 40
@@ -3126,34 +3121,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114318013072027310, guid: e861ad20d5fa1a24eaaa42c09c418edb,
-        type: 2}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 1624915427}
     - target: {fileID: 114825037883762590, guid: e861ad20d5fa1a24eaaa42c09c418edb,
         type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 534669904}
-    - target: {fileID: 136364519383770822, guid: e861ad20d5fa1a24eaaa42c09c418edb,
+    - target: {fileID: 114318013072027310, guid: e861ad20d5fa1a24eaaa42c09c418edb,
         type: 2}
-      propertyPath: m_Center.y
-      value: -0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 136364519383770822, guid: e861ad20d5fa1a24eaaa42c09c418edb,
-        type: 2}
-      propertyPath: m_Height
-      value: 3.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 54944858392630850, guid: e861ad20d5fa1a24eaaa42c09c418edb,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1624915427}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e861ad20d5fa1a24eaaa42c09c418edb, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &2121542968 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4271369641106924, guid: e861ad20d5fa1a24eaaa42c09c418edb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2045956761}
 --- !u!1 &2133848582
 GameObject:
   m_ObjectHideFlags: 0

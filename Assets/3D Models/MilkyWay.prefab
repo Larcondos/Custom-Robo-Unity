@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 136364519383770822}
   m_Layer: 0
   m_Name: MilkyWay
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -608,7 +608,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1091456401637180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.409, z: -0.158}
+  m_LocalPosition: {x: 0, y: 0.409, z: -0.789}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4271369641106924}
@@ -647,7 +647,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197723146429706}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 5.05, z: 0}
+  m_LocalPosition: {x: 3.97, y: 5.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4032978414102758}
@@ -979,7 +979,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &95069371427541426
 Animator:
@@ -1079,7 +1079,11 @@ MonoBehaviour:
   parabola: {fileID: 1758202923051786, guid: 9773c04a8b855774fb6e587566f8eeaf, type: 2}
   bullet: {fileID: 1019038880388508, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
   maxJumps: 2
-  pod: {fileID: 0}
+  pod: {fileID: 1773253911103284, guid: 657bdc793e9085e4f9e2f0c926245a7a, type: 2}
+  backPart: {fileID: 1091456401637180}
+  gunPart: {fileID: 1185580838279260}
+  bombPart: {fileID: 1902002542357708}
+  legsPart: {fileID: 1950587109203712}
 --- !u!114 &114512747190775006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1291,9 +1295,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 4
+  m_Height: 3.8
   m_Direction: 1
-  m_Center: {x: 0, y: -0.93, z: 0}
+  m_Center: {x: 0, y: -0.7, z: 0}
 --- !u!137 &137130768267505190
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

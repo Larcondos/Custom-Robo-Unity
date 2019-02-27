@@ -316,7 +316,7 @@ MonoBehaviour:
   ATK: 30
   SPD: 10
   HMG: 1
-  DWN: 5
+  DWN: 8
   RLD: 10
   RNG: 5
 --- !u!114 &114956098223923366

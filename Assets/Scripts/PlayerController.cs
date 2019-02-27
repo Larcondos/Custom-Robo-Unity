@@ -55,6 +55,12 @@ public class PlayerController : MonoBehaviour {
 	// GameObject for the Pod
 	public GameObject pod;
 
+	// A Series of empty game objects that represent locations on the mech. Used for parenting and easy placement of projectiles, etc.
+	public GameObject backPart;
+	public GameObject gunPart;
+	public GameObject bombPart;
+	public GameObject legsPart;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
@@ -128,7 +134,7 @@ public class PlayerController : MonoBehaviour {
 	} 
 
 	void fireGun() {
-		Instantiate (bullet, transform.position, Quaternion.identity);
+		Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 	}
 
 	#region Bombs
@@ -161,13 +167,13 @@ public class PlayerController : MonoBehaviour {
 		Transform[] paraRoots = para.GetComponentsInChildren<Transform> ();
 
 		// Sets the start location.
-		paraRoots [3].position = transform.position;
+		paraRoots [3].position = bombPart.transform.position;
 
 		// Sets the target location.
 		paraRoots [1].position = bombMarkerInstance.transform.position;
 
 		// A middle point, with a height factor added in at the end.
-		paraRoots [2].position = ((transform.position + bombMarkerInstance.transform.position) * 0.5f) + (.25f * Vector3.up * Vector3.Distance(transform.position, bombMarkerInstance.transform.position));
+		paraRoots [2].position = ((bombPart.transform.position + bombMarkerInstance.transform.position) * 0.5f) + (.25f * Vector3.up * Vector3.Distance(bombPart.transform.position, bombMarkerInstance.transform.position));
 
 		// Spawn the bomb, and assign it the path of the parabola we made.
 		var bomba = Instantiate (bomb, transform.position, Quaternion.identity);
@@ -179,7 +185,7 @@ public class PlayerController : MonoBehaviour {
 	#endregion Bombs
 
 	void firePod() {
-		//Instantiate(pod, transform.position
+		Instantiate (pod, backPart.transform.position, Quaternion.identity);
 	}
 
 	void chargeAttack() {
