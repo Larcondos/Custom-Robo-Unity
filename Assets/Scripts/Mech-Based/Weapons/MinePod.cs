@@ -7,14 +7,24 @@ public class MinePod : MonoBehaviour {
 	// This is the character that spawned this object.
 	private GameObject parent;
 
+	// Materials for the MeshRenderer and color material.
 	private MeshRenderer meshRen;
 	private Material mat;
+
+	// Is this exploded or not?
+	private bool exploded;
+
+	// Particle Game Objects
+	public GameObject ringParticle, towerParticle;
+
+	// Particle Systems, associated with those objects. Used to scale stats on them.
+	private ParticleSystem ringParts, towerParts;
 
 	// Is the flash on or off?
 	private bool flashOn = false;
 
 	// How long to flash?
-	private float timer = 1.5f;
+	public float timer;
 
 	// The Light object on this, to give a more "flashy" effect.
 	private Light redLight;
@@ -23,9 +33,9 @@ public class MinePod : MonoBehaviour {
 	public int ATK; // Damage amount
 	public float SPD; // Speed the bombs move at
 	public float TIM; // Time the explosion will last for
-	public int RNG; // How far these pods will go
+	public float RNG; // How far these pods will go
 	public float SIZ; // Size of explosion
-	public float DWN; // Knockback applied
+	public int DWN; // Knockback applied
 
 
 	// Use this for initialization
@@ -34,6 +44,11 @@ public class MinePod : MonoBehaviour {
 		mat = meshRen.material;
 		redLight = GetComponent<Light> ();
 		StartCoroutine (Flash ());
+
+		ringParts = ringParticle.GetComponent<ParticleSystem> ();
+		towerParts = towerParticle.GetComponent<ParticleSystem> ();
+
+		adjustStats ();
 
 		// I want the mine to ignore the collision from their parent who spawned them...
 		Physics.IgnoreCollision (GetComponent<MeshCollider>(), parent.GetComponent<CapsuleCollider>());
@@ -53,11 +68,47 @@ public class MinePod : MonoBehaviour {
 	}
 
 	void explode() {
-		Destroy (this.gameObject);
+		if (!exploded) {
+
+			exploded = true;
+
+			transform.rotation = Quaternion.identity;
+
+			ringParticle.transform.SetParent (null);
+			towerParticle.transform.SetParent (null);
+
+			ringParticle.transform.localScale = Vector3.one;
+			towerParticle.transform.localScale = Vector3.one;
+
+
+			ringParticle.SetActive (true);
+			towerParticle.SetActive (true);
+			ringParticle.GetComponent<partCollide> ().applyStats (ATK, DWN);
+			towerParticle.GetComponent<partCollide> ().applyStats (ATK, DWN);
+
+			Destroy (this.gameObject);
+
+			//GetComponent<Capsul> ().enabled = false;
+		}
 	}
 
 	public void assignParent(GameObject g) {
 		parent = g;
+	}
+
+	void adjustStats() {
+		var rMain = ringParts.main;
+		var tMain = towerParts.main;
+
+		rMain.startSpeed = SIZ;
+		tMain.startSpeed = SIZ * 10;
+
+
+		rMain.startLifetime = TIM;
+		tMain.startLifetime = TIM;
+
+		rMain.duration = TIM;
+		tMain.duration = TIM;
 	}
 
 	IEnumerator Flash() {

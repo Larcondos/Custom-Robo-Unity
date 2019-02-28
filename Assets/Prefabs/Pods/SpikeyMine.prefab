@@ -62,7 +62,6 @@ GameObject:
   - component: {fileID: 95707635703733990}
   - component: {fileID: 54605501462423380}
   - component: {fileID: 108499245044965488}
-  - component: {fileID: 135115044398289048}
   - component: {fileID: 64246812856244468}
   - component: {fileID: 114974439739730084}
   m_Layer: 0
@@ -78,8 +77,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773253911103284}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 2.31, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 2.31, z: 4.43}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 4994583305977550}
@@ -93,9 +92,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1402875541479060}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.50522, y: -4.767915, z: -10.665002}
-  m_LocalScale: {x: 1.5, y: 1.5000006, z: 1.5000006}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4066026463811210}
   m_RootOrder: 1
@@ -106,9 +105,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1539871819401596}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.50522, y: -4.767915, z: -10.665002}
-  m_LocalScale: {x: 1.5, y: 1.5000006, z: 1.5000006}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4066026463811210}
   m_RootOrder: 0
@@ -294,24 +293,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f21af8b20b69f4e8c8b1ced88f4cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ATK: 0
+  ringParticle: {fileID: 1402875541479060}
+  towerParticle: {fileID: 1539871819401596}
+  timer: 1.5
+  ATK: 100
   SPD: 0
-  TIM: 0
+  TIM: 0.5
   RNG: 0
-  SIZ: 0
-  DWN: 0
---- !u!135 &135115044398289048
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1773253911103284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 1.42
-  m_Center: {x: -0.0059764385, y: -0.0111814765, z: -0.030346997}
+  SIZ: 2
+  DWN: 80
 --- !u!198 &198084194463167516
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3951,7 +3941,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
+    minKillSpeed: 10000
     maxKillSpeed: 10000
     radiusScale: 1
     collidesWith:
@@ -8550,9 +8540,9 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
+    minKillSpeed: 10000
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.7
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295

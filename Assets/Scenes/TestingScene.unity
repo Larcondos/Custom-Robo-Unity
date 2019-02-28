@@ -3131,6 +3131,10 @@ Prefab:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 1624915427}
+    - target: {fileID: 4094990730608496, guid: e861ad20d5fa1a24eaaa42c09c418edb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.986
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e861ad20d5fa1a24eaaa42c09c418edb, type: 2}
   m_IsPrefabAsset: 0
