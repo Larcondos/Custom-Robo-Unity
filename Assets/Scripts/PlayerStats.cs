@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour {
 	public Text stateText;
 
 	// The overall health bar and status section.
-	public Image StatusBar;
+	public Image statusBar;
 
 	// A sprite for lose text.
 	public Sprite loseBar;
@@ -46,6 +46,12 @@ public class PlayerStats : MonoBehaviour {
 
 	// The prefab for launching a kill screen animation.
 	public GameObject killScreenObj;
+
+	// The three indicators for how much Knockdown you have currently.
+	public Image knockdownLow;
+	public Image knockdownMed;
+	public Image knockdownHigh;
+
 
 	// Use this for initialization
 	void Start () {
@@ -64,6 +70,8 @@ public class PlayerStats : MonoBehaviour {
 
 		if (HP <= 0 && !dead)
 			Die();
+
+
 	}
 
 	void OnCollisionEnter(Collision col) {
@@ -72,6 +80,12 @@ public class PlayerStats : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col) {
 		
+	}
+
+	void knockdownBreak() {
+		// Disable Movement
+		curKnockdown = 0;
+		// Give Invincibility for duration of movement lock and then an additional 3 secs.
 	}
 
 	public void doDamage(int ATK, int DWN) {
@@ -91,13 +105,36 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	private void UIUpdate() {
-		HPText.text = HP.ToString();
+		// Convert HP to be usable.
+		HPText.text = HP.ToString ();
 		HPBar.fillAmount = (HP / maxHP);
+
+		// Uh Oh I'm dead.
 		if (HP <= 0) {
 			HPText.text = "";
 			stateText.text = "";
 			Identifier.text = "";
-			StatusBar.sprite = loseBar;
+			statusBar.sprite = loseBar;
+		}
+
+		// Knockdown Indicators.
+		if (curKnockdown > 33) {
+			knockdownHigh.enabled = false;
+		} else {
+			knockdownHigh.enabled = true;
+		}
+
+		if (curKnockdown > 66) {
+			knockdownMed.enabled = false;
+		} else {
+			knockdownMed.enabled = true;
+		}
+
+		if (curKnockdown > 100) {
+			knockdownLow.enabled = false;
+			knockdownBreak ();
+		} else {
+			knockdownLow.enabled = true;
 		}
 
 	}
@@ -117,6 +154,8 @@ public class PlayerStats : MonoBehaviour {
 		if (curKnockdown < 0) {
 			curKnockdown = 0;
 		}
+
+		UIUpdate ();
 
 		// Start the recall again.
 		StartCoroutine(deductKnockdown ());
