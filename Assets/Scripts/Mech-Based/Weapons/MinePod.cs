@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MinePod : MonoBehaviour {
 
+	// This is the character that spawned this object.
+	private GameObject parent;
+
 	private MeshRenderer meshRen;
 	private Material mat;
 
@@ -31,6 +34,9 @@ public class MinePod : MonoBehaviour {
 		mat = meshRen.material;
 		redLight = GetComponent<Light> ();
 		StartCoroutine (Flash ());
+
+		// I want the mine to ignore the collision from their parent who spawned them...
+		Physics.IgnoreCollision (GetComponent<MeshCollider>(), parent.GetComponent<CapsuleCollider>());
 	}
 	
 	// Update is called once per frame
@@ -41,13 +47,17 @@ public class MinePod : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
-		if (col.gameObject.CompareTag ("Player") || (col.gameObject.CompareTag ("Enemy"))) {
+		if ((col.gameObject.CompareTag ("Enemy"))) {
 			explode ();
 		}
 	}
 
 	void explode() {
 		Destroy (this.gameObject);
+	}
+
+	public void assignParent(GameObject g) {
+		parent = g;
 	}
 
 	IEnumerator Flash() {

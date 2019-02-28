@@ -185,7 +185,8 @@ public class PlayerController : MonoBehaviour {
 	#endregion Bombs
 
 	void firePod() {
-		Instantiate (pod, backPart.transform.position, Quaternion.identity);
+		var newPod = Instantiate (pod, backPart.transform.position, Quaternion.identity);
+		newPod.GetComponent<MinePod>().assignParent (this.gameObject);
 	}
 
 	void chargeAttack() {
