@@ -24,6 +24,7 @@ public class PlayerStats : MonoBehaviour {
 	private int curKnockdown = 0;
 
 	// Timer for how long the stateText will be active.
+	// TODO: Lock Framerate and make this a constant.
 	private int stateTextTimer;
 
 	// The white bar that represents a visual healthbar.
@@ -50,6 +51,9 @@ public class PlayerStats : MonoBehaviour {
 	// Is the mech currently invincible? Give them this once they hit Rebirth.
 	private bool invincible = false;
 
+	// Is the mech currently downed? 
+	private bool downed = false;
+
 	// The three indicators for how much Knockdown you have currently.
 	public Image knockdownLow;
 	public Image knockdownMed;
@@ -67,7 +71,9 @@ public class PlayerStats : MonoBehaviour {
 
 		if (stateTextTimer > 0) {
 			stateTextTimer--;
-		} else {
+		} 
+		if ((!downed || !invincible) && stateTextTimer <= 0) {
+			print ("I'm resetting.");
 			stateText.text = "";
 		}
 
@@ -86,27 +92,56 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	void knockdownBreak() {
-		// Disable Movement
-		curKnockdown = 0;
+		if (!downed || !invincible) {
+			
+			// Disable Movement
 
-		// Give Invincibility for duration of movement lock and then an additional 3 secs.
-		StartCoroutine(rebirth());
+
+			// Give Invincibility for duration of movement lock and then an additional 3 secs.
+			StartCoroutine (goDowned ());
+		}
+	}
+
+	IEnumerator goDowned() {
+		
+		if (downed || invincible) {
+			yield return null;
+		// Don't want this being called multiple times...
+		} else {
+			print ("Going Down!");
+			downed = true;
+			stateText.text = "DOWNED";
+			stateTextTimer = 200;
+
+			// Set the knockdown very High so the bars won't restore themselves. Just arbitrary number > 100.
+			curKnockdown = 1000;
+
+			yield return new WaitForSeconds (3);
+
+			StartCoroutine (rebirth ());
+		}
 	}
 
 	IEnumerator rebirth() {
+
+		print ("I am reborn!");
 		invincible = true;
+		downed = false;
+		stateText.text = "REBIRTH";
+		stateTextTimer = 200;
 
 		//TODO: Make the mesh slightly transparent while invincible.
 
 		yield return new WaitForSeconds (3);
-	
+
+		stateText.text = "";
 		curKnockdown = 0;
 		invincible = false;
 	}
 
 	public void doDamage(int ATK, int DWN) {
 		// Just to spice things up, every time you take damage it can be multiplied by up to -20% or up to 20%.
-		if (!invincible) {
+		if (!invincible && !downed) {
 			HP -= (ATK * Random.Range (80, 120)) / 100;
 
 			// Add to your knockdown rate.
@@ -115,9 +150,16 @@ public class PlayerStats : MonoBehaviour {
 			// On a hit, update your state text to reflect that.
 			stateText.text = "HIT";
 			stateText.color = new Color (1f, 0.5f, 0.0f);
-			stateTextTimer = 200;
+			stateTextTimer = 180;
 
 			// Update UI in general afterwards, in case we need to overwrite it.
+			UIUpdate ();
+		}
+
+		if (downed) {
+			// While downed, you only take 50% dmg. Also, knockdown does not apply.
+			HP -= (ATK * Random.Range (80, 120)) / 200;
+			stateText.text = "DOWNED";
 			UIUpdate ();
 		}
 	}
@@ -136,30 +178,32 @@ public class PlayerStats : MonoBehaviour {
 		}
 
 		// Knockdown Indicators.
-		if (curKnockdown > 33) {
-			knockdownHigh.enabled = false;
-		} else {
-			knockdownHigh.enabled = true;
-		}
+		if (!downed || !invincible) {
+			if (curKnockdown > 33) {
+				knockdownHigh.enabled = false;
+			} else {
+				knockdownHigh.enabled = true;
+			}
 
-		if (curKnockdown > 66) {
-			knockdownMed.enabled = false;
-		} else {
-			knockdownMed.enabled = true;
-		}
+			if (curKnockdown > 66) {
+				knockdownMed.enabled = false;
+			} else {
+				knockdownMed.enabled = true;
+			}
 
-		if (curKnockdown > 100) {
-			knockdownLow.enabled = false;
-			knockdownBreak ();
-		} else {
-			knockdownLow.enabled = true;
+			if (curKnockdown > 100) {
+				knockdownLow.enabled = false;
+				StartCoroutine (goDowned ());
+			} else {
+				knockdownLow.enabled = true;
+			}
 		}
 
 	}
 
 	private IEnumerator deductKnockdown() {
 
-		print (curKnockdown);
+		//print (curKnockdown);
 
 		yield return new WaitForSeconds (1);
 
@@ -169,7 +213,7 @@ public class PlayerStats : MonoBehaviour {
 		}
 
 		// If you accidentally bring down the knockdown below 0, put it back.
-		if (curKnockdown < 0) {
+		if (curKnockdown <= 0) {
 			curKnockdown = 0;
 		}
 
