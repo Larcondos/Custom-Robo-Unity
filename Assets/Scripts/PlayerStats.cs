@@ -47,6 +47,9 @@ public class PlayerStats : MonoBehaviour {
 	// The prefab for launching a kill screen animation.
 	public GameObject killScreenObj;
 
+	// Is the mech currently invincible? Give them this once they hit Rebirth.
+	private bool invincible = false;
+
 	// The three indicators for how much Knockdown you have currently.
 	public Image knockdownLow;
 	public Image knockdownMed;
@@ -85,23 +88,38 @@ public class PlayerStats : MonoBehaviour {
 	void knockdownBreak() {
 		// Disable Movement
 		curKnockdown = 0;
+
 		// Give Invincibility for duration of movement lock and then an additional 3 secs.
+		StartCoroutine(rebirth());
+	}
+
+	IEnumerator rebirth() {
+		invincible = true;
+
+		//TODO: Make the mesh slightly transparent while invincible.
+
+		yield return new WaitForSeconds (3);
+	
+		curKnockdown = 0;
+		invincible = false;
 	}
 
 	public void doDamage(int ATK, int DWN) {
 		// Just to spice things up, every time you take damage it can be multiplied by up to -20% or up to 20%.
-		HP -= (ATK * Random.Range(80, 120)) / 100;
+		if (!invincible) {
+			HP -= (ATK * Random.Range (80, 120)) / 100;
 
-		// Add to your knockdown rate.
-		curKnockdown += DWN;
+			// Add to your knockdown rate.
+			curKnockdown += DWN;
 
-		// On a hit, update your state text to reflect that.
-		stateText.text = "HIT";
-		stateText.color = new Color (1f, 0.5f, 0.0f);
-		stateTextTimer = 200;
+			// On a hit, update your state text to reflect that.
+			stateText.text = "HIT";
+			stateText.color = new Color (1f, 0.5f, 0.0f);
+			stateTextTimer = 200;
 
-		// Update UI in general afterwards, in case we need to overwrite it.
-		UIUpdate ();
+			// Update UI in general afterwards, in case we need to overwrite it.
+			UIUpdate ();
+		}
 	}
 
 	private void UIUpdate() {
