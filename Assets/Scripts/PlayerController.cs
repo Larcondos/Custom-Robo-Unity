@@ -68,7 +68,11 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+		if (enemy == null) {
+			enemy = GameObject.FindGameObjectWithTag ("Enemy");
+		}
+
 		getInput ();
 
 		 //Debug Block for inital mappings
@@ -77,6 +81,8 @@ public class PlayerController : MonoBehaviour {
 				print("joystick 1 button "+i);
 			}
 		}
+
+
 		
 	}
 

@@ -108,13 +108,15 @@ public class SpawnCube : MonoBehaviour {
 			buttonsMashed = 0;
 		} else {
 			// Give the player everything they need to live.
-			player.transform.SetParent (null);
-			player.AddComponent<Rigidbody> ();
-			player.GetComponent<Rigidbody> ().useGravity = true;
-			player.GetComponent<MeshRenderer> ().enabled = true;
-			player.GetComponent<SphereCollider> ().enabled = true;
-			player.GetComponent<PlayerController> ().enabled = true;
+			//player.transform.SetParent (null);
+			//player.AddComponent<Rigidbody> ();
+			//player.GetComponent<Rigidbody> ().useGravity = true;
+			//player.GetComponent<MeshRenderer> ().enabled = true;
+			//player.GetComponent<SphereCollider> ().enabled = true;
+			//player.GetComponent<PlayerController> ().enabled = true;
+			Instantiate (player, transform.position, Quaternion.identity);
 
+			// TODO: Access the camera's targets, and find out which one is empty now, and assigned this newly made player to it.
 			Destroy (this.gameObject);
 		}
 	}

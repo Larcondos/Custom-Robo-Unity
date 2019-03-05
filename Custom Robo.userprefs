@@ -1,8 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SpawnCube.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="201" Column="22" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="73" Column="55" />
+      <File FileName="Assets\Scripts\SpawnCube.cs" Line="119" Column="121" />
+      <File FileName="Assets\Scripts\CameraController.cs" Line="62" Column="1" />
+      <File FileName="Assets\Scripts\CameraFacingBillboard.cs" Line="14" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
