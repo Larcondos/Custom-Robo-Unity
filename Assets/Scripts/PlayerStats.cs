@@ -27,6 +27,9 @@ public class PlayerStats : MonoBehaviour {
 	// TODO: Lock Framerate and make this a constant.
 	private int stateTextTimer;
 
+	// The default timer for the stateTextTimer to be set at.
+	private const int stateTextTimerResetConst = 200;
+
 	// The white bar that represents a visual healthbar.
 	public Image HPBar;
 
@@ -111,7 +114,7 @@ public class PlayerStats : MonoBehaviour {
 			print ("Going Down!");
 			downed = true;
 			stateText.text = "DOWNED";
-			stateTextTimer = 200;
+			stateTextTimer = stateTextTimerResetConst;
 
 			// Set the knockdown very High so the bars won't restore themselves. Just arbitrary number > 100.
 			curKnockdown = 1000;
@@ -128,15 +131,18 @@ public class PlayerStats : MonoBehaviour {
 		invincible = true;
 		downed = false;
 		stateText.text = "REBIRTH";
-		stateTextTimer = 200;
+		curKnockdown = 0;
+		stateTextTimer = stateTextTimerResetConst;
+		UIUpdate ();
 
 		//TODO: Make the mesh slightly transparent while invincible.
 
 		yield return new WaitForSeconds (3);
 
-		stateText.text = "";
-		curKnockdown = 0;
+		// Do a hard reset on the text timer once the invinicbility is over.
+		stateTextTimer = 0;
 		invincible = false;
+
 	}
 
 	public void doDamage(int ATK, int DWN) {
@@ -204,23 +210,24 @@ public class PlayerStats : MonoBehaviour {
 	private IEnumerator deductKnockdown() {
 
 		//print (curKnockdown);
+		if (!dead) {
+			yield return new WaitForSeconds (1);
 
-		yield return new WaitForSeconds (1);
+			// Every second, deduct some of the knockdown, as the mech can recover over time.
+			if (curKnockdown > 0) {
+				curKnockdown -= 5;
+			}
 
-		// Every second, deduct some of the knockdown, as the mech can recover over time.
-		if (curKnockdown > 0) {
-			curKnockdown -= 5;
+			// If you accidentally bring down the knockdown below 0, put it back.
+			if (curKnockdown <= 0) {
+				curKnockdown = 0;
+			}
+
+			UIUpdate ();
+
+			// Start the recall again.
+			StartCoroutine (deductKnockdown ());
 		}
-
-		// If you accidentally bring down the knockdown below 0, put it back.
-		if (curKnockdown <= 0) {
-			curKnockdown = 0;
-		}
-
-		UIUpdate ();
-
-		// Start the recall again.
-		StartCoroutine(deductKnockdown ());
 	}
 
 	private void Die() {

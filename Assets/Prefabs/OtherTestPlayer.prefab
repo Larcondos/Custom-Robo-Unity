@@ -585,7 +585,7 @@ MonoBehaviour:
   HPBar: {fileID: 114050343739415426}
   HPText: {fileID: 114718872541307128}
   stateText: {fileID: 114870736956654430}
-  statusBar: {fileID: 0}
+  statusBar: {fileID: 114014477488246026}
   loseBar: {fileID: 21300000, guid: 024a1f1b43cad4b4da5d999072b385a7, type: 3}
   Identifier: {fileID: 114269838071359908}
   killScreenObj: {fileID: 1571168990692472, guid: e8b2c443dc8018e4495683341779df3a,
