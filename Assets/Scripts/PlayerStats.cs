@@ -24,7 +24,11 @@ public class PlayerStats : MonoBehaviour {
 	private int curKnockdown = 0;
 
 	// Timer for how long the stateText will be active.
+	// TODO: Lock Framerate and make this a constant.
 	private int stateTextTimer;
+
+	// The default timer for the stateTextTimer to be set at.
+	private const int stateTextTimerResetConst = 200;
 
 	// The white bar that represents a visual healthbar.
 	public Image HPBar;
@@ -36,7 +40,7 @@ public class PlayerStats : MonoBehaviour {
 	public Text stateText;
 
 	// The overall health bar and status section.
-	public Image StatusBar;
+	public Image statusBar;
 
 	// A sprite for lose text.
 	public Sprite loseBar;
@@ -46,6 +50,18 @@ public class PlayerStats : MonoBehaviour {
 
 	// The prefab for launching a kill screen animation.
 	public GameObject killScreenObj;
+
+	// Is the mech currently invincible? Give them this once they hit Rebirth.
+	private bool invincible = false;
+
+	// Is the mech currently downed? 
+	private bool downed = false;
+
+	// The three indicators for how much Knockdown you have currently.
+	public Image knockdownLow;
+	public Image knockdownMed;
+	public Image knockdownHigh;
+
 
 	// Use this for initialization
 	void Start () {
@@ -58,12 +74,16 @@ public class PlayerStats : MonoBehaviour {
 
 		if (stateTextTimer > 0) {
 			stateTextTimer--;
-		} else {
+		} 
+		if ((!downed || !invincible) && stateTextTimer <= 0) {
+			print ("I'm resetting.");
 			stateText.text = "";
 		}
 
 		if (HP <= 0 && !dead)
 			Die();
+
+
 	}
 
 	void OnCollisionEnter(Collision col) {
@@ -74,52 +94,140 @@ public class PlayerStats : MonoBehaviour {
 		
 	}
 
+	void knockdownBreak() {
+		if (!downed || !invincible) {
+			
+			// Disable Movement
+
+
+			// Give Invincibility for duration of movement lock and then an additional 3 secs.
+			StartCoroutine (goDowned ());
+		}
+	}
+
+	IEnumerator goDowned() {
+		
+		if (downed || invincible) {
+			yield return null;
+		// Don't want this being called multiple times...
+		} else {
+			print ("Going Down!");
+			downed = true;
+			stateText.text = "DOWNED";
+			stateTextTimer = stateTextTimerResetConst;
+
+			// Set the knockdown very High so the bars won't restore themselves. Just arbitrary number > 100.
+			curKnockdown = 1000;
+
+			yield return new WaitForSeconds (3);
+
+			StartCoroutine (rebirth ());
+		}
+	}
+
+	IEnumerator rebirth() {
+
+		print ("I am reborn!");
+		invincible = true;
+		downed = false;
+		stateText.text = "REBIRTH";
+		curKnockdown = 0;
+		stateTextTimer = stateTextTimerResetConst;
+		UIUpdate ();
+
+		//TODO: Make the mesh slightly transparent while invincible.
+
+		yield return new WaitForSeconds (3);
+
+		// Do a hard reset on the text timer once the invinicbility is over.
+		stateTextTimer = 0;
+		invincible = false;
+
+	}
+
 	public void doDamage(int ATK, int DWN) {
 		// Just to spice things up, every time you take damage it can be multiplied by up to -20% or up to 20%.
-		HP -= (ATK * Random.Range(80, 120)) / 100;
+		if (!invincible && !downed) {
+			HP -= (ATK * Random.Range (80, 120)) / 100;
 
-		// Add to your knockdown rate.
-		curKnockdown += DWN;
+			// Add to your knockdown rate.
+			curKnockdown += DWN;
 
-		// On a hit, update your state text to reflect that.
-		stateText.text = "HIT";
-		stateText.color = new Color (1f, 0.5f, 0.0f);
-		stateTextTimer = 200;
+			// On a hit, update your state text to reflect that.
+			stateText.text = "HIT";
+			stateText.color = new Color (1f, 0.5f, 0.0f);
+			stateTextTimer = 180;
 
-		// Update UI in general afterwards, in case we need to overwrite it.
-		UIUpdate ();
+			// Update UI in general afterwards, in case we need to overwrite it.
+			UIUpdate ();
+		}
+
+		if (downed) {
+			// While downed, you only take 50% dmg. Also, knockdown does not apply.
+			HP -= (ATK * Random.Range (80, 120)) / 200;
+			stateText.text = "DOWNED";
+			UIUpdate ();
+		}
 	}
 
 	private void UIUpdate() {
-		HPText.text = HP.ToString();
+		// Convert HP to be usable.
+		HPText.text = HP.ToString ();
 		HPBar.fillAmount = (HP / maxHP);
+
+		// Uh Oh I'm dead.
 		if (HP <= 0) {
 			HPText.text = "";
 			stateText.text = "";
 			Identifier.text = "";
-			StatusBar.sprite = loseBar;
+			statusBar.sprite = loseBar;
+		}
+
+		// Knockdown Indicators.
+		if (!downed || !invincible) {
+			if (curKnockdown > 33) {
+				knockdownHigh.enabled = false;
+			} else {
+				knockdownHigh.enabled = true;
+			}
+
+			if (curKnockdown > 66) {
+				knockdownMed.enabled = false;
+			} else {
+				knockdownMed.enabled = true;
+			}
+
+			if (curKnockdown > 100) {
+				knockdownLow.enabled = false;
+				StartCoroutine (goDowned ());
+			} else {
+				knockdownLow.enabled = true;
+			}
 		}
 
 	}
 
 	private IEnumerator deductKnockdown() {
 
-		print (curKnockdown);
+		//print (curKnockdown);
+		if (!dead) {
+			yield return new WaitForSeconds (1);
 
-		yield return new WaitForSeconds (1);
+			// Every second, deduct some of the knockdown, as the mech can recover over time.
+			if (curKnockdown > 0) {
+				curKnockdown -= 5;
+			}
 
-		// Every second, deduct some of the knockdown, as the mech can recover over time.
-		if (curKnockdown > 0) {
-			curKnockdown -= 5;
+			// If you accidentally bring down the knockdown below 0, put it back.
+			if (curKnockdown <= 0) {
+				curKnockdown = 0;
+			}
+
+			UIUpdate ();
+
+			// Start the recall again.
+			StartCoroutine (deductKnockdown ());
 		}
-
-		// If you accidentally bring down the knockdown below 0, put it back.
-		if (curKnockdown < 0) {
-			curKnockdown = 0;
-		}
-
-		// Start the recall again.
-		StartCoroutine(deductKnockdown ());
 	}
 
 	private void Die() {

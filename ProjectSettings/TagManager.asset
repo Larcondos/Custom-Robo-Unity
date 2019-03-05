@@ -13,6 +13,7 @@ TagManager:
   - Floor
   - Bomb
   - Bomb Particle
+  - Pod
   layers:
   - Default
   - TransparentFX
