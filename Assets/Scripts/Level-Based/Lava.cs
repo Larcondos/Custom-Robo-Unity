@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lava : MonoBehaviour {
 
-	// Lava will always do the same damage, and always knockdown a player.
+	// Lava will always do the same damage, and always knockdown a player instantly.
 	private const int DMG = 125;
 	private const int DWN = 100;
 

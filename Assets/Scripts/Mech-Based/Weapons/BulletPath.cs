@@ -40,8 +40,10 @@ public class BulletPath : MonoBehaviour {
 	// Fixed Update so that the physics cycles only occur as often as needed, and allow for post calculations of target movement.
 	void FixedUpdate () {
 
+		// Always move forward.
 		rb.velocity = transform.forward * SPD;
 
+		// If you have a target, rotate towards them. Otherwise you just keep going forward.
 		if (target != null) {
 
 			var targetRotation = Quaternion.LookRotation (target.position - transform.position);
@@ -88,6 +90,7 @@ public class BulletPath : MonoBehaviour {
 		return DWN;
 	}
 
+	// Activate the bullets particles that it needs, and destroy it.
 	void destroyMe() {
 		explodeParticle.transform.SetParent (null);
 		impactParticle.transform.SetParent (null);

@@ -1,7 +1,7 @@
 # Custom-Robo-Unity
 An attempt at remaking as much of Custom Robo as possible, with some custom flair, using Unity.
 
-In active development as of February 2019.
+In active development as of March 2019.
 
 # Usage
   While I permit for my code to be used under GNU license, Custom Robo and all respective trademarks belong to Nintendo.
@@ -9,7 +9,7 @@ In active development as of February 2019.
 # Roadmap (Major Releases Listed Only)
   - [See here for the full Planned Release Patchnotes ](https://trello.com/b/bJ2PUx2B/custom-robo)
 
-## Version 0.5 - ETA: Late February / Early March
+## Version 0.5 - ETA: Released!
 - Local testing 'Battle' system entirely functional.
   - One of each weapon type and one mech functional.
   - AI will **NOT** be implemented.

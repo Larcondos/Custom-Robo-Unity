@@ -58,7 +58,6 @@
      <Compile Include="Assets\Scripts\DestroyOnTouch.cs" />
      <Compile Include="Assets\Scripts\gameLoop.cs" />
      <Compile Include="Assets\Scripts\KillScreen.cs" />
-     <Compile Include="Assets\Scripts\Level-Based\BoxBreak.cs" />
      <Compile Include="Assets\Scripts\Level-Based\CubeLaunch.cs" />
      <Compile Include="Assets\Scripts\Level-Based\DestructibleCube.cs" />
      <Compile Include="Assets\Scripts\Level-Based\Lava.cs" />

@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class KillScreen : MonoBehaviour {
 
+	// Various images that will be moved during the kill screen.
 	public Image KO, KO2, blackOverlay, blackOverlay2;
 
+	// Used to control the overlay fill amount.
 	private float overlayFillAmt;
 
+	// Used for movement of KO timer.
 	int KOCounter = 0;
 	int KO2Counter = 0;
 
@@ -57,6 +60,7 @@ public class KillScreen : MonoBehaviour {
 		// TODO: Both start at scale 0.1, finish at scale 0.7
 	}
 
+	// Fills the overlay overtime.
 	void overlayFiller() {
 		if (overlayFillAmt < 1) {
 			overlayFillAmt += 0.03f;

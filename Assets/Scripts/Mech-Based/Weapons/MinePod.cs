@@ -68,27 +68,29 @@ public class MinePod : MonoBehaviour {
 	}
 
 	void explode() {
+		// Only explode once!
 		if (!exploded) {
 
 			exploded = true;
 
+			// Reset the mines rotation, as they can move a little bit.
 			transform.rotation = Quaternion.identity;
 
+			// Activate and deparent appropriate particle effects, and fix scalings and apply stats to the particles. 
 			ringParticle.transform.SetParent (null);
 			towerParticle.transform.SetParent (null);
 
 			ringParticle.transform.localScale = Vector3.one;
 			towerParticle.transform.localScale = Vector3.one;
 
-
 			ringParticle.SetActive (true);
 			towerParticle.SetActive (true);
 			ringParticle.GetComponent<partCollide> ().applyStats (ATK, DWN);
 			towerParticle.GetComponent<partCollide> ().applyStats (ATK, DWN);
 
+			// The mine goes away.
 			Destroy (this.gameObject);
 
-			//GetComponent<Capsul> ().enabled = false;
 		}
 	}
 
@@ -96,6 +98,7 @@ public class MinePod : MonoBehaviour {
 		parent = g;
 	}
 
+	// Stat adjustment for scalings of particles.
 	void adjustStats() {
 		var rMain = ringParts.main;
 		var tMain = towerParts.main;
@@ -111,6 +114,7 @@ public class MinePod : MonoBehaviour {
 		tMain.duration = TIM;
 	}
 
+	// Turns the lighting effect off and on. Also turns the mine red because I cheated.
 	IEnumerator Flash() {
 		if (flashOn) {
 			// Turn off emission
@@ -126,6 +130,7 @@ public class MinePod : MonoBehaviour {
 		}
 		yield return new WaitForSeconds (timer);
 
+		// Decrease the timer, and start again.
 		timer *= 0.9f;
 
 		StartCoroutine (Flash ());

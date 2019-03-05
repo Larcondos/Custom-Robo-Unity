@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class BombArc : MonoBehaviour {
 
+	// Script for the parabola logic.
 	private ParabolaController paraC;
+
+	// Gameobjects for the particle systems.
 	public GameObject ringParticle, towerParticle, exhaustParticle;
+
+	// Used to get specific details from the systems, if needed.
 	private ParticleSystem ringParts, towerParts;
+
+	// Has this bomb exploded or not?
 	private bool exploded;
 
 	public int ATK; // Damage amount
@@ -18,9 +25,8 @@ public class BombArc : MonoBehaviour {
 	private float now; // Used in calculations for aiming the bomb in mid air (for particles)
 	private float startLife; // Used in calculations for aiming the bomb in mid air (for particles)
 
-	//TODO: Should Instanciate these particles rather than children.
-
 	void Start () {
+		
 		paraC = GetComponent<ParabolaController> ();
 		ringParts = ringParticle.GetComponent<ParticleSystem> ();
 		towerParts = towerParticle.GetComponent<ParticleSystem> ();
@@ -31,12 +37,15 @@ public class BombArc : MonoBehaviour {
 
 	void Update() {
 
+		// Bomb rotation calculation.
 		now = Time.timeSinceLevelLoad - startLife;
 
 		// When the bomb has reached it's destination, explode.
 		if (!paraC.Animation) {
 			Explode ();
 		}
+
+		// Used to determine the rotation of the bomb. Not very great.
 		if (exploded) {
 			//blastRadius.radius += SIZ / 4;
 			transform.rotation = Quaternion.identity;
@@ -46,6 +55,7 @@ public class BombArc : MonoBehaviour {
 
 	}
 
+	// This function grabs various values from the particle systems and applies them to components of the bomb for visual, scaling, and damage effects.
 	void adjustStats() {
 		var rMain = ringParts.main;
 		var tMain = towerParts.main;
@@ -70,16 +80,24 @@ public class BombArc : MonoBehaviour {
 		}
 	}
 		
+	// Called when the bomb goes boom.
 	void Explode() {
+
+		// Only explode once!
 		if (!exploded) {
 			
 			exploded = true;
+
+			// Stop moving the bomb.
 			paraC.Animation = false;
 
+			// Activate all the particle effects, and give them stats.
 			ringParticle.SetActive (true);
 			towerParticle.SetActive (true);
 			ringParticle.GetComponent<partCollide> ().applyStats (ATK, DWN);
 			towerParticle.GetComponent<partCollide> ().applyStats (ATK, DWN);
+
+			// Disable these particles, and the renderer on the bomb.
 			exhaustParticle.SetActive (false);
 			GetComponent<Renderer> ().enabled = false;
 			StartCoroutine (disableParticles ());
@@ -87,10 +105,9 @@ public class BombArc : MonoBehaviour {
 		}
 	}
 		
-
+	// Destroy the particle explosion after the time is done.
 	IEnumerator disableParticles() {
 		yield return new WaitForSeconds (TIM);
-		// TODO: Fix the particle angle on destruction...
 		Destroy (this.gameObject);
 	}
 		

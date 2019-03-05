@@ -184,6 +184,7 @@ public class PlayerController : MonoBehaviour {
 
 	#endregion Bombs
 
+	// Drop that baby.
 	void firePod() {
 		var newPod = Instantiate (pod, backPart.transform.position, Quaternion.identity);
 		newPod.GetComponent<MinePod>().assignParent (this.gameObject);
@@ -197,6 +198,7 @@ public class PlayerController : MonoBehaviour {
 		rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
 	}
 
+	// Freezes the game.
 	void pauseGame() {
 		if (Time.timeScale == 0) {
 			Time.timeScale = 1;

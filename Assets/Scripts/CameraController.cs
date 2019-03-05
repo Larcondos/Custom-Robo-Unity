@@ -8,9 +8,11 @@ public class CameraController : MonoBehaviour {
 	// A list of targets's transforms to follow
 	public List<Transform> targets;
 
+	// An offset and smoothness factor for moving the camera.
 	public Vector3 offset;
 	public float smoothTime = 0.5f;
 
+	// How far in and out to zoom in on the players.
 	public float minZoom = 40f;
 	public float maxZoom = 10f;
 	public float zoomLimit = 50f;
@@ -34,6 +36,7 @@ public class CameraController : MonoBehaviour {
 		Zoom ();
 		}
 
+	// Move to the point between the targets.
 	void Move() {
 		Vector3 centerPoint = getCenterPoint ();
 
@@ -43,7 +46,7 @@ public class CameraController : MonoBehaviour {
 		transform.LookAt (getEncapsulatingBounds ().center);
 	}
 
-
+	// Zoom in and out as needed.
 	void Zoom() {
 		float newZoom = Mathf.Lerp (maxZoom, minZoom, getGreatestDistance () / zoomLimit);
 		cam.fieldOfView = Mathf.Lerp (cam.fieldOfView, newZoom, Time.deltaTime);
@@ -54,9 +57,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	Bounds getEncapsulatingBounds() {
-
-		// TODO: Set up kill screen.
-
+		
 		if (targets [0] == null || targets [1] == null) {
 			print ("Game Over! You win!");
 			Time.timeScale = 0.2f;
@@ -70,6 +71,7 @@ public class CameraController : MonoBehaviour {
 		}
 	}
 
+	// Gets the midpoint of the bounds.
 	Vector3 getCenterPoint() {
 		if (targets.Count == 1) {
 			return targets [0].position;

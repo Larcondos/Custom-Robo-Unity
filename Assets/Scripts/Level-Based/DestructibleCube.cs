@@ -14,6 +14,7 @@ public class DestructibleCube : MonoBehaviour {
 	private float cubeSize = 0.2f;
 	private int cubesInRow = 5;
 
+	// A pivot for the cubes.
 	float cubesPivotDistance;
 	Vector3 cubesPivot;
 
@@ -32,19 +33,12 @@ public class DestructibleCube : MonoBehaviour {
 		cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
 
 	}
-	
-	// Update is called once per frame
 
-	void Update ()
-	{
-		if (HP <= 0) {
-
-			explode ();
-		}
-	}
-
+	// Deals damage to this unique object, and will check if this object needs to die or not.
 	public void doDamage(int dmg) {
 		HP -= dmg;
+		if (HP <= 0)
+			explode ();
 	}
 
 	public void explode() {

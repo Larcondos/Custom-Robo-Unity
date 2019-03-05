@@ -86,14 +86,6 @@ public class PlayerStats : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter(Collision col) {
-		
-	}
-
-	void OnTriggerEnter(Collider col) {
-		
-	}
-
 	void knockdownBreak() {
 		if (!downed || !invincible) {
 			
@@ -185,18 +177,21 @@ public class PlayerStats : MonoBehaviour {
 
 		// Knockdown Indicators.
 		if (!downed || !invincible) {
+			// You're 33% to being knocked down.
 			if (curKnockdown > 33) {
 				knockdownHigh.enabled = false;
 			} else {
 				knockdownHigh.enabled = true;
 			}
 
+			// You're 66% to being knocked down.
 			if (curKnockdown > 66) {
 				knockdownMed.enabled = false;
 			} else {
 				knockdownMed.enabled = true;
 			}
 
+			// You're knocked down. Sorry.
 			if (curKnockdown > 100) {
 				knockdownLow.enabled = false;
 				StartCoroutine (goDowned ());
@@ -230,6 +225,7 @@ public class PlayerStats : MonoBehaviour {
 		}
 	}
 
+	// This kills the player.
 	private void Die() {
 		dead = true;
 		Instantiate (killScreenObj);

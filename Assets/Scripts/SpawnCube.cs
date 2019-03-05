@@ -63,8 +63,8 @@ public class SpawnCube : MonoBehaviour {
 		}
 	}
 
+	// If you press any of these buttons, you get to respawn faster!
 	void getMash() {
-		
 
 		if (Input.GetButtonDown ("Jump")) {
 			buttonsMashed++;
@@ -91,10 +91,9 @@ public class SpawnCube : MonoBehaviour {
 		if (Input.GetButtonDown ("Pause")) {
 			buttonsMashed++;		
 		}
-
 	}
-
-
+		
+	// Ticks down the timer on the cube.
 	IEnumerator tickDown() {
 		
 		yield return new WaitForSeconds (1 - (buttonsMashed * 0.03f));
@@ -108,13 +107,13 @@ public class SpawnCube : MonoBehaviour {
 			StartCoroutine (tickDown ());
 			buttonsMashed = 0;
 		} else {
+			// Give the player everything they need to live.
 			player.transform.SetParent (null);
 			player.AddComponent<Rigidbody> ();
 			player.GetComponent<Rigidbody> ().useGravity = true;
 			player.GetComponent<MeshRenderer> ().enabled = true;
 			player.GetComponent<SphereCollider> ().enabled = true;
 			player.GetComponent<PlayerController> ().enabled = true;
-
 
 			Destroy (this.gameObject);
 		}

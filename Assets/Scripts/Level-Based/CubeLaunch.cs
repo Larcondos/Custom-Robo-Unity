@@ -4,31 +4,22 @@ using UnityEngine;
 
 public class CubeLaunch : MonoBehaviour {
 
+	// The gameobject of the cube to launch.
 	public GameObject cube;
-	private Transform center;
-	private Vector3 axis;
-	private Vector3 desiredPosition;
-	public float radius = 2.0f;
-	public float radiusSpeed = 0.5f;
-	public float rotationSpeed = 200.0f;
 
-	// The cube the launcher will shoot.
-	//public GameObject cube;
+	// The focal axis of the launcher.
+	private Vector3 axis;
 
 	// Has the cube been launched yet?
 	private bool launched = false;
 
 	// A specific number used to determine how long until the official "Start" of the match.
-	private int countdown  = 200;
+	// TODO: Find a real value for this because right now it's arbitrary. Maybe turn this into a coRoutine?
+	private int countdown = 200;
 
-	// Use this for initialization
-	void Start () {
-		//cube = GameObject.FindWithTag("Cube");
-	}
-	
 	// Update is called once per frame
 	void Update () {
-		// Calls a countdown to occur.
+		// While the countdown isn't over, you can move it!
 		if (countdown > 0) {
 			countdown--;
 
@@ -55,6 +46,7 @@ public class CubeLaunch : MonoBehaviour {
 		}
 	}
 
+	// Destroy the launcher after the cubes are sent flying.
 	IEnumerator destroyIt() {
 		yield return new WaitForSeconds (2);
 		Destroy (this.gameObject);
