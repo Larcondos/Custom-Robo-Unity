@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class SpawnCube : MonoBehaviour {
 
+	// The camera game object. Used to assign the focus on them.
+	private GameObject cam;
+
+	// Camera Controller script on the camera
+	private CameraController cameraCont;
+
 	// This is a random number that determines how long until a cube will open up. It's random, not fair!
 	private int randNum; 
 
@@ -41,6 +47,9 @@ public class SpawnCube : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		//mesh = GetComponent<MeshRenderer> ();
 		img.material = seeThru;
+		cam = GameObject.FindGameObjectWithTag ("MainCamera");
+		cameraCont = cam.GetComponent<CameraController> ();
+		cameraCont.targets.Add (this.gameObject.transform);
 	}
 
 	// Update is called once per frame
@@ -114,8 +123,11 @@ public class SpawnCube : MonoBehaviour {
 			//player.GetComponent<MeshRenderer> ().enabled = true;
 			//player.GetComponent<SphereCollider> ().enabled = true;
 			//player.GetComponent<PlayerController> ().enabled = true;
-			Instantiate (player, transform.position, Quaternion.identity);
 
+			Instantiate (player, transform.position + Vector3.up, Quaternion.identity);
+
+			cameraCont.targets.Add (player.transform);
+			cameraCont.targets.Remove(this.gameObject.transform);
 			// TODO: Access the camera's targets, and find out which one is empty now, and assigned this newly made player to it.
 			Destroy (this.gameObject);
 		}

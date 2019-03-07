@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletPath : MonoBehaviour {
 
 	// The transform for the target location to go to.
-	private Transform target;
+	private GameObject target;
 
 	// Rigibody for the bullet, used in angling and collision detection.
 	private Rigidbody rb;
@@ -29,12 +29,12 @@ public class BulletPath : MonoBehaviour {
 		StartCoroutine (delayedDestroy ());
 
 		// The target should be the enemy (This will change later), and the bullet will spawn looking at the target so it is sent in the right direction.
-		target = GameObject.FindGameObjectWithTag ("Enemy").transform;
-		transform.LookAt (target);
+		//target = GameObject.FindGameObjectWithTag ("Enemy").transform;
+
 
 		// Prevents the bullet from spawning inside player. Will be changed later to come out of gun tip.
 		// TODO: Change to come out of gun tip.
-		transform.position = Vector3.MoveTowards (transform.position, target.transform.position, 0.8f);
+
 	}
 
 	// Fixed Update so that the physics cycles only occur as often as needed, and allow for post calculations of target movement.
@@ -43,10 +43,28 @@ public class BulletPath : MonoBehaviour {
 		// Always move forward.
 		rb.velocity = transform.forward * SPD;
 
+		print (target);
+
+		if (target == null) {
+
+			if (GameObject.FindGameObjectWithTag ("Respawn") != null) {
+				target = GameObject.FindGameObjectWithTag ("Respawn");
+				transform.LookAt (target.transform);
+				transform.position = Vector3.MoveTowards (transform.position, target.transform.position, 0.8f);
+			}
+
+			if (GameObject.FindGameObjectWithTag ("Enemy") != null) {
+				target = GameObject.FindGameObjectWithTag ("Enemy");
+				transform.LookAt (target.transform);
+				transform.position = Vector3.MoveTowards (transform.position, target.transform.position, 0.8f);
+			}
+
+		}
+
 		// If you have a target, rotate towards them. Otherwise you just keep going forward.
 		if (target != null) {
 
-			var targetRotation = Quaternion.LookRotation (target.position - transform.position);
+			var targetRotation = Quaternion.LookRotation (target.transform.position - transform.position);
 
 			rb.MoveRotation (Quaternion.RotateTowards (transform.rotation, targetRotation, HMG));
 		}

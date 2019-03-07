@@ -22,8 +22,18 @@ public class OtherPlayerController : MonoBehaviour {
 	private float runSpeed = 8f;
 
 	// Use this for initialization
+
+	// The camera game object. Used to assign the focus on them.
+	private GameObject cam;
+
+	// Camera Controller script on the camera
+	private CameraController cameraCont;
+
 	void Start () {
 		rb = GetComponent<Rigidbody>();
+		cam = GameObject.FindGameObjectWithTag ("MainCamera");
+		cameraCont = cam.GetComponent<CameraController> ();
+		cameraCont.targets.Add (this.gameObject.transform);
 	}
 	
 	// Update is called once per frame

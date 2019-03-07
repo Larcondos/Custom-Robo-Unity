@@ -61,9 +61,18 @@ public class PlayerController : MonoBehaviour {
 	public GameObject bombPart;
 	public GameObject legsPart;
 
+	// The camera game object. Used to assign the focus on them.
+	private GameObject cam;
+
+	// Camera Controller script on the camera
+	private CameraController cameraCont;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
+		cam = GameObject.FindGameObjectWithTag ("MainCamera");
+		cameraCont = cam.GetComponent<CameraController> ();
+		cameraCont.targets.Add (this.gameObject.transform);
 	}
 	
 	// Update is called once per frame
@@ -71,6 +80,11 @@ public class PlayerController : MonoBehaviour {
 
 		if (enemy == null) {
 			enemy = GameObject.FindGameObjectWithTag ("Enemy");
+		}
+
+		// If this is still null, it means the actual enemy has not yet spawned!
+		if (enemy == null) {
+			enemy = GameObject.FindGameObjectWithTag ("Respawn");
 		}
 
 		getInput ();
@@ -88,6 +102,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	void getInput() {
+		// If you're aiming a bomb you can't do anything else.
 		if (!aimingBomb) {
 			if (Input.GetAxis ("Horizontal") != 0) {
 				transform.Translate (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed * Time.deltaTime, Space.World);

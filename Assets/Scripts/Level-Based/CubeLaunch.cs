@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CubeLaunch : MonoBehaviour {
 
+
 	// The gameobject of the cube to launch.
 	public GameObject cube;
 
@@ -16,6 +17,20 @@ public class CubeLaunch : MonoBehaviour {
 	// A specific number used to determine how long until the official "Start" of the match.
 	// TODO: Find a real value for this because right now it's arbitrary. Maybe turn this into a coRoutine?
 	private int countdown = 200;
+
+	// The camera game object. Used to assign the focus on them.
+	private GameObject cam;
+
+	// Camera Controller script on the camera
+	private CameraController cameraCont;
+
+	void Start() {
+		cam = GameObject.FindGameObjectWithTag ("MainCamera");
+		cameraCont = cam.GetComponent<CameraController> ();
+		//if (cube != null) {
+			cameraCont.targets.Add (cube.transform);
+		//}
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -36,6 +51,8 @@ public class CubeLaunch : MonoBehaviour {
 		// Launch the cube.
 		if (countdown == 0 && !launched) {
 			launched = true;
+
+			cameraCont.targets.Clear ();
 
 			// Un-parent the cube, and launch it off on it's own. They grow up so fast.
 			cube.transform.parent = null;

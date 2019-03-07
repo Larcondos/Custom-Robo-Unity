@@ -227,8 +227,15 @@ public class PlayerStats : MonoBehaviour {
 
 	// This kills the player.
 	private void Die() {
+
+		// Disable the unneeded. Don't want them popping up again.
+		// TODO: Disable all of the status bar stuff.
+
+
 		dead = true;
 		Instantiate (killScreenObj);
+
+		// Time slows down and the enemy is dramatically blown upwards.
 		Time.timeScale = 0.3f;
 		GetComponent<Rigidbody> ().AddForce (Vector3.up * 500);
 	}

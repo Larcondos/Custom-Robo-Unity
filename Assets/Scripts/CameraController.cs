@@ -57,7 +57,8 @@ public class CameraController : MonoBehaviour {
 	}
 
 	Bounds getEncapsulatingBounds() {
-		
+
+		/*
 		if (targets [0] == null) {
 			if (GameObject.FindGameObjectWithTag ("Respawn").transform != null) {
 				targets [0] = GameObject.FindGameObjectWithTag ("Respawn").transform;
@@ -76,7 +77,12 @@ public class CameraController : MonoBehaviour {
 			}
 			return new Bounds (Vector3.zero, Vector3.zero);
 		
+		} else {*/
+
+		if (targets.Count == 0) {
+			return new Bounds (Vector3.zero, Vector3.zero);
 		} else {
+	
 			var bounds = new Bounds (targets [0].position, Vector3.zero);
 			for (int i = 0; i < targets.Count; i++) {
 				bounds.Encapsulate (targets [i].position);
