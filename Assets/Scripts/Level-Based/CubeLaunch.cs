@@ -14,9 +14,8 @@ public class CubeLaunch : MonoBehaviour {
 	// Has the cube been launched yet?
 	private bool launched = false;
 
-	// A specific number used to determine how long until the official "Start" of the match.
-	// TODO: Find a real value for this because right now it's arbitrary. Maybe turn this into a coRoutine?
-	private int countdown = 200;
+	// A multiplier for turning speed.
+	private const int turnSpeed = 50;
 
 	// The camera game object. Used to assign the focus on them.
 	private GameObject cam;
@@ -24,31 +23,32 @@ public class CubeLaunch : MonoBehaviour {
 	// Camera Controller script on the camera
 	private CameraController cameraCont;
 
+
 	void Start() {
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
 		cameraCont = cam.GetComponent<CameraController> ();
-		//if (cube != null) {
-			cameraCont.targets.Add (cube.transform);
-		//}
+		cameraCont.targets.Add (cube.transform);
+
+		// Begin the countdown as soon as the screen renders!
+		StartCoroutine (countdown ());
 	}
 
 	// Update is called once per frame
 	void Update () {
 		// While the countdown isn't over, you can move it!
-		if (countdown > 0) {
-			countdown--;
+		if (!launched) {
 
 			// Input from player to move the launcher direction, clamped at certain angles.
-			axis.z += Input.GetAxis ("Horizontal");
+			axis.z += (Input.GetAxis ("Horizontal") * Time.deltaTime * turnSpeed);
 			axis.z = Mathf.Clamp (axis.z, -45, 45);
-			axis.x += Input.GetAxis ("Vertical");
+			axis.x += (Input.GetAxis ("Vertical") * Time.deltaTime * turnSpeed);
 			axis.x = Mathf.Clamp (axis.x, -45, 45);
 
 			// Rotate said angles.
 			transform.localEulerAngles = new Vector3 (axis.x, transform.localEulerAngles.y, -axis.z);
 		}
 
-		// Launch the cube.
+		/*// Launch the cube.
 		if (countdown == 0 && !launched) {
 			launched = true;
 
@@ -60,7 +60,26 @@ public class CubeLaunch : MonoBehaviour {
 			cube.GetComponent<Rigidbody> ().useGravity = true;
 			cube.GetComponent<SpawnCube> ().enabled = true;
 			StartCoroutine (destroyIt());
-		}
+		}*/
+	}
+
+	IEnumerator countdown() {
+
+		// Launch timer based on song.
+		yield return new WaitForSeconds (6.5f);
+
+		// Launches cube, and all is well in the world.
+		launched = true;
+
+		cameraCont.targets.Clear ();
+
+		// Un-parent the cube, and launch it off on it's own. They grow up so fast.
+		cube.transform.parent = null;
+		cube.GetComponent<Rigidbody> ().AddRelativeForce(Vector3.up * 5000);
+		cube.GetComponent<Rigidbody> ().useGravity = true;
+		cube.GetComponent<SpawnCube> ().enabled = true;
+		StartCoroutine (destroyIt());
+
 	}
 
 	// Destroy the launcher after the cubes are sent flying.

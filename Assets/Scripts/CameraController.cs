@@ -20,10 +20,16 @@ public class CameraController : MonoBehaviour {
 	private Vector3 velocity;
 	private Camera cam;
 
+	// Countdown music to play.
+	public AudioSource audioCountdown;
+
+
 	void Start() {
 		cam = GetComponent<Camera> ();
 
 		Application.targetFrameRate = 60;
+	
+		audioCountdown.Play ();
 	}
 
 	// Late Update for camera movement to calcualte this post other objects movement.
