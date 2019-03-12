@@ -63,6 +63,9 @@ public class KillScreen : MonoBehaviour {
 	}
 
 	IEnumerator goAway() {
+
+
+
 		yield return new WaitForSeconds (3);
 
 		Time.timeScale = 1;

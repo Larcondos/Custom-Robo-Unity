@@ -23,11 +23,6 @@ public class CameraController : MonoBehaviour {
 	// Countdown music to play.
 	public AudioSource countdownSource;
 	public AudioSource backgroundSource;
-	public AudioSource victorySource;
-
-	public AudioClip countdownAudio;
-	public AudioClip backgroundMusic;
-	public AudioClip victoryAudio;
 
 
 	void Start() {
