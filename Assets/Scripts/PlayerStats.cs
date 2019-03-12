@@ -76,7 +76,7 @@ public class PlayerStats : MonoBehaviour {
 			stateTextTimer--;
 		} 
 		if ((!downed || !invincible) && stateTextTimer <= 0) {
-			print ("I'm resetting.");
+			//print ("I'm resetting.");
 			stateText.text = "";
 		}
 
@@ -231,6 +231,9 @@ public class PlayerStats : MonoBehaviour {
 		// Disable the unneeded. Don't want them popping up again.
 		// TODO: Disable all of the status bar stuff.
 
+		// TODO: Fix this so the PLAYER isnt always winner.
+		GameObject enemy = GameObject.FindGameObjectWithTag("Player");
+		enemy.AddComponent<ZoomInOnWinner> ();
 
 		dead = true;
 		Instantiate (killScreenObj);

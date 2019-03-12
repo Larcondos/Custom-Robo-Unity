@@ -3,7 +3,10 @@ guid: 291a94022a30b4442b5b24b4be27dd67
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - victoryAudio: {instanceID: 0}
+  - vic: {fileID: 8300000, guid: 46e3bc717832d3541b9ae4afde58f959, type: 3}
+  - cam: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

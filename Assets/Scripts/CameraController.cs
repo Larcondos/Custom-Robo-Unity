@@ -24,6 +24,9 @@ public class CameraController : MonoBehaviour {
 	public AudioSource countdownSource;
 	public AudioSource backgroundSource;
 
+	private bool gameWon;
+	private GameObject winner;
+
 
 	void Start() {
 		cam = GetComponent<Camera> ();
@@ -43,7 +46,12 @@ public class CameraController : MonoBehaviour {
 
 		Move ();
 		Zoom ();
+	
+		if (gameWon) {
+			transform.LookAt (winner.transform);
 		}
+	
+	}
 
 	// Move to the point between the targets.
 	void Move() {
@@ -117,6 +125,11 @@ public class CameraController : MonoBehaviour {
 
 		backgroundSource.Play ();
 
+	}
+
+	public void winnerMode(GameObject g) {
+		gameWon = true;
+		winner = g;
 	}
 
 
