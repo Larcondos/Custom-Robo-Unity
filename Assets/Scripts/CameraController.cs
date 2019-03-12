@@ -21,7 +21,13 @@ public class CameraController : MonoBehaviour {
 	private Camera cam;
 
 	// Countdown music to play.
-	public AudioSource audioCountdown;
+	public AudioSource countdownSource;
+	public AudioSource backgroundSource;
+	public AudioSource victorySource;
+
+	public AudioClip countdownAudio;
+	public AudioClip backgroundMusic;
+	public AudioClip victoryAudio;
 
 
 	void Start() {
@@ -29,7 +35,9 @@ public class CameraController : MonoBehaviour {
 
 		Application.targetFrameRate = 60;
 	
-		audioCountdown.Play ();
+		countdownSource.Play ();
+
+		StartCoroutine (waitForStartMusic ());
 	}
 
 	// Late Update for camera movement to calcualte this post other objects movement.
@@ -104,6 +112,15 @@ public class CameraController : MonoBehaviour {
 		}
 
 		return getEncapsulatingBounds ().center;
+
+	}
+
+	IEnumerator waitForStartMusic() {
+
+		// The music starts a little before the countdown music ends.
+		yield return new WaitForSeconds (6);
+
+		backgroundSource.Play ();
 
 	}
 

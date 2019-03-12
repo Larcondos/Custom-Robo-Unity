@@ -15,12 +15,9 @@ public class KillScreen : MonoBehaviour {
 	int KOCounter = 0;
 	int KO2Counter = 0;
 
-	// Lets the fully complete animation screen stay for a little bit, but then goes away.
-	private float goAwayTimer;
-
 	// Use this for initialization
 	void Start () {
-		
+		StartCoroutine(goAway ());
 	}
 	
 	// Update is called once per frame
@@ -28,11 +25,6 @@ public class KillScreen : MonoBehaviour {
 		overlayFiller ();
 		KOSlider ();
 
-		// Once the timer has gone up to 200 (reasonable enough time here), the game goes back to a normal state to allow the victory stuff to play.
-		if (goAwayTimer > 200) {
-			Time.timeScale = 1;
-			Destroy (this.gameObject);
-		}
 	}
 
 	void KOSlider() {
@@ -65,12 +57,16 @@ public class KillScreen : MonoBehaviour {
 		if (overlayFillAmt < 1) {
 			overlayFillAmt += 0.03f;
 		}
-		if (overlayFillAmt >= 1 || goAwayTimer > 0) {
-			goAwayTimer++;
-		}
 
 		blackOverlay.fillAmount = overlayFillAmt;
 		blackOverlay2.fillAmount = overlayFillAmt;
+	}
+
+	IEnumerator goAway() {
+		yield return new WaitForSeconds (3);
+
+		Time.timeScale = 1;
+		Destroy (this.gameObject);
 	}
 
 
