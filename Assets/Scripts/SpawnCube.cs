@@ -124,7 +124,7 @@ public class SpawnCube : MonoBehaviour {
 			//player.GetComponent<SphereCollider> ().enabled = true;
 			//player.GetComponent<PlayerController> ().enabled = true;
 
-			Instantiate (player, transform.position + Vector3.up, Quaternion.identity);
+			Instantiate (player, transform.position + Vector3.up, new Quaternion(0,180,0,0));
 
 			cameraCont.targets.Add (player.transform);
 			cameraCont.targets.Remove(this.gameObject.transform);

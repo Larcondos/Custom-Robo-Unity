@@ -34,6 +34,7 @@ public class ZoomInOnWinner : MonoBehaviour {
 		victoryAudio.clip = vic;
 
 		// TODO: Lower the other audios once a winner is picked.
+		// TODO: Lock player movement.
 
 		yield return new WaitForSeconds (1.5f);
 		victoryAudio.Play ();
