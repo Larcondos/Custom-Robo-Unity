@@ -85,14 +85,18 @@ public class BulletPath : MonoBehaviour {
 		} else if (col.CompareTag ("Destructible")) {
 			col.gameObject.GetComponent<DestructibleCube> ().doDamage (ATK);
 			destroyMe ();
-		} else if (!col.CompareTag("Bomb Particle") || !col.CompareTag("Bomb")) {
+		} else if (!col.CompareTag ("Bomb Particle") || !col.CompareTag ("Bomb")) {
 			// Nothing happens on these tags, this is the ignore zone. Code is being weird.
 
 		} else {
 			// If we hit anything else, the bullet gets destroyed.
-			destroyMe();
+			destroyMe ();
 		}
+	}
 
+	// Anything else we hit will destroy the bullets. Tragic, I know.
+	void OnCollisionEnter(Collision col) {
+		destroyMe ();
 	}
 
 	// This function is called by anything that needs to know how long it takes to reload this bullet type.
