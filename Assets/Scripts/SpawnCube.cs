@@ -41,6 +41,9 @@ public class SpawnCube : MonoBehaviour {
 	// The player object to spawn.
 	public GameObject player;
 
+	// For the second player, they get seperate controls. Sorta.
+	private bool otherController;
+
 	// Use this for initialization
 	void Start () {
 		randNum = Random.Range (1, 7);
@@ -50,6 +53,10 @@ public class SpawnCube : MonoBehaviour {
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
 		cameraCont = cam.GetComponent<CameraController> ();
 		cameraCont.targets.Add (this.gameObject.transform);
+
+		if (this.gameObject.name == "P2 Launcher")
+			otherController = true;
+
 	}
 
 	// Update is called once per frame
@@ -75,30 +82,62 @@ public class SpawnCube : MonoBehaviour {
 	// If you press any of these buttons, you get to respawn faster!
 	void getMash() {
 
-		if (Input.GetButtonDown ("Jump")) {
-			buttonsMashed++;
-		}
+		// P1
+		if (!otherController) {
+			if (Input.GetButtonDown ("Jump")) {
+				buttonsMashed++;
+			}
 
-		if (Input.GetButtonDown ("GunFire")) {
-			buttonsMashed++;		
-		}
+			if (Input.GetButtonDown ("GunFire")) {
+				buttonsMashed++;		
+			}
 
-		if (Input.GetButtonDown ("PodFire")) {
-			buttonsMashed++;		
-		}
+			if (Input.GetButtonDown ("PodFire")) {
+				buttonsMashed++;		
+			}
 
 
-		if (Input.GetButtonDown ("ChargeAttack")) {
-			buttonsMashed++;		
-		}
+			if (Input.GetButtonDown ("ChargeAttack")) {
+				buttonsMashed++;		
+			}
 		
 
-		if (Input.GetButtonDown ("BombFire")) {
-			buttonsMashed++;
+			if (Input.GetButtonDown ("BombFire")) {
+				buttonsMashed++;
+			}
+
+			if (Input.GetButtonDown ("Pause")) {
+				buttonsMashed++;		
+			}
 		}
 
-		if (Input.GetButtonDown ("Pause")) {
-			buttonsMashed++;		
+		//P2
+		if (otherController) {
+			if (Input.GetButtonDown ("Jump2")) {
+				buttonsMashed++;
+			}
+
+			if (Input.GetButtonDown ("GunFire2")) {
+				buttonsMashed++;		
+			}
+
+			if (Input.GetButtonDown ("PodFire2")) {
+				buttonsMashed++;		
+			}
+
+
+			if (Input.GetButtonDown ("ChargeAttack2")) {
+				buttonsMashed++;		
+			}
+
+
+			if (Input.GetButtonDown ("BombFire2")) {
+				buttonsMashed++;
+			}
+
+			if (Input.GetButtonDown ("Pause2")) {
+				buttonsMashed++;		
+			}
 		}
 	}
 		

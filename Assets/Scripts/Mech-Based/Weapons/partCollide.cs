@@ -13,7 +13,7 @@ public class partCollide : MonoBehaviour {
 
 	// Once it collides, deal damage. Each particle system should only affect a player once.
 	void OnParticleCollision(GameObject col) {
-		if ((col.CompareTag("Player") || col.CompareTag("Enemy")) && !didDamage) {
+		if ((col.CompareTag("Player") || col.CompareTag("Player2")) && !didDamage) {
 			didDamage = true;
 			col.gameObject.GetComponent<PlayerStats>().doDamage(ATK, DWN);
 		}

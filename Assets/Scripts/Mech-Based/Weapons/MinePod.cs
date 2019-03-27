@@ -62,7 +62,8 @@ public class MinePod : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
-		if ((col.gameObject.CompareTag ("Enemy"))) {
+		if (col.gameObject.tag != "Floor" && col.gameObject.tag != "Wall") {
+			print (col.gameObject.tag);
 			explode ();
 		}
 	}
@@ -134,5 +135,9 @@ public class MinePod : MonoBehaviour {
 		timer *= 0.9f;
 
 		StartCoroutine (Flash ());
+	}
+
+	public void setTarget() {
+
 	}
 }

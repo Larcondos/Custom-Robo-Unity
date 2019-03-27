@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.5645241, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -339,7 +339,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &192929082
 GameObject:
@@ -2292,7 +2292,7 @@ Transform:
   - {fileID: 1559456701}
   - {fileID: 1362606857}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1145130849
 GameObject:
@@ -2418,7 +2418,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4567296474324870, guid: 429ab4cac3f3bd643bc05c46188cb86f, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114671374554387004, guid: 429ab4cac3f3bd643bc05c46188cb86f,
+        type: 2}
+      propertyPath: maxZoom
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 429ab4cac3f3bd643bc05c46188cb86f, type: 2}
@@ -3415,7 +3420,7 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1871398493397130, guid: 0812941f904a200478a8c86dd7472900,
+      objectReference: {fileID: 1197723146429706, guid: e861ad20d5fa1a24eaaa42c09c418edb,
         type: 2}
     - target: {fileID: 54365466406051272, guid: 5d06ff3abccc7bc47854d3e641642cba,
         type: 2}
@@ -3430,6 +3435,10 @@ Prefab:
     - target: {fileID: 1237678710809216, guid: 5d06ff3abccc7bc47854d3e641642cba, type: 2}
       propertyPath: m_TagString
       value: Respawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237678710809216, guid: 5d06ff3abccc7bc47854d3e641642cba, type: 2}
+      propertyPath: m_Name
+      value: P1 SpawnCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d06ff3abccc7bc47854d3e641642cba, type: 2}
@@ -3752,7 +3761,7 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1197723146429706, guid: e861ad20d5fa1a24eaaa42c09c418edb,
+      objectReference: {fileID: 1050914606454834, guid: b29e4adfc5e3c2c41bb924cec93325a3,
         type: 2}
     - target: {fileID: 54365466406051272, guid: 5d06ff3abccc7bc47854d3e641642cba,
         type: 2}
@@ -3767,6 +3776,10 @@ Prefab:
     - target: {fileID: 1237678710809216, guid: 5d06ff3abccc7bc47854d3e641642cba, type: 2}
       propertyPath: m_TagString
       value: Respawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237678710809216, guid: 5d06ff3abccc7bc47854d3e641642cba, type: 2}
+      propertyPath: m_Name
+      value: P2 SpawnCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d06ff3abccc7bc47854d3e641642cba, type: 2}
@@ -3784,7 +3797,7 @@ GameObject:
   - component: {fileID: 1674870650}
   - component: {fileID: 1674870649}
   m_Layer: 0
-  m_Name: Launcher
+  m_Name: P1 Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3850,7 +3863,7 @@ Transform:
   - {fileID: 1407703928}
   - {fileID: 64586903}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1735571882
 GameObject:
@@ -4069,6 +4082,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4942349200106950, guid: 5d06ff3abccc7bc47854d3e641642cba,
     type: 2}
   m_PrefabInternal: {fileID: 1607403798}
+--- !u!1 &2002434134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002434135}
+  - component: {fileID: 2002434136}
+  m_Layer: 0
+  m_Name: Input Listener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002434135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002434134}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.44523463, y: -9.238262, z: 26.287188}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2002434136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002434134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b182e02964d9144a33bffb454ad688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2019310819
 GameObject:
   m_ObjectHideFlags: 0
@@ -4082,7 +4135,7 @@ GameObject:
   - component: {fileID: 2019310821}
   - component: {fileID: 2019310820}
   m_Layer: 0
-  m_Name: Launcher (1)
+  m_Name: P2 Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4148,7 +4201,7 @@ Transform:
   - {fileID: 2120698622}
   - {fileID: 1887959270}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2120698621
 GameObject:

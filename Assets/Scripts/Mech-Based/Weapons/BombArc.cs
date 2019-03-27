@@ -39,7 +39,7 @@ public class BombArc : MonoBehaviour {
 
 		// Bomb rotation calculation.
 		now = Time.timeSinceLevelLoad - startLife;
-
+		print (now);
 		// When the bomb has reached it's destination, explode.
 		if (!paraC.Animation) {
 			Explode ();
@@ -74,8 +74,8 @@ public class BombArc : MonoBehaviour {
 	}
 		
 	void OnTriggerEnter(Collider col) {
-		// On Contact with an enemy or wall, explode.
-		if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Wall" || col.gameObject.tag == "Destructible") {
+		// On Contact with an enemy or wall, explode. Also the bomb takes .2 seconds to arm so it doesn't blow up on yourself ;)
+		if ((col.gameObject.tag == "Player" || col.gameObject.tag == "Wall" || col.gameObject.tag == "Destructible" || col.gameObject.tag == "Player2") && now > 0.2f) {
 			Explode ();
 		}
 	}

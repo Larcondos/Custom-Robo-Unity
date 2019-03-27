@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+
+
+
 	#region Button Mapping
 	/*
 
@@ -79,7 +82,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 		if (enemy == null) {
-			enemy = GameObject.FindGameObjectWithTag ("Enemy");
+			enemy = GameObject.FindGameObjectWithTag ("Player2");
 		}
 
 		// If this is still null, it means the actual enemy has not yet spawned!
@@ -155,7 +158,8 @@ public class PlayerController : MonoBehaviour {
 	} 
 
 	void fireGun() {
-		Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
+		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
+		v.GetComponent<BulletPath> ().setTarget (enemy);
 	}
 
 	#region Bombs

@@ -14,6 +14,7 @@ TagManager:
   - Bomb
   - Bomb Particle
   - Pod
+  - Player2
   layers:
   - Default
   - TransparentFX

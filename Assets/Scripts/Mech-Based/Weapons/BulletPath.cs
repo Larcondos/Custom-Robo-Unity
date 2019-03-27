@@ -79,7 +79,7 @@ public class BulletPath : MonoBehaviour {
 
 	// The collision code, called when the bullet collides with stuff.
 	void OnTriggerEnter(Collider col) {
-		if (col.CompareTag ("Enemy")) {
+		if (col.CompareTag ("Player") || col.CompareTag ("Player2")) {
 			col.gameObject.GetComponent<PlayerStats> ().doDamage (ATK, DWN);
 			destroyMe ();
 		} else if (col.CompareTag ("Destructible")) {
@@ -121,6 +121,11 @@ public class BulletPath : MonoBehaviour {
 		impactParticle.SetActive (true);
 
 		Destroy (this.gameObject);
+	}
+
+	public void setTarget(GameObject g) {
+		target = g;
+		transform.LookAt (target.transform);
 	}
 
 }
