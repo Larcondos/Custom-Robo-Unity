@@ -7,6 +7,9 @@ public class BulletPath : MonoBehaviour {
 	// The transform for the target location to go to.
 	private GameObject target;
 
+	// The gameobject that spawned this bullet. Used to the bullet doesn't hurt it's parent.
+	private GameObject parent;
+
 	// Rigibody for the bullet, used in angling and collision detection.
 	private Rigidbody rb;
 
@@ -123,9 +126,11 @@ public class BulletPath : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 
-	public void setTarget(GameObject g) {
-		target = g;
+	public void setTarget(GameObject inTarget, GameObject inParent) {
+		target = inTarget;
 		transform.LookAt (target.transform);
+		parent = inParent;
+		Physics.IgnoreCollision (GetComponent<CapsuleCollider>(), parent.GetComponent<CapsuleCollider>());
 	}
 
 }

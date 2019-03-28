@@ -70,27 +70,39 @@ public class PlayerController : MonoBehaviour {
 	// Camera Controller script on the camera
 	private CameraController cameraCont;
 
+	// Determines if this is for player one, or two.
+	private bool isPlayerOne;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
 		cameraCont = cam.GetComponent<CameraController> ();
 		cameraCont.targets.Add (this.gameObject.transform);
+		if (this.gameObject.tag == "Player") {
+			isPlayerOne = true;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (enemy == null) {
+		if (enemy == null && isPlayerOne) {
 			enemy = GameObject.FindGameObjectWithTag ("Player2");
-		}
+		} else if (enemy == null && !isPlayerOne)
+			enemy = GameObject.FindGameObjectWithTag ("Player");
 
 		// If this is still null, it means the actual enemy has not yet spawned!
 		if (enemy == null) {
 			enemy = GameObject.FindGameObjectWithTag ("Respawn");
 		}
-
-		getInput ();
+		if (isPlayerOne) {
+			getInput ();
+		} 
+		// There is a separate "getInput" for the player two, using a different control layout.
+		else {
+			getInput2 ();
+		}
 
 		 //Debug Block for inital mappings
 		for (int i = 0;i < 20; i++) {
@@ -157,9 +169,64 @@ public class PlayerController : MonoBehaviour {
 		}
 	} 
 
+
+	void getInput2() {
+		// If you're aiming a bomb you can't do anything else.
+		if (!aimingBomb) {
+			if (Input.GetAxis ("Horizontal2") != 0) {
+				transform.Translate (Input.GetAxis ("Horizontal") * Vector3.right * runSpeed * Time.deltaTime, Space.World);
+			}
+
+			if (Input.GetAxis ("Vertical2") != 0) {
+				transform.Translate (Input.GetAxis ("Vertical") * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
+			}
+
+			// Jumps the player.
+			// TODO: Needs to have limits on jumps.
+			// TODO: Air Dashing.
+			if (Input.GetButtonDown ("Jump2")) {
+				if (jumpCount < maxJumps) {
+					jump ();
+					jumpCount++;
+				}
+			}
+
+			// Fires the gun.
+			if (Input.GetButtonDown ("GunFire2")) {
+				fireGun ();
+			}
+
+			// TODO: Will fire the pod weapon.
+			if (Input.GetButtonDown ("PodFire2")) {
+				firePod ();
+			}
+
+			// TODO: Will launch a charge attack.
+			if (Input.GetButtonDown ("ChargeAttack2")) {
+				chargeAttack ();
+			}
+		}
+
+		// Begins aiming of the bomb whilst held down.
+		if (Input.GetButton ("BombFire2")) {
+			aimBomb ();
+		}
+
+		// Launches the bomb when the trigger is lifted.
+		if (Input.GetButtonUp ("BombFire2")) {
+			fireBomb ();
+		}
+
+		// TODO: Will pause the game.
+		if (Input.GetButtonDown ("Pause2")) {
+			pauseGame ();
+		}
+	} 
+
+
 	void fireGun() {
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
-		v.GetComponent<BulletPath> ().setTarget (enemy);
+		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
 	}
 
 	#region Bombs
@@ -227,9 +294,11 @@ public class PlayerController : MonoBehaviour {
 	void pauseGame() {
 		if (Time.timeScale == 0) {
 			Time.timeScale = 1;
+			// TODO: Remove the pause screen.
 		}
 		else {
 			Time.timeScale = 0;
+			// TODO: Add a pause screen.
 		}
 	}
 

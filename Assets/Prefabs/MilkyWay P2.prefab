@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 114514815926232998}
   - component: {fileID: 54884306607304710}
   - component: {fileID: 136061914492555756}
-  - component: {fileID: 114055522228159746}
+  - component: {fileID: 114601407925300926}
   m_Layer: 0
   m_Name: MilkyWay P2
   m_TagString: Player2
@@ -1066,28 +1066,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114055522228159746
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1050914606454834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 251713d89bf182f4281cc2dcb9c7e3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  bombMarker: {fileID: 1482622625717936, guid: ad069eb9c740d0848938a2cf7187474a, type: 2}
-  bomb: {fileID: 1291802845187110, guid: 469c91a1f6b03e245b79571fcd0b821b, type: 2}
-  parabola: {fileID: 1758202923051786, guid: 9773c04a8b855774fb6e587566f8eeaf, type: 2}
-  bullet: {fileID: 1019038880388508, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
-  maxJumps: 2
-  pod: {fileID: 1773253911103284, guid: 657bdc793e9085e4f9e2f0c926245a7a, type: 2}
-  backPart: {fileID: 1625608603714064}
-  gunPart: {fileID: 1731025940686742}
-  bombPart: {fileID: 1887839555785332}
-  legsPart: {fileID: 1247847692891478}
 --- !u!114 &114137064849714496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1359,6 +1337,28 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114601407925300926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050914606454834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca8ca5ae18244a42a24c2fa37540e9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  bombMarker: {fileID: 1482622625717936, guid: ad069eb9c740d0848938a2cf7187474a, type: 2}
+  bomb: {fileID: 1291802845187110, guid: 469c91a1f6b03e245b79571fcd0b821b, type: 2}
+  parabola: {fileID: 1758202923051786, guid: 9773c04a8b855774fb6e587566f8eeaf, type: 2}
+  bullet: {fileID: 1019038880388508, guid: bd46fed2a6613214f964873a0bd0236b, type: 2}
+  maxJumps: 2
+  pod: {fileID: 1773253911103284, guid: 657bdc793e9085e4f9e2f0c926245a7a, type: 2}
+  backPart: {fileID: 1625608603714064}
+  gunPart: {fileID: 1731025940686742}
+  bombPart: {fileID: 1887839555785332}
+  legsPart: {fileID: 1247847692891478}
 --- !u!114 &114725923774745596
 MonoBehaviour:
   m_ObjectHideFlags: 1

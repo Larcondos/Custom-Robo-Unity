@@ -195,7 +195,7 @@ public class OtherPlayerController : MonoBehaviour {
 
 	void fireGun() {
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
-		v.GetComponent<BulletPath> ().setTarget (enemy);
+		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
 	}
 
 	#region Bombs
