@@ -55,6 +55,15 @@ public class PlayerController : MonoBehaviour {
 	// Is a bomb being aimed right now? (Is R button down?)
 	private bool aimingBomb = false;
 
+	#region Cooldowns
+	// A series of timers for shooting.
+	private float gunFireCooldown, bombFireCooldown, podFireCooldown, chargeFireCooldown;
+
+	// Booleans to tell if they are actively cooling
+	private bool bombCooling, gunCooling, podCooling, chargeCooling;
+
+	#endregion Cooldowns
+
 	// GameObject for the Pod
 	public GameObject pod;
 
@@ -111,6 +120,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+		cooldownTimer ();
 
 		
 	}
@@ -138,28 +148,28 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			// Fires the gun.
-			if (Input.GetButtonDown ("GunFire")) {
+			if (Input.GetButtonDown ("GunFire") && gunFireCooldown == 0) {
 				fireGun ();
 			}
 
 			// TODO: Will fire the pod weapon.
-			if (Input.GetButtonDown ("PodFire")) {
+			if (Input.GetButtonDown ("PodFire") && podFireCooldown == 0) {
 				firePod ();
 			}
 			
 			// TODO: Will launch a charge attack.
-			if (Input.GetButtonDown ("ChargeAttack")) {
+			if (Input.GetButtonDown ("ChargeAttack") && chargeFireCooldown == 0) {
 				chargeAttack ();
 			}
 		}
 
 		// Begins aiming of the bomb whilst held down.
-		if (Input.GetButton ("BombFire")) {
+		if (Input.GetButton ("BombFire") && bombFireCooldown == 0) {
 			aimBomb ();
 		}
 
 		// Launches the bomb when the trigger is lifted.
-		if (Input.GetButtonUp ("BombFire")) {
+		if (Input.GetButtonUp ("BombFire") && bombFireCooldown == 0) {
 			fireBomb ();
 		}
 
@@ -192,28 +202,28 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			// Fires the gun.
-			if (Input.GetButtonDown ("GunFire2")) {
+			if (Input.GetButtonDown ("GunFire2") && gunFireCooldown == 0) {
 				fireGun ();
 			}
 
 			// TODO: Will fire the pod weapon.
-			if (Input.GetButtonDown ("PodFire2")) {
+			if (Input.GetButtonDown ("PodFire2") && podFireCooldown == 0) {
 				firePod ();
 			}
 
 			// TODO: Will launch a charge attack.
-			if (Input.GetButtonDown ("ChargeAttack2")) {
+			if (Input.GetButtonDown ("ChargeAttack2") && chargeFireCooldown == 0) {
 				chargeAttack ();
 			}
 		}
 
 		// Begins aiming of the bomb whilst held down.
-		if (Input.GetButton ("BombFire2")) {
+		if (Input.GetButton ("BombFire2") && bombFireCooldown) {
 			aimBomb ();
 		}
 
 		// Launches the bomb when the trigger is lifted.
-		if (Input.GetButtonUp ("BombFire2")) {
+		if (Input.GetButtonUp ("BombFire2") && bombFireCooldown) {
 			fireBomb ();
 		}
 
@@ -227,6 +237,8 @@ public class PlayerController : MonoBehaviour {
 	void fireGun() {
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+		gunFireCooldown = v.GetComponent<BulletPath> ().RLD;
+		print (gunFireCooldown);
 	}
 
 	#region Bombs
@@ -308,6 +320,50 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	IEnumerator gunTimerCooldown(float x) {
+		gunCooling = true;
+		yield return new WaitForSeconds (x);
+
+		gunCooling = false;
+		gunFireCooldown = 0;
+	}
+
+	IEnumerator bombTimerCooldown(float x) {
+		bombCooling = true;
+
+		yield return new WaitForSeconds (x);
+		bombCooling = false;
+		bombFireCooldown = 0;
+	}
+
+	IEnumerator podTimerCooldown(float x) {
+		podCooling = true;
+		yield return new WaitForSeconds (x);
+
+		podCooling = false;
+		podFireCooldown = 0;
+	}
+
+	IEnumerator chargeTimerCooldown(float x) {
+		chargeCooling = true;
+		yield return new WaitForSeconds (x);
+
+		chargeCooling = false;
+		chargeFireCooldown = 0;
+	}
+
+
+
+	void cooldownTimer() {
+		if (bombFireCooldown > 0 && !bombCooling)
+			StartCoroutine (bombTimerCooldown (bombFireCooldown));
+		if (gunFireCooldown > 0 && !gunCooling)
+			StartCoroutine (gunTimerCooldown (gunFireCooldown));
+		if (podFireCooldown > 0 && !podCooling)	
+			StartCoroutine (podTimerCooldown (podFireCooldown));
+		if (chargeFireCooldown > 0 && !chargeCooling)
+			StartCoroutine (chargeTimerCooldown (chargeFireCooldown));
+	}
 
 }
 

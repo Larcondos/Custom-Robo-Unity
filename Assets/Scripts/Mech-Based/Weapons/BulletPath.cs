@@ -46,8 +46,6 @@ public class BulletPath : MonoBehaviour {
 		// Always move forward.
 		rb.velocity = transform.forward * SPD;
 
-		print (target);
-
 		if (target == null) {
 
 			if (GameObject.FindGameObjectWithTag ("Respawn") != null) {

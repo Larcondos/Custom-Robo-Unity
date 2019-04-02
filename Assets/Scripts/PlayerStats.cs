@@ -83,6 +83,12 @@ public class PlayerStats : MonoBehaviour {
 		if (HP <= 0 && !dead)
 			Die();
 
+		if (downed) {
+			this.gameObject.GetComponent<PlayerController> ().enabled = false;
+		} else {
+			this.gameObject.GetComponent<PlayerController> ().enabled = true;
+		}
+
 
 	}
 

@@ -328,7 +328,7 @@ MonoBehaviour:
   SPD: 10
   HMG: 1
   DWN: 8
-  RLD: 10
+  RLD: 3
   RNG: 5
 --- !u!136 &136907776362261908
 CapsuleCollider:

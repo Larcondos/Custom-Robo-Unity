@@ -36,9 +36,9 @@ GameObject:
   - component: {fileID: 4524369191094208}
   - component: {fileID: 95682705286672530}
   - component: {fileID: 114514815926232998}
+  - component: {fileID: 114601407925300926}
   - component: {fileID: 54884306607304710}
   - component: {fileID: 136061914492555756}
-  - component: {fileID: 114601407925300926}
   m_Layer: 0
   m_Name: MilkyWay P2
   m_TagString: Player2

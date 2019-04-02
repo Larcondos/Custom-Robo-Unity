@@ -39,7 +39,7 @@ public class BombArc : MonoBehaviour {
 
 		// Bomb rotation calculation.
 		now = Time.timeSinceLevelLoad - startLife;
-		print (now);
+//		print (now);
 		// When the bomb has reached it's destination, explode.
 		if (!paraC.Animation) {
 			Explode ();
