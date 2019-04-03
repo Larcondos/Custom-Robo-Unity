@@ -114,7 +114,7 @@ public class BulletPath : MonoBehaviour {
 	}
 
 	// Activate the bullets particles that it needs, and destroy it.
-	void destroyMe() {
+	public void destroyMe() {
 		explodeParticle.transform.SetParent (null);
 		impactParticle.transform.SetParent (null);
 
@@ -129,6 +129,10 @@ public class BulletPath : MonoBehaviour {
 		transform.LookAt (target.transform);
 		parent = inParent;
 		Physics.IgnoreCollision (GetComponent<CapsuleCollider>(), parent.GetComponent<CapsuleCollider>());
+	}
+
+	public GameObject getParent() {
+		return parent;
 	}
 
 }

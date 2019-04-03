@@ -218,12 +218,12 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		// Begins aiming of the bomb whilst held down.
-		if (Input.GetButton ("BombFire2") && bombFireCooldown) {
+		if (Input.GetButton ("BombFire2") && bombFireCooldown == 0) {
 			aimBomb ();
 		}
 
 		// Launches the bomb when the trigger is lifted.
-		if (Input.GetButtonUp ("BombFire2") && bombFireCooldown) {
+		if (Input.GetButtonUp ("BombFire2") && bombFireCooldown == 0) {
 			fireBomb ();
 		}
 

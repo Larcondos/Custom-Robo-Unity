@@ -85,6 +85,14 @@ public class PlayerStats : MonoBehaviour {
 
 		if (downed) {
 			this.gameObject.GetComponent<PlayerController> ().enabled = false;
+
+			// When you die, all of YOUR in air bullets explode. Neat feature. Balanced. 
+			GameObject[] bullets = GameObject.FindGameObjectsWithTag ("Bullet");
+			foreach (GameObject bul in bullets) {
+				if (bul.GetComponent<BulletPath> ().getParent () == this.gameObject) {
+					bul.GetComponent<BulletPath> ().destroyMe ();
+				}
+			}
 		} else {
 			this.gameObject.GetComponent<PlayerController> ().enabled = true;
 		}
