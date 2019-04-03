@@ -234,9 +234,22 @@ public class PlayerController : MonoBehaviour {
 	} 
 
 
-	void fireGun() {
+	IEnumerator fireGun() {
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+
+		yield return new WaitForSeconds (0.1f);
+
+		var v2 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
+		v2.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+
+		yield return new WaitForSeconds (0.1f);
+
+		var v3 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
+		v3.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+
+		yield return new WaitForSeconds (0.1f);
+
 		gunFireCooldown = v.GetComponent<BulletPath> ().RLD;
 		print (gunFireCooldown);
 	}
@@ -284,6 +297,9 @@ public class PlayerController : MonoBehaviour {
 		bomba.GetComponent<ParabolaController> ().ParabolaRoot = para;
 		Destroy (para);
 		Destroy (bombMarkerInstance);
+
+		// Set the bomb limit.
+		bombFireCooldown = 2;
 	}
 
 	#endregion Bombs
@@ -292,10 +308,12 @@ public class PlayerController : MonoBehaviour {
 	void firePod() {
 		var newPod = Instantiate (pod, backPart.transform.position, Quaternion.identity);
 		newPod.GetComponent<MinePod>().assignParent (this.gameObject);
+		podFireCooldown = 3f;
 	}
 
 	void chargeAttack() {
 		Debug.Log ("Charge Attack Activated");
+		chargeFireCooldown = 2f;
 	}
 
 	void jump() {
