@@ -216,6 +216,16 @@ public class PlayerStats : MonoBehaviour {
 
 	}
 
+	// Called when hit by a charge attack.
+	private void chargeHit() {
+		// Charge attack has specific damage values, and always knocks you down.
+		doDamage(100, 150);
+
+		// Also has a neat little effect where you get blasted up.
+		GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+
+	}
+
 	private IEnumerator deductKnockdown() {
 
 		//print (curKnockdown);
@@ -246,6 +256,7 @@ public class PlayerStats : MonoBehaviour {
 		// TODO: Disable all of the status bar stuff.
 
 		// TODO: Fix this so the PLAYER isnt always winner.
+		// Use the player stats to determine who has HP left
 		GameObject enemy = GameObject.FindGameObjectWithTag("Player");
 		enemy.AddComponent<ZoomInOnWinner> ();
 
@@ -255,6 +266,14 @@ public class PlayerStats : MonoBehaviour {
 		// Time slows down and the enemy is dramatically blown upwards.
 		Time.timeScale = 0.3f;
 		GetComponent<Rigidbody> ().AddForce (Vector3.up * 500);
+	}
+
+	void OnTriggerEnter(Collider col) {
+		if ((col.gameObject.tag == "Charge")) {
+			print ("Charge hit!");
+			print (col.gameObject.tag);
+			chargeHit ();
+		}
 	}
 
 }

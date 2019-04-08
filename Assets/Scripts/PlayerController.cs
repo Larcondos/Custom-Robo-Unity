@@ -64,6 +64,9 @@ public class PlayerController : MonoBehaviour {
 
 	#endregion Cooldowns
 
+	// The object that will act as a charge hitbox.
+	public GameObject chargeObject;
+
 	// GameObject for the Pod
 	public GameObject pod;
 
@@ -92,6 +95,8 @@ public class PlayerController : MonoBehaviour {
 			isPlayerOne = true;
 		}
 	}
+
+	// TODO: Make cubes hurtable.
 	
 	// Update is called once per frame
 	void Update () {
@@ -112,15 +117,6 @@ public class PlayerController : MonoBehaviour {
 		else {
 			getInput2 ();
 		}
-
-		 //Debug Block for inital mappings
-		for (int i = 0;i < 20; i++) {
-			if(Input.GetKeyDown("joystick 1 button "+i)){
-				print("joystick 1 button "+i);
-			}
-		}
-
-		print (gunFireCooldown);
 
 		cooldownTimer ();
 
@@ -161,7 +157,7 @@ public class PlayerController : MonoBehaviour {
 			
 			// TODO: Will launch a charge attack.
 			if (Input.GetButtonDown ("ChargeAttack") && chargeFireCooldown == 0) {
-				chargeAttack ();
+				StartCoroutine (chargeAttack ());
 			}
 		}
 
@@ -237,9 +233,11 @@ public class PlayerController : MonoBehaviour {
 
 
 	IEnumerator fireGun() {
+
+
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
-
+		gunFireCooldown = v.GetComponent<BulletPath> ().RLD;
 		print ("Shoot 1");
 
 		yield return new WaitForSeconds (0.1f);
@@ -258,7 +256,7 @@ public class PlayerController : MonoBehaviour {
 
 		yield return new WaitForSeconds (0.1f);
 
-		gunFireCooldown = v.GetComponent<BulletPath> ().RLD;
+
 		print (gunFireCooldown);
 	}
 
@@ -320,20 +318,25 @@ public class PlayerController : MonoBehaviour {
 		podFireCooldown = 3f;
 	}
 
-	void chargeAttack() {
+	IEnumerator chargeAttack() {
+
+		// Start the cooldown immediately.
+		chargeFireCooldown = 3f;
+
 		Debug.Log ("Charge Attack Activated");
-
-		// TODO: This.
-
-		// The charge attack hitbox is 3 standard units wide, 4 units tall, and 5 units forward.
+		// The charge attack hitbox is 2 standard units wide, 4 units tall, and 4 units forward.
 
 		// Charge up for 1 second before dashing with the attack. 
+		yield return new WaitForSeconds(1);
 
 		// Check if an enemy is within the hitbox RIGHT BEFORE MOVING
+		chargeObject.SetActive(true);
 
-		// Move forward 5 units.
+		yield return new WaitForSeconds (0.1f);
+		chargeObject.SetActive(false);
 
-		chargeFireCooldown = 2f;
+		// Move forward 4 units.
+		transform.position += (transform.forward * 4);
 	}
 
 	void jump() {
@@ -357,6 +360,14 @@ public class PlayerController : MonoBehaviour {
 			jumpCount = 0;
 		}
 	}
+
+	/*void OnTriggerEnter(Collider col) {
+		if ((col.gameObject.tag == "Player" || col.gameObject.tag == "Player2") && col.gameObject.tag != this.gameObject.tag) {
+			print ("Charge hit!");
+			print (col.gameObject.tag);
+			col.gameObject.GetComponent<PlayerStats> ().chargeHit ();
+		}
+	}*/
 
 	IEnumerator gunTimerCooldown(float x) {
 		gunCooling = true;
