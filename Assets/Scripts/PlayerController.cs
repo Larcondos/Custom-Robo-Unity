@@ -120,6 +120,8 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+		print (gunFireCooldown);
+
 		cooldownTimer ();
 
 		
@@ -149,7 +151,7 @@ public class PlayerController : MonoBehaviour {
 
 			// Fires the gun.
 			if (Input.GetButtonDown ("GunFire") && gunFireCooldown == 0) {
-				fireGun ();
+				StartCoroutine (fireGun ());
 			}
 
 			// TODO: Will fire the pod weapon.
@@ -238,15 +240,21 @@ public class PlayerController : MonoBehaviour {
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
 
+		print ("Shoot 1");
+
 		yield return new WaitForSeconds (0.1f);
 
 		var v2 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v2.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
 
+		print ("Shoot 1");
+
 		yield return new WaitForSeconds (0.1f);
 
 		var v3 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v3.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+
+		print ("Shoot 1");
 
 		yield return new WaitForSeconds (0.1f);
 
@@ -256,7 +264,7 @@ public class PlayerController : MonoBehaviour {
 
 	#region Bombs
 
-	// This script is used to place the location you wish your 'bomb' weapon to drop.
+	// This function is used to place the location you wish your 'bomb' weapon to drop.
 	// It also creates and manages the parabola for the bomb to follow.
 	void aimBomb() {
 		// On the first frame where this is called, it will instantiate a marker for the bomb's target area.
@@ -273,6 +281,7 @@ public class PlayerController : MonoBehaviour {
 			bombMarkerInstance.transform.Translate (Input.GetAxis ("Vertical") * Vector3.forward * 3 * Time.deltaTime);
 	}
 
+	// Instaciates a path for the bomb, and it's on it's way.
 	void fireBomb() {
 		// You are no longer aiming the bomb, so reset this variable.
 		aimingBomb = false;
@@ -313,6 +322,17 @@ public class PlayerController : MonoBehaviour {
 
 	void chargeAttack() {
 		Debug.Log ("Charge Attack Activated");
+
+		// TODO: This.
+
+		// The charge attack hitbox is 3 standard units wide, 4 units tall, and 5 units forward.
+
+		// Charge up for 1 second before dashing with the attack. 
+
+		// Check if an enemy is within the hitbox RIGHT BEFORE MOVING
+
+		// Move forward 5 units.
+
 		chargeFireCooldown = 2f;
 	}
 

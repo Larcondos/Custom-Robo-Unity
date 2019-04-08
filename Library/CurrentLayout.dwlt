@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 130
+  controlID: 172
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 84
+  controlID: 65
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -181,8 +181,8 @@ MonoBehaviour:
     y: 410
     width: 1007
     height: 537
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 107
+  controlID: 173
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 192}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 131
+  controlID: 139
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -442,14 +442,14 @@ MonoBehaviour:
     height: 389
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 1402.7021641835067
+  lastFramingTime: 685.1556467005236
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.44523463, y: -9.238262, z: 26.287188}
+    m_Target: {x: 23.712507, y: -10.467782, z: 0.1818409}
     speed: 2
-    m_Value: {x: -0.44523463, y: -9.238262, z: 26.287188}
+    m_Value: {x: 23.712507, y: -10.467782, z: 0.1818409}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -477,13 +477,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.19112457, y: 0.007635331, z: -0.0014871226, w: -0.981535}
+    m_Target: {x: -0.2857323, y: -0.49947846, z: 0.17882966, w: -0.7980591}
     speed: 2
-    m_Value: {x: -0.19112457, y: 0.0076353312, z: -0.0014871226, w: -0.981535}
+    m_Value: {x: -0.2857323, y: -0.49947846, z: 0.17882966, w: -0.7980591}
   m_Size:
-    m_Target: 55.445316
+    m_Target: 31.22026
     speed: 2
-    m_Value: 55.445316
+    m_Value: 31.22026
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -639,9 +639,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ac0a0000
-    m_LastClickedID: 0
-    m_ExpandedIDs: eef9ffff00000000
+    m_SelectedIDs: cca4ffff
+    m_LastClickedID: -23348
+    m_ExpandedIDs: ecb3ffffeeb3ffffe4fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -702,20 +702,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Bullets
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Bullets
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\larco\Documents\Unity Projects\Custom Robo
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 188}
-    m_SelectedIDs: 08310000
-    m_LastClickedID: 12552
-    m_ExpandedIDs: 00000000482c00005c2c00008e2e0000102f0000502f0000bc2f0000d62f0000dc2f0000283000001e31000000ca9a3b
+    m_SelectedIDs: e60e0000
+    m_LastClickedID: 3814
+    m_ExpandedIDs: 00000000ae090000c2090000220c0000b00c0000f80c00006e0d0000880d00008e0d0000e20d0000e60e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -743,7 +743,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: ce270000
     m_LastClickedID: 10190
-    m_ExpandedIDs: 00000000482c00005c2c00008e2e0000102f0000502f0000bc2f0000d62f0000dc2f0000283000001e310000
+    m_ExpandedIDs: 00000000ae090000c2090000220c0000b00c0000f80c00006e0d0000880d00008e0d0000e20d0000e60e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
