@@ -3781,6 +3781,21 @@ Prefab:
       propertyPath: m_Name
       value: P2 SpawnCube
       objectReference: {fileID: 0}
+    - target: {fileID: 23301213528205410, guid: 5d06ff3abccc7bc47854d3e641642cba,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 036d38ab053ca64428ded8e4fba49830, type: 2}
+    - target: {fileID: 23301213528205410, guid: 5d06ff3abccc7bc47854d3e641642cba,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 036d38ab053ca64428ded8e4fba49830, type: 2}
+    - target: {fileID: 114988347482800822, guid: 5d06ff3abccc7bc47854d3e641642cba,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d06ff3abccc7bc47854d3e641642cba, type: 2}
   m_IsPrefabAsset: 0

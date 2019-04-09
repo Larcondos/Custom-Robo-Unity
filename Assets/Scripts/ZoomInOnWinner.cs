@@ -10,18 +10,21 @@ public class ZoomInOnWinner : MonoBehaviour {
 	public AudioClip vic;
 
 	public GameObject cam;
-	private Vector3 camFinalLocation;
+	private CameraController camC;
+	private Transform camFinalLocation;
 
 	// Use this for initialization
 	void Start () {
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
-		camFinalLocation = this.transform.position + (Vector3.forward * 5) + (Vector3.up * 2);
+		camFinalLocation = (this.transform.position + (transform.forward * 5) + (transform.up * 2));
 		StartCoroutine (playVictory ());
+		camC = cam.GetComponent<CameraController> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		cam.GetComponent<CameraController> ().winnerMode(this.gameObject);
+		camC.winnerMode(this.gameObject, camFinalLocation);
+		cam.gameObject.transform = Vector3.MoveTowards (camC.camFinal);
 	}
 
 
@@ -34,7 +37,8 @@ public class ZoomInOnWinner : MonoBehaviour {
 		victoryAudio.clip = vic;
 
 		// TODO: Lower the other audios once a winner is picked.
-		// TODO: Lock player movement.
+		// Lock the players movement so they done.
+		gameObject.GetComponent<PlayerController>().enabled = false;
 
 		yield return new WaitForSeconds (1.5f);
 		victoryAudio.Play ();

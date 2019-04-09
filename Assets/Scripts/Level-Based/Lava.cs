@@ -6,7 +6,7 @@ public class Lava : MonoBehaviour {
 
 	// Lava will always do the same damage, and always knockdown a player instantly.
 	private const int DMG = 125;
-	private const int DWN = 100;
+	private const int DWN = 150;
 
 	void OnCollisionEnter(Collision col) {
 		if (col.collider.gameObject.tag == "Player") {
@@ -20,6 +20,7 @@ public class Lava : MonoBehaviour {
 
 		if (col.collider.gameObject.tag == "Spawn Cube") {
 			// TODO: Destroy cube, immediately do damage to player, put them in knockdown.
+			col.gameObject.GetComponent<SpawnCube>().openEarly(DMG , DWN);
 		}
 
 	}

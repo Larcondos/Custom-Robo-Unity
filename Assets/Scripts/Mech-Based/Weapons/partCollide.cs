@@ -5,7 +5,6 @@ using UnityEngine;
 public class partCollide : MonoBehaviour {
 
 	// Particles should only do damage once. Once they do damage, deactivate it so that that person doesn't get hurt again.
-	// TODO: Make it so it remembers WHO it hit, so it can hit again...
 	private bool didDamage = false;
 
 	// Inherited Dmg and knockback values.
@@ -17,6 +16,7 @@ public class partCollide : MonoBehaviour {
 			didDamage = true;
 			col.gameObject.GetComponent<PlayerStats>().doDamage(ATK, DWN);
 		}
+			
 	}
 
 	public void applyStats(int a, int d) {

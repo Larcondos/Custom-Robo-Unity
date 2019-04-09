@@ -8,6 +8,9 @@ public class CameraController : MonoBehaviour {
 	// A list of targets's transforms to follow
 	public List<Transform> targets;
 
+	// Once it's over, the camera goes here.
+	public Transform camFinal;
+
 	// An offset and smoothness factor for moving the camera.
 	public Vector3 offset;
 	public float smoothTime = 0.5f;
@@ -49,6 +52,7 @@ public class CameraController : MonoBehaviour {
 	
 		if (gameWon) {
 			transform.LookAt (winner.transform);
+			transform.position = Vector3.MoveTowards (transform.position, camFinal.position, 0.2f);
 		}
 	
 	}
@@ -127,9 +131,10 @@ public class CameraController : MonoBehaviour {
 
 	}
 
-	public void winnerMode(GameObject g) {
+	public void winnerMode(GameObject g, Transform t) {
 		gameWon = true;
 		winner = g;
+		camFinal = t;
 	}
 
 

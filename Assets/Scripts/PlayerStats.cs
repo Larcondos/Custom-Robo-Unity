@@ -24,11 +24,10 @@ public class PlayerStats : MonoBehaviour {
 	private int curKnockdown = 0;
 
 	// Timer for how long the stateText will be active.
-	// TODO: Lock Framerate and make this a constant.
-	private int stateTextTimer;
+	private float stateTextTimer;
 
 	// The default timer for the stateTextTimer to be set at.
-	private const int stateTextTimerResetConst = 200;
+	private const float stateTextTimerResetConst = 3;
 
 	// The white bar that represents a visual healthbar.
 	public Image HPBar;
@@ -62,6 +61,11 @@ public class PlayerStats : MonoBehaviour {
 	public Image knockdownMed;
 	public Image knockdownHigh;
 
+	// When you're invincible, have some pretty effects around you.
+	public GameObject sparkleParticles;
+
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -73,10 +77,14 @@ public class PlayerStats : MonoBehaviour {
 	void Update () {
 
 		if (stateTextTimer > 0) {
-			stateTextTimer--;
+			stateTextTimer -= Time.deltaTime;
 		} 
+
+		if (stateTextTimer < 0) {
+			stateTextTimer = 0;
+		}
+
 		if ((!downed || !invincible) && stateTextTimer <= 0) {
-			//print ("I'm resetting.");
 			stateText.text = "";
 		}
 
@@ -140,14 +148,16 @@ public class PlayerStats : MonoBehaviour {
 		curKnockdown = 0;
 		stateTextTimer = stateTextTimerResetConst;
 		UIUpdate ();
+	
 
-		//TODO: Make the mesh slightly transparent while invincible.
+		sparkleParticles.SetActive (true);
 
 		yield return new WaitForSeconds (3);
 
 		// Do a hard reset on the text timer once the invinicbility is over.
 		stateTextTimer = 0;
 		invincible = false;
+		sparkleParticles.SetActive (false);
 
 	}
 
@@ -252,16 +262,14 @@ public class PlayerStats : MonoBehaviour {
 	// This kills the player.
 	private void Die() {
 
-		// Disable the unneeded. Don't want them popping up again.
-		// TODO: Disable all of the status bar stuff.
-
-		// TODO: Fix this so the PLAYER isnt always winner.
-		// Use the player stats to determine who has HP left
-		GameObject enemy = GameObject.FindGameObjectWithTag("Player");
+		GameObject enemy = GetComponent<PlayerController>().enemy;
 		enemy.AddComponent<ZoomInOnWinner> ();
 
 		dead = true;
 		Instantiate (killScreenObj);
+
+		// You can't mvoe once you die.
+		this.gameObject.GetComponent<PlayerController> ().enabled = false;
 
 		// Time slows down and the enemy is dramatically blown upwards.
 		Time.timeScale = 0.3f;

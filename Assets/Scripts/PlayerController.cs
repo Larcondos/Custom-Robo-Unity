@@ -136,7 +136,6 @@ public class PlayerController : MonoBehaviour {
 			}
 
 		// Jumps the player.
-			// TODO: Needs to have limits on jumps.
 			// TODO: Air Dashing.
 			if (Input.GetButtonDown ("Jump")) {
 				if (jumpCount < maxJumps) {
@@ -150,12 +149,12 @@ public class PlayerController : MonoBehaviour {
 				StartCoroutine (fireGun ());
 			}
 
-			// TODO: Will fire the pod weapon.
+			// Fires the pod weapon.
 			if (Input.GetButtonDown ("PodFire") && podFireCooldown == 0) {
 				firePod ();
 			}
 			
-			// TODO: Will launch a charge attack.
+			// Launches a charge attack.
 			if (Input.GetButtonDown ("ChargeAttack") && chargeFireCooldown == 0) {
 				StartCoroutine (chargeAttack ());
 			}

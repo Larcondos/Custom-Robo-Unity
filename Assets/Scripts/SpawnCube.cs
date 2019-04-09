@@ -155,25 +155,36 @@ public class SpawnCube : MonoBehaviour {
 			StartCoroutine (tickDown ());
 			buttonsMashed = 0;
 		} else {
-			// Give the player everything they need to live.
-			//player.transform.SetParent (null);
-			//player.AddComponent<Rigidbody> ();
-			//player.GetComponent<Rigidbody> ().useGravity = true;
-			//player.GetComponent<MeshRenderer> ().enabled = true;
-			//player.GetComponent<SphereCollider> ().enabled = true;
-			//player.GetComponent<PlayerController> ().enabled = true;
-
-			Instantiate (player, transform.position + Vector3.up, new Quaternion(0,180,0,0));
-
-			cameraCont.targets.Add (player.transform);
-			cameraCont.targets.Remove(this.gameObject.transform);
-			// TODO: Access the camera's targets, and find out which one is empty now, and assigned this newly made player to it.
-			Destroy (this.gameObject);
+			// The player won't be hurt when they spawn normally.
+			spawnPlayer (0,0);
 		}
 	}
 
 	// This way if the cube launches straight up it doesn't register the one frame at peak as "sleeping".
 	void OnCollisionEnter(Collision col) {
-		touchedFloor = true;
+		if (col.gameObject.tag == "Floor" || col.gameObject.tag == "Destructible" || col.gameObject.tag == "Wall") {
+			touchedFloor = true;
+		} else {
+			// If you get shot as a cube, you take some base damage. Sorry, that's really how it be.
+			openEarly (50,15);
+		}
+	}
+
+	void spawnPlayer(int dmg, int down) {
+		Instantiate (player, transform.position + Vector3.up, new Quaternion(0,180,0,0));
+
+		cameraCont.targets.Add (player.transform);
+		cameraCont.targets.Remove(this.gameObject.transform);
+		Destroy (this.gameObject);
+
+		player.GetComponent<PlayerStats> ().doDamage (dmg, down);
+	}
+
+	public void openEarly(int dmg, int down) {
+		StopAllCoroutines ();
+		randNum = 0;
+		spawnPlayer (dmg, down);
+
+
 	}
 }
