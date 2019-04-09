@@ -85,6 +85,11 @@ public class PlayerController : MonoBehaviour {
 	// Determines if this is for player one, or two.
 	private bool isPlayerOne;
 
+	// Audio Source
+	private AudioSource audioPlayer;
+
+	private AudioClip gunFireSound;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
@@ -94,6 +99,8 @@ public class PlayerController : MonoBehaviour {
 		if (this.gameObject.tag == "Player") {
 			isPlayerOne = true;
 		}
+		audioPlayer = GetComponent<AudioSource> ();
+		gunFireSound = Resources.Load<AudioClip> ("Audio/Weapon_Sounds/BASIC");
 	}
 
 	// TODO: Make cubes hurtable.
@@ -170,7 +177,7 @@ public class PlayerController : MonoBehaviour {
 			fireBomb ();
 		}
 
-		// TODO: Will pause the game.
+		//Pauses the game.
 		if (Input.GetButtonDown ("Pause")) {
 			pauseGame ();
 		}
@@ -237,26 +244,27 @@ public class PlayerController : MonoBehaviour {
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
 		gunFireCooldown = v.GetComponent<BulletPath> ().RLD;
-		print ("Shoot 1");
+		audioPlayer.clip = gunFireSound;
+		audioPlayer.Play ();
 
-		yield return new WaitForSeconds (0.1f);
+		yield return new WaitForSeconds (0.15f);
 
 		var v2 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v2.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+		audioPlayer.clip = gunFireSound;
+		audioPlayer.Play ();
 
-		print ("Shoot 1");
-
-		yield return new WaitForSeconds (0.1f);
+		yield return new WaitForSeconds (0.15f);
 
 		var v3 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v3.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+		audioPlayer.clip = gunFireSound;
+		audioPlayer.Play ();
 
-		print ("Shoot 1");
-
-		yield return new WaitForSeconds (0.1f);
+		yield return new WaitForSeconds (0.15f);
 
 
-		print (gunFireCooldown);
+
 	}
 
 	#region Bombs
@@ -293,8 +301,9 @@ public class PlayerController : MonoBehaviour {
 		paraRoots [3].position = bombPart.transform.position;
 
 		// Sets the target location.
-		paraRoots [1].position = bombMarkerInstance.transform.position;
-
+		if (bombMarkerInstance != null) {
+			paraRoots [1].position = bombMarkerInstance.transform.position;
+		}
 		// A middle point, with a height factor added in at the end.
 		paraRoots [2].position = ((bombPart.transform.position + bombMarkerInstance.transform.position) * 0.5f) + (.25f * Vector3.up * Vector3.Distance(bombPart.transform.position, bombMarkerInstance.transform.position));
 

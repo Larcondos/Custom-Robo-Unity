@@ -64,17 +64,26 @@ public class PlayerStats : MonoBehaviour {
 	// When you're invincible, have some pretty effects around you.
 	public GameObject sparkleParticles;
 
+	private AudioSource audioPlayer;
 
+	private AudioClip hitSound;
 
 
 	// Use this for initialization
 	void Start () {
 		HP = (int)maxHP;
 		StartCoroutine (deductKnockdown ());
+		audioPlayer = GetComponent<AudioSource> ();
+		hitSound = Resources.Load<AudioClip> ("Audio/SFX/HitSound");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (audioPlayer == null) {
+			audioPlayer = GetComponent<AudioSource> ();
+			print (audioPlayer);
+		}
 
 		if (stateTextTimer > 0) {
 			stateTextTimer -= Time.deltaTime;
@@ -163,26 +172,32 @@ public class PlayerStats : MonoBehaviour {
 
 	public void doDamage(int ATK, int DWN) {
 		// Just to spice things up, every time you take damage it can be multiplied by up to -20% or up to 20%.
-		if (!invincible && !downed) {
-			HP -= (ATK * Random.Range (80, 120)) / 100;
+		if (ATK != 0 && DWN != 0) {
+			if (!invincible && !downed) {
+				HP -= (ATK * Random.Range (80, 120)) / 100;
+				audioPlayer.clip = hitSound;
+				audioPlayer.Play ();
 
-			// Add to your knockdown rate.
-			curKnockdown += DWN;
+				// Add to your knockdown rate.
+				curKnockdown += DWN;
 
-			// On a hit, update your state text to reflect that.
-			stateText.text = "HIT";
-			stateText.color = new Color (1f, 0.5f, 0.0f);
-			stateTextTimer = 180;
+				// On a hit, update your state text to reflect that.
+				stateText.text = "HIT";
+				stateText.color = new Color (1f, 0.5f, 0.0f);
+				stateTextTimer = 180;
 
-			// Update UI in general afterwards, in case we need to overwrite it.
-			UIUpdate ();
-		}
+				// Update UI in general afterwards, in case we need to overwrite it.
+				UIUpdate ();
+			}
 
-		if (downed) {
-			// While downed, you only take 50% dmg. Also, knockdown does not apply.
-			HP -= (ATK * Random.Range (80, 120)) / 200;
-			stateText.text = "DOWNED";
-			UIUpdate ();
+			if (downed) {
+				// While downed, you only take 50% dmg. Also, knockdown does not apply.
+				HP -= (ATK * Random.Range (80, 120)) / 200;
+				stateText.text = "DOWNED";
+				audioPlayer.clip = hitSound;
+				audioPlayer.Play ();
+				UIUpdate ();
+			}
 		}
 	}
 

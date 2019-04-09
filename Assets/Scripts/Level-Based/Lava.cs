@@ -19,7 +19,7 @@ public class Lava : MonoBehaviour {
 		}
 
 		if (col.collider.gameObject.tag == "Spawn Cube") {
-			// TODO: Destroy cube, immediately do damage to player, put them in knockdown.
+			// TODO2: Destroy cube, immediately do damage to player, put them in knockdown.
 			col.gameObject.GetComponent<SpawnCube>().openEarly(DMG , DWN);
 		}
 

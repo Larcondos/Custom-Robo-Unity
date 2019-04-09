@@ -64,7 +64,7 @@ public class KillScreen : MonoBehaviour {
 
 
 
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (1.5f);
 
 		Time.timeScale = 1;
 		Destroy (this.gameObject);

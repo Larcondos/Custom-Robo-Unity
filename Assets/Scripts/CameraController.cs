@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
 	public List<Transform> targets;
 
 	// Once it's over, the camera goes here.
-	public Transform camFinal;
+	public Vector3 camFinal;
 
 	// An offset and smoothness factor for moving the camera.
 	public Vector3 offset;
@@ -52,7 +52,7 @@ public class CameraController : MonoBehaviour {
 	
 		if (gameWon) {
 			transform.LookAt (winner.transform);
-			transform.position = Vector3.MoveTowards (transform.position, camFinal.position, 0.2f);
+			transform.position = Vector3.MoveTowards (transform.position, camFinal, 0.1f);
 		}
 	
 	}
@@ -131,7 +131,7 @@ public class CameraController : MonoBehaviour {
 
 	}
 
-	public void winnerMode(GameObject g, Transform t) {
+	public void winnerMode(GameObject g, Vector3 t) {
 		gameWon = true;
 		winner = g;
 		camFinal = t;

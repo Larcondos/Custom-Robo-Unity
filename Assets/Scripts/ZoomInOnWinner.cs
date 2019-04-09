@@ -11,20 +11,21 @@ public class ZoomInOnWinner : MonoBehaviour {
 
 	public GameObject cam;
 	private CameraController camC;
-	private Transform camFinalLocation;
+	private Vector3 camFinalLocation;
 
 	// Use this for initialization
 	void Start () {
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
-		camFinalLocation = (this.transform.position + (transform.forward * 5) + (transform.up * 2));
+		camFinalLocation = (this.transform.position + (transform.forward * 3) + (transform.up));
 		StartCoroutine (playVictory ());
 		camC = cam.GetComponent<CameraController> ();
+		camC.winnerMode(this.gameObject, camFinalLocation);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		camC.winnerMode(this.gameObject, camFinalLocation);
-		cam.gameObject.transform = Vector3.MoveTowards (camC.camFinal);
+		
+
 	}
 
 
