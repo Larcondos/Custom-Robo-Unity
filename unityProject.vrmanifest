@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.customrobo.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\Jake\\Documents\\Unity Projects\\Custom-Robo-Unity\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Custom Robo [Testing]"
+        }
+      }
+    }
+  ]
+}
