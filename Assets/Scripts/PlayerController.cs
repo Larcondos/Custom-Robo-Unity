@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
 		cameraCont = cam.GetComponent<CameraController> ();
-		cameraCont.targets.Add (this.gameObject.transform);
+		//cameraCont.targets.Add (this.gameObject.transform);
 		if (this.gameObject.tag == "Player") {
 			isPlayerOne = true;
 		}
