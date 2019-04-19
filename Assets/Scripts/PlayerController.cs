@@ -238,7 +238,7 @@ public class PlayerController : MonoBehaviour {
 	} 
 
 
-	IEnumerator fireGun() {
+	public IEnumerator fireGun() {
 
 
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
@@ -271,7 +271,7 @@ public class PlayerController : MonoBehaviour {
 
 	// This function is used to place the location you wish your 'bomb' weapon to drop.
 	// It also creates and manages the parabola for the bomb to follow.
-	void aimBomb() {
+	public void aimBomb() {
 		// On the first frame where this is called, it will instantiate a marker for the bomb's target area.
 		if (aimingBomb != true)
 			bombMarkerInstance = Instantiate (bombMarker, enemy.transform.position + (Vector3.down * .5f), Quaternion.identity);
@@ -287,7 +287,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	// Instaciates a path for the bomb, and it's on it's way.
-	void fireBomb() {
+	public void fireBomb() {
 		// You are no longer aiming the bomb, so reset this variable.
 		aimingBomb = false;
 
@@ -320,13 +320,13 @@ public class PlayerController : MonoBehaviour {
 	#endregion Bombs
 
 	// Drop that baby.
-	void firePod() {
+	public void firePod() {
 		var newPod = Instantiate (pod, backPart.transform.position, Quaternion.identity);
 		newPod.GetComponent<MinePod>().assignParent (this.gameObject);
 		podFireCooldown = 3f;
 	}
 
-	IEnumerator chargeAttack() {
+	public IEnumerator chargeAttack() {
 
 		// Start the cooldown immediately.
 		chargeFireCooldown = 3f;
@@ -347,12 +347,12 @@ public class PlayerController : MonoBehaviour {
 		transform.position += (transform.forward * 4);
 	}
 
-	void jump() {
+	public void jump() {
 		rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
 	}
 
 	// Freezes the game.
-	void pauseGame() {
+	public void pauseGame() {
 		if (Time.timeScale == 0) {
 			Time.timeScale = 1;
 			// TODO: Remove the pause screen.
