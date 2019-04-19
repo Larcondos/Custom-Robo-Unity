@@ -14,9 +14,11 @@ public class VRController : MonoBehaviour {
 
 	private float runSpeed = 5;
 
+	private PlayerController playerController;
+
 	// Use this for initialization
 	void Start () {
-		
+		//playerController = GetComponent<PlayerController> ();
 	}
 	
 	// Update is called once per frame
@@ -36,12 +38,13 @@ public class VRController : MonoBehaviour {
 		}
 
 		// The click.
-		bool touchClicked = touchPadClick.GetStateDown (SteamVR_Input_Sources.LeftHand);
+		bool touchClicked = touchPadClick.GetState (SteamVR_Input_Sources.LeftHand);
 
 		// We are walkin baby.
 		if (touchClicked) {
 			// TODO: Move by some modifier of the touchpad value.
-			transform.Translate (touchpadValue * Vector3.right * runSpeed * Time.deltaTime, Space.World);
+			transform.Translate (touchpadValue.x * Vector3.right * runSpeed * Time.deltaTime, Space.World);	//transform.Translate (touchpadValue * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
+			transform.Translate (touchpadValue.y * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
 			print ("Click!");
 		}
 

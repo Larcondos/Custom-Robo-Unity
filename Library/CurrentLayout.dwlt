@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 471}
   m_MaxSize: {x: 18008, y: 14021}
   vertical: 0
-  controlID: 74
+  controlID: 145
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 52
+  controlID: 86
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 471}
   m_MaxSize: {x: 10004, y: 14021}
   vertical: 1
-  controlID: 75
+  controlID: 60
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 192}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 181
+  controlID: 146
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -479,11 +479,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.12815717, y: -0.33896986, z: 0.046667453, w: -0.93085843}
     speed: 2
-    m_Value: {x: -0.12815717, y: -0.33896986, z: 0.046667453, w: -0.93085843}
+    m_Value: {x: -0.12815717, y: -0.33896986, z: 0.046667453, w: -0.9308585}
   m_Size:
-    m_Target: 22.250248
+    m_Target: 30.279512
     speed: 2
-    m_Value: 22.250248
+    m_Value: 30.279512
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -639,9 +639,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 46660000
-    m_LastClickedID: 26182
-    m_ExpandedIDs: 6aa7feffb6a8feff34baffff20edffff26edffffe4fbfffff4ffffff00000000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 4edcffff44ddffff78dfffffe4fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -702,20 +702,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/SteamVR/InteractionSystem/Samples/Squishy
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/SteamVR/InteractionSystem/Samples/Squishy
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Jake\Documents\Unity Projects\Custom-Robo-Unity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 360}
-    m_SelectedIDs: 86150000
-    m_LastClickedID: 5510
-    m_ExpandedIDs: 00000000c20b0000e00b0000201000008c1100006c1200002a1300003c140000821400008a140000861500000618000000ca9a3b
+    scrollPos: {x: 0, y: 712}
+    m_SelectedIDs: fc0f0000
+    m_LastClickedID: 4092
+    m_ExpandedIDs: 00000000c40b0000e20b000022100000b61000008e1100006e1200002c1300003e140000841400008c140000881500007a170000da1700000818000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -743,7 +743,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: ce270000
     m_LastClickedID: 10190
-    m_ExpandedIDs: 00000000c20b0000e00b0000201000008c1100006c1200002a1300003c140000821400008a1400008615000006180000
+    m_ExpandedIDs: 00000000c40b0000e20b0000221000008e1100006e1200002c1300003e140000841400008c1400008815000008180000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -795,7 +795,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 111}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 187
 --- !u!114 &22
