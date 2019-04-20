@@ -125,8 +125,10 @@ public class BulletPath : MonoBehaviour {
 	}
 
 	public void setTarget(GameObject inTarget, GameObject inParent) {
-		target = inTarget;
-		transform.LookAt (target.transform);
+		if (inTarget != null) {
+			target = inTarget;
+			transform.LookAt (target.transform);
+		}
 		parent = inParent;
 		Physics.IgnoreCollision (GetComponent<CapsuleCollider>(), parent.GetComponent<CapsuleCollider>());
 	}
