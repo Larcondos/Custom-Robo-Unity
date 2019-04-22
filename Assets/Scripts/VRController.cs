@@ -44,17 +44,18 @@ public class VRController : MonoBehaviour {
 		}
 
 		// Fire gun - Right Trigger
-		if (SteamVR_Actions._default.GrabPinch.GetStateDown (SteamVR_Input_Sources.RightHand)) {
+		if (SteamVR_Actions._default.GrabPinch.GetStateDown (SteamVR_Input_Sources.RightHand) && playerController.gunFireCooldown == 0) {
 			StartCoroutine (playerController.fireGun ());
+			print ("He shooting!");
 		}
 
 		// Aim bomb - Left Trigger Down
-		if (SteamVR_Actions._default.GrabPinch.GetStateDown (SteamVR_Input_Sources.LeftHand)) {
+		if (SteamVR_Actions._default.GrabPinch.GetStateDown (SteamVR_Input_Sources.LeftHand) && playerController.bombFireCooldown == 0) {
 			playerController.aimBomb ();
 		}
 
 		// Fire bomb - Left Trigger Up
-		if (SteamVR_Actions._default.GrabPinch.GetStateDown (SteamVR_Input_Sources.LeftHand)) {
+		if (SteamVR_Actions._default.GrabPinch.GetStateUp (SteamVR_Input_Sources.LeftHand) && playerController.bombFireCooldown == 0) {
 			playerController.fireBomb ();
 		}
 

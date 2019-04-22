@@ -57,10 +57,10 @@ public class PlayerController : MonoBehaviour {
 
 	#region Cooldowns
 	// A series of timers for shooting.
-	private float gunFireCooldown, bombFireCooldown, podFireCooldown, chargeFireCooldown;
+	public float gunFireCooldown, bombFireCooldown, podFireCooldown, chargeFireCooldown;
 
 	// Booleans to tell if they are actively cooling
-	private bool bombCooling, gunCooling, podCooling, chargeCooling;
+	public bool bombCooling, gunCooling, podCooling, chargeCooling;
 
 	#endregion Cooldowns
 

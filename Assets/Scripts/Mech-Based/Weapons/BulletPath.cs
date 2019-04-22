@@ -16,6 +16,8 @@ public class BulletPath : MonoBehaviour {
 	// Particles on Collision
 	public GameObject explodeParticle, impactParticle;
 
+	private float lifeSoFar;
+
 	// Stats for the bullets. All public for easy play testing.
 	public int ATK; // Damage amount
 	public float SPD; // Speed the bullets move at
@@ -42,7 +44,7 @@ public class BulletPath : MonoBehaviour {
 
 	// Fixed Update so that the physics cycles only occur as often as needed, and allow for post calculations of target movement.
 	void FixedUpdate () {
-
+		lifeSoFar += 1;
 		// Always move forward.
 		rb.velocity = transform.forward * SPD;
 
@@ -86,11 +88,8 @@ public class BulletPath : MonoBehaviour {
 		} else if (col.CompareTag ("Destructible")) {
 			col.gameObject.GetComponent<DestructibleCube> ().doDamage (ATK);
 			destroyMe ();
-		} else if (!col.CompareTag ("Bomb Particle") || !col.CompareTag ("Bomb")) {
-			// Nothing happens on these tags, this is the ignore zone. Code is being weird.
-
-		} else {
-			// If we hit anything else, the bullet gets destroyed.
+		} else if (lifeSoFar > 20) {
+			// if we hit something within 20 frames, its gonna blow.
 			destroyMe ();
 		}
 	}
@@ -98,6 +97,7 @@ public class BulletPath : MonoBehaviour {
 	// Anything else we hit will destroy the bullets. Tragic, I know.
 	void OnCollisionEnter(Collision col) {
 		destroyMe ();
+
 	}
 
 	// This function is called by anything that needs to know how long it takes to reload this bullet type.
