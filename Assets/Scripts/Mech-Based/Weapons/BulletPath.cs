@@ -88,9 +88,9 @@ public class BulletPath : MonoBehaviour {
 		} else if (col.CompareTag ("Destructible")) {
 			col.gameObject.GetComponent<DestructibleCube> ().doDamage (ATK);
 			destroyMe ();
-		} else if (lifeSoFar > 20) {
+		} else if (lifeSoFar > 10) {
 			// if we hit something within 20 frames, its gonna blow.
-			destroyMe ();
+			//destroyMe ();
 		}
 	}
 

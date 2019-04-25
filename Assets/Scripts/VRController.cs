@@ -35,11 +35,14 @@ public class VRController : MonoBehaviour {
 		touchClickedLeft = touchPadClick.GetState (SteamVR_Input_Sources.LeftHand);
 		touchClickedRight = touchPadClick.GetState (SteamVR_Input_Sources.RightHand);
 
+		print (touchClickedLeft);
+		print (touchClickedRight);
+
 		// When pushing down the left touchpad, move based on where your thumb is
 		if (touchClickedLeft) {
 			// TODO: Move by some modifier of the touchpad value.
 			transform.Translate (touchpadValue.x * Vector3.right * runSpeed * Time.deltaTime, Space.World);	//transform.Translate (touchpadValue * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
-			transform.Translate (touchpadValue.y * -Vector3.forward * runSpeed * Time.deltaTime, Space.World);
+			transform.Translate (touchpadValue.y * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
 			print ("Click!");
 		}
 
@@ -60,7 +63,7 @@ public class VRController : MonoBehaviour {
 		}
 
 		// Drop Pod - Right touchpad pushed down.
-		if (touchClickedRight) {
+		if (touchClickedRight && playerController.podFireCooldown == 0) {
 			playerController.firePod ();
 		}
 
