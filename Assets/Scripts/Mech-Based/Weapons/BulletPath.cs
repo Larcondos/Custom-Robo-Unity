@@ -88,6 +88,8 @@ public class BulletPath : MonoBehaviour {
 		} else if (col.CompareTag ("Destructible")) {
 			col.gameObject.GetComponent<DestructibleCube> ().doDamage (ATK);
 			destroyMe ();
+		} else if (col.CompareTag ("Wall")) {
+			destroyMe ();
 		} else if (lifeSoFar > 10) {
 			// if we hit something within 20 frames, its gonna blow.
 			//destroyMe ();
@@ -124,10 +126,10 @@ public class BulletPath : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 
-	public void setTarget(GameObject inTarget, GameObject inParent) {
+	public void setTarget(GameObject inTarget, GameObject inParent, GameObject inVrRightHandAim) {
 		if (inTarget != null) {
 			target = inTarget;
-			transform.LookAt (target.transform);
+			transform.LookAt (inVrRightHandAim.transform);
 		}
 		parent = inParent;
 		Physics.IgnoreCollision (GetComponent<CapsuleCollider>(), parent.GetComponent<CapsuleCollider>());

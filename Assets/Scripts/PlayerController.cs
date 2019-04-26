@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour {
 
 	private AudioClip gunFireSound;
 
+	public GameObject vrLeftHandAim, vrRightHandAim;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
@@ -242,7 +244,7 @@ public class PlayerController : MonoBehaviour {
 
 
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
-		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject, vrRightHandAim);
 		gunFireCooldown = v.GetComponent<BulletPath> ().RLD;
 		audioPlayer.clip = gunFireSound;
 		audioPlayer.Play ();
@@ -250,14 +252,14 @@ public class PlayerController : MonoBehaviour {
 		yield return new WaitForSeconds (0.15f);
 
 		var v2 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
-		v2.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+		v2.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject, vrRightHandAim);
 		audioPlayer.clip = gunFireSound;
 		audioPlayer.Play ();
 
 		yield return new WaitForSeconds (0.15f);
 
 		var v3 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
-		v3.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject);
+		v3.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject, vrRightHandAim);
 		audioPlayer.clip = gunFireSound;
 		audioPlayer.Play ();
 
@@ -348,7 +350,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void jump() {
-		rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+		rb.AddForce (Vector3.up * jumpHeight * 100, ForceMode.Impulse);
 	}
 
 	// Freezes the game.

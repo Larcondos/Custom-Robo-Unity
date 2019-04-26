@@ -12,11 +12,14 @@ public class VRController : MonoBehaviour {
 
 	public SteamVR_Action_Boolean touchPadClick;
 
+	public GameObject vrCamera;
+
 	private float runSpeed = 5;
 
 	private PlayerController playerController;
 	private bool touchClickedLeft;
 	private bool touchClickedRight;
+ 
 
 	//public GameObject rightHand;
 	//public GameObject leftHand;
@@ -35,19 +38,22 @@ public class VRController : MonoBehaviour {
 		touchClickedLeft = touchPadClick.GetState (SteamVR_Input_Sources.LeftHand);
 		touchClickedRight = touchPadClick.GetState (SteamVR_Input_Sources.RightHand);
 
-		print (touchClickedLeft);
-		print (touchClickedRight);
-
 		// When pushing down the left touchpad, move based on where your thumb is
 		if (touchClickedLeft) {
 			// TODO: Move by some modifier of the touchpad value.
-			transform.Translate (touchpadValue.x * Vector3.right * runSpeed * Time.deltaTime, Space.World);	//transform.Translate (touchpadValue * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
-			transform.Translate (touchpadValue.y * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
+			Quaternion quat = vrCamera.transform.rotation;
+			//quat = new Quaternion(0, quat.y, quat.z, quat.w);
+			//Vector3 fwd = quat * Vector3.forward;
+			//transform.Translate(fwd * moveSpeed); 
+
+			transform.Translate (touchpadValue.x * (Vector3.right) * runSpeed * Time.deltaTime, Space.Self);	//transform.Translate (touchpadValue * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
+			transform.Translate (touchpadValue.y * (quat.w * Vector3.forward) * runSpeed * Time.deltaTime, Space.Self);
 			print ("Click!");
 		}
 
 		// Fire gun - Right Trigger
 		if (SteamVR_Actions._default.GrabPinch.GetStateDown (SteamVR_Input_Sources.RightHand) && playerController.gunFireCooldown == 0) {
+
 			StartCoroutine (playerController.fireGun ());
 			print ("He shooting!");
 		}

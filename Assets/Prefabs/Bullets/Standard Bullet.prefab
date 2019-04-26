@@ -326,7 +326,7 @@ MonoBehaviour:
   impactParticle: {fileID: 1557186935382272}
   ATK: 30
   SPD: 10
-  HMG: 1
+  HMG: 0.5
   DWN: 8
   RLD: 1
   RNG: 5

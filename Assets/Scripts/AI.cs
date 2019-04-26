@@ -18,6 +18,8 @@ public class AI : MonoBehaviour {
 		agent = GetComponent<NavMeshAgent> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 		calculateNextPoint ();
+		playCon = GetComponent<PlayerController> ();
+		playStats = GetComponent<PlayerStats> ();
 	}
 
 	// Update is called once per frame
@@ -26,6 +28,20 @@ public class AI : MonoBehaviour {
 		if (agent.remainingDistance < 0.5f && waypoints.Length != 0)
 			calculateNextPoint ();
 		//if (playStats.
+
+		int randomWeaponNum = Random.Range (0, 300);
+
+		// While the AI is down we dont want it shooting or moving.
+		if (playStats.downed) {
+			agent.speed = 0;
+			randomWeaponNum = 0;
+		} else {
+			agent.speed = 3.5f;
+		}
+
+		if (randomWeaponNum == 50) {
+			randomWeaponAttack ();
+		}
 	}
 
 	// We use this to calculate our closest objective.
@@ -36,6 +52,27 @@ public class AI : MonoBehaviour {
 
 	}
 		
+	void randomWeaponAttack() {
+		int randomWepNum = Random.Range (0, 10);
+
+		if (randomWepNum <= 7) {
+			StartCoroutine(playCon.fireGun ());
+		}
+
+		if (randomWepNum < 9 && randomWepNum > 7) {
+			playCon.aimBomb ();
+			playCon.fireBomb ();
+		}
+
+		if (randomWepNum == 9) {
+			playCon.firePod();
+		}
+
+
+	}
+
+
+
 	void OnTriggerEnter(Collider col) {
 	}
 		

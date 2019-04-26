@@ -54,7 +54,7 @@ public class PlayerStats : MonoBehaviour {
 	private bool invincible = false;
 
 	// Is the mech currently downed? 
-	private bool downed = false;
+	public bool downed = false;
 
 	// The three indicators for how much Knockdown you have currently.
 	public Image knockdownLow;
