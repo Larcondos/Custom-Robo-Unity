@@ -29,14 +29,14 @@ public class AI : MonoBehaviour {
 			calculateNextPoint ();
 		//if (playStats.
 
-		int randomWeaponNum = Random.Range (0, 300);
+		int randomWeaponNum = Random.Range (0, 1000);
 
 		// While the AI is down we dont want it shooting or moving.
 		if (playStats.downed) {
 			agent.speed = 0;
 			randomWeaponNum = 0;
 		} else {
-			agent.speed = 3.5f;
+			agent.speed = 2.5f;
 		}
 
 		if (randomWeaponNum == 50) {

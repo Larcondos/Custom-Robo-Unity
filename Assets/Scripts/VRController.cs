@@ -37,6 +37,7 @@ public class VRController : MonoBehaviour {
 		// The click.
 		touchClickedLeft = touchPadClick.GetState (SteamVR_Input_Sources.LeftHand);
 		touchClickedRight = touchPadClick.GetState (SteamVR_Input_Sources.RightHand);
+		transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, vrCamera.transform.localEulerAngles.y, transform.localEulerAngles.z); 
 
 		// When pushing down the left touchpad, move based on where your thumb is
 		if (touchClickedLeft) {
@@ -46,8 +47,10 @@ public class VRController : MonoBehaviour {
 			//Vector3 fwd = quat * Vector3.forward;
 			//transform.Translate(fwd * moveSpeed); 
 
-			transform.Translate (touchpadValue.x * (Vector3.right) * runSpeed * Time.deltaTime, Space.Self);	//transform.Translate (touchpadValue * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
-			transform.Translate (touchpadValue.y * (quat.w * Vector3.forward) * runSpeed * Time.deltaTime, Space.Self);
+			//transform.rotation = Quaternion.Euler (transform.rotation.x, quat.y, transform.rotation.z);
+
+			transform.Translate (touchpadValue.x * (transform.right) * runSpeed * Time.deltaTime, Space.Self);	//transform.Translate (touchpadValue * Vector3.forward * runSpeed * Time.deltaTime, Space.World);
+			transform.Translate (touchpadValue.y * (transform.forward) * runSpeed * Time.deltaTime, Space.Self);
 			print ("Click!");
 		}
 
