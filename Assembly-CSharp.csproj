@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\ParabolaController.cs" />
      <Compile Include="Assets\Scripts\ParticleDestroy.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\PlayerController2.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\SpawnCube.cs" />
      <Compile Include="Assets\Scripts\TEMP Reference\NoticeBar.cs" />

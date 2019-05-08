@@ -6,7 +6,8 @@ public class CameraFacingBillboard : MonoBehaviour
 	public GameObject m_Camera;
 
 	void Start() {
-		//m_Camera = GameObject.FindGameObjectWithTag ("MainCamera");
+		if (m_Camera == null)
+			m_Camera = GameObject.FindGameObjectWithTag ("MainCamera");
 	}
 
 	// Keep the canvas aimed at the camera.

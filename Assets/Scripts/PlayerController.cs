@@ -110,14 +110,17 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (enemy == null && isPlayerOne) {
-			enemy = GameObject.FindGameObjectWithTag ("Player2");
-		} else if (enemy == null && !isPlayerOne)
-			enemy = GameObject.FindGameObjectWithTag ("Player");
 
-		// If this is still null, it means the actual enemy has not yet spawned!
-		if (enemy == null) {
-			enemy = GameObject.FindGameObjectWithTag ("Respawn");
+		if (this.gameObject.tag != "Player2") {
+			if (enemy == null && isPlayerOne) {
+				enemy = GameObject.FindGameObjectWithTag ("Player2");
+			} else if (enemy == null && !isPlayerOne)
+				enemy = GameObject.FindGameObjectWithTag ("Player");
+
+			// If this is still null, it means the actual enemy has not yet spawned!
+			if (enemy == null) {
+				enemy = GameObject.FindGameObjectWithTag ("Respawn");
+			}
 		}
 		if (isPlayerOne) {
 			getInput ();
@@ -127,7 +130,7 @@ public class PlayerController : MonoBehaviour {
 			getInput2 ();
 		}
 
-		cooldownTimer ();
+
 
 		
 	}
@@ -246,26 +249,26 @@ public class PlayerController : MonoBehaviour {
 		var v = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject, vrRightHandAim);
 		gunFireCooldown = v.GetComponent<BulletPath> ().RLD;
-		audioPlayer.clip = gunFireSound;
-		audioPlayer.Play ();
+//		audioPlayer.clip = gunFireSound;
+		//audioPlayer.Play ();
 
 		yield return new WaitForSeconds (0.15f);
 
 		var v2 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v2.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject, vrRightHandAim);
-		audioPlayer.clip = gunFireSound;
-		audioPlayer.Play ();
+		//audioPlayer.clip = gunFireSound;
+		//audioPlayer.Play ();
 
 		yield return new WaitForSeconds (0.15f);
 
 		var v3 = Instantiate (bullet, gunPart.transform.position, Quaternion.identity);
 		v3.GetComponent<BulletPath> ().setTarget (enemy, this.gameObject, vrRightHandAim);
-		audioPlayer.clip = gunFireSound;
-		audioPlayer.Play ();
+	//	audioPlayer.clip = gunFireSound;
+	//	audioPlayer.Play ();
 
 		yield return new WaitForSeconds (0.15f);
 
-
+		cooldownTimer ();
 
 	}
 
@@ -314,7 +317,7 @@ public class PlayerController : MonoBehaviour {
 		bomba.GetComponent<ParabolaController> ().ParabolaRoot = para;
 		Destroy (para);
 		Destroy (bombMarkerInstance);
-
+		cooldownTimer ();
 		// Set the bomb limit.
 		bombFireCooldown = 2;
 	}
@@ -326,6 +329,7 @@ public class PlayerController : MonoBehaviour {
 		var newPod = Instantiate (pod, backPart.transform.position, Quaternion.identity);
 		newPod.GetComponent<MinePod>().assignParent (this.gameObject);
 		podFireCooldown = 3f;
+		cooldownTimer ();
 	}
 
 	public IEnumerator chargeAttack() {
@@ -350,7 +354,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void jump() {
-		rb.AddForce (Vector3.up * jumpHeight * 100, ForceMode.Impulse);
+		rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
 	}
 
 	// Freezes the game.

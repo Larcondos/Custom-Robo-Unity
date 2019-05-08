@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletPath : MonoBehaviour {
 
 	// The transform for the target location to go to.
-	private GameObject target;
+	public GameObject target;
 
 	// The gameobject that spawned this bullet. Used to the bullet doesn't hurt it's parent.
 	private GameObject parent;
@@ -126,10 +126,29 @@ public class BulletPath : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 
+	public void setTarget2(GameObject inTarget, GameObject inParent) {
+		if (inTarget != null) {
+			target = inTarget;
+			transform.LookAt (target.transform);
+		}
+		if (target == null) {
+			target = GameObject.FindGameObjectWithTag ("Player");
+			transform.LookAt (target.transform);
+		}
+		parent = inParent;
+		Physics.IgnoreCollision (GetComponent<CapsuleCollider>(), parent.GetComponent<CapsuleCollider>());
+
+
+	}
+
 	public void setTarget(GameObject inTarget, GameObject inParent, GameObject inVrRightHandAim) {
 		if (inTarget != null) {
 			target = inTarget;
-			transform.LookAt (inVrRightHandAim.transform);
+			if (inVrRightHandAim != null) {
+				transform.LookAt (inVrRightHandAim.transform);
+			} else {
+				transform.LookAt (target.transform);
+			}
 		}
 		parent = inParent;
 		Physics.IgnoreCollision (GetComponent<CapsuleCollider>(), parent.GetComponent<CapsuleCollider>());
